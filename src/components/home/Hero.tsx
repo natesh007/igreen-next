@@ -6,9 +6,23 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: '#0A0F1C' }}
     >
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+      >
+        <source src="/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay over video */}
+      <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: '#0A0F1C', opacity: 0.6 }} />
+
       {/* Background grid pattern */}
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-10"
         style={{
           backgroundImage:
             'linear-gradient(#1DBCD620 1px, transparent 1px), linear-gradient(90deg, #1DBCD620 1px, transparent 1px)',
