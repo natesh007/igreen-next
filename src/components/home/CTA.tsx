@@ -10,7 +10,7 @@ export default function CTA() {
         >
           {/* Decorative border glow */}
           <div
-            className="absolute inset-0 rounded-3xl"
+            className="absolute inset-0 rounded-3xl pointer-events-none"
             style={{
               background: 'linear-gradient(135deg, #1DBCD6, #5CB85C)',
               padding: '1px',
