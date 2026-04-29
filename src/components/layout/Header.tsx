@@ -22,7 +22,6 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/careers', label: 'Careers' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Header() {
@@ -71,7 +70,7 @@ export default function Header() {
                 <div className="p-5 grid grid-cols-2 gap-6">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: '#1DBCD6' }}>
-                      IoT & Digital Transformation
+                      IoT & Digital
                     </p>
                     <ul className="space-y-1">
                       {iotServices.map((s) => (
@@ -127,12 +126,6 @@ export default function Header() {
               className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors"
             >
               Careers
-            </Link>
-            <Link
-              href="/contact"
-              className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors"
-            >
-              Contact
             </Link>
 
             <Link

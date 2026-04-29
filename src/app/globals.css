@@ -24,8 +24,47 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Noise / grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins), -apple-system, sans-serif;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #1DBCD6, #5CB85C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer button animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.btn-primary {
+  background: linear-gradient(90deg, #1DBCD6 0%, #5CB85C 40%, #1DBCD6 80%);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+  color: #fff;
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 ::-webkit-scrollbar { width: 5px; }

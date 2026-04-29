@@ -12,9 +12,46 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "iGreen Systems | IoT & Digital Transformation",
+  title: {
+    default: 'iGreen Systems | IoT & Digital Transformation',
+    template: '%s | iGreen Systems',
+  },
   description:
-    "End-to-end IoT solutions, digital transformation consulting, and modern web & mobile applications. Connecting the future, transforming your business.",
+    'End-to-end IoT solutions and digital transformation services in Hyderabad, Kakinada and across Andhra Pradesh & India. Smart building management, connected devices, web & mobile applications.',
+  keywords: [
+    'IoT solutions Hyderabad',
+    'IoT solutions Kakinada',
+    'IoT solutions Andhra Pradesh',
+    'smart building management',
+    'digital transformation company India',
+    'connected devices IoT',
+    'facility management IoT',
+    'industrial IoT India',
+    'web application development Hyderabad',
+    'mobile app development India',
+  ],
+  authors: [{ name: 'iGreen Systems' }],
+  creator: 'iGreen Systems',
+  metadataBase: new URL('https://igreensystems.com'),
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    siteName: 'iGreen Systems',
+    title: 'iGreen Systems | IoT & Digital Transformation',
+    description:
+      'End-to-end IoT solutions and digital transformation in Hyderabad, Kakinada, Andhra Pradesh and across India.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'iGreen Systems | IoT & Digital Transformation',
+    description:
+      'End-to-end IoT solutions and digital transformation in Hyderabad, Kakinada, Andhra Pradesh and across India.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

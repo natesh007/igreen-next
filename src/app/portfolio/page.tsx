@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
   title: 'Portfolio | iGreen',
@@ -38,19 +39,19 @@ const projects: Project[] = [
     isReal: true,
   },
   {
-    title: 'WIS — Restaurant Facility Automation',
-    client: 'Wenalytics IoT Solutions (Americas)',
+    title: 'VWI — Seamless Visa Processing Platform',
+    client: 'VWI Travel Pvt Ltd (Visa World India)',
     description:
-      'AI-driven IoT platform for Quick Service and Full Service Restaurants — automating facility operations across utilities, kitchen equipment, HVAC and maintenance workflows. Delivers real-time electricity, water and gas monitoring with measurable cost savings.',
-    category: 'IoT',
-    tag: 'IoT',
-    tagColor: '#1DBCD6',
-    capabilities: ['Utilities', 'HVAC', 'Kitchen', 'Workflow', 'Analytics'],
+      'End-to-end digital transformation of visa application processing for one of India\'s leading visa facilitation agencies. Applicants select their destination country, visa type and profile — the system instantly generates a personalised document checklist and auto-verifies each upload, slashing manual admin effort.',
+    category: 'Digital Transformation',
+    tag: 'Digital Transformation',
+    tagColor: '#5CB85C',
+    capabilities: ['188 Countries', 'Smart Checklists', 'Auto Verification', 'Web App', 'Live'],
     highlights: [
-      'Save up to 20% on energy, water & gas costs',
-      'Hot & cold equipment monitoring with IoT sensors',
-      'Condition-based HVAC automation & indoor air quality',
-      'Full workflow digitization: PPM, inventory & vendor mgmt',
+      'Covers all 188 countries & all major visa types (Tourist, Business, Transit)',
+      'Dynamic doc checklist driven by country + visa type + applicant profile',
+      'Automated document verification — 80% reduction in admin review effort',
+      'Thousands of applications processed — live in production',
     ],
     isReal: true,
   },
@@ -123,19 +124,19 @@ const projects: Project[] = [
     isReal: true,
   },
   {
-    title: 'VWI — Seamless Visa Processing Platform',
-    client: 'VWI Travel Pvt Ltd (Visa World India)',
+    title: 'WIS — Restaurant Facility Automation',
+    client: 'Wenalytics IoT Solutions (Americas)',
     description:
-      'End-to-end digital transformation of visa application processing for one of India\'s leading visa facilitation agencies. Applicants select their destination country, visa type and profile — the system instantly generates a personalised document checklist and auto-verifies each upload, slashing manual admin effort.',
-    category: 'Digital Transformation',
-    tag: 'Digital Transformation',
-    tagColor: '#5CB85C',
-    capabilities: ['188 Countries', 'Smart Checklists', 'Auto Verification', 'Web App', 'Live'],
+      'AI-driven IoT platform for Quick Service and Full Service Restaurants — automating facility operations across utilities, kitchen equipment, HVAC and maintenance workflows. Delivers real-time electricity, water and gas monitoring with measurable cost savings.',
+    category: 'IoT',
+    tag: 'IoT',
+    tagColor: '#1DBCD6',
+    capabilities: ['Utilities', 'HVAC', 'Kitchen', 'Workflow', 'Analytics'],
     highlights: [
-      'Covers all 188 countries & all major visa types (Tourist, Business, Transit)',
-      'Dynamic doc checklist driven by country + visa type + applicant profile',
-      'Automated document verification — 80% reduction in admin review effort',
-      'Thousands of applications processed — live in production',
+      'Save up to 20% on energy, water & gas costs',
+      'Hot & cold equipment monitoring with IoT sensors',
+      'Condition-based HVAC automation & indoor air quality',
+      'Full workflow digitization: PPM, inventory & vendor mgmt',
     ],
     isReal: true,
   },
@@ -309,18 +310,27 @@ export default function PortfolioPage() {
   return (
     <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
       {/* Header */}
-      <section className="py-24 text-center" style={{ backgroundColor: '#060A12' }}>
-        <div className="max-w-3xl mx-auto px-4">
-          <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#1DBCD6' }}>
-            Our Work
-          </p>
-          <h1 className="text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Projects That Define Us
-          </h1>
-          <p className="text-gray-400 text-lg">
-            From IoT deployments to full digital transformations — here&apos;s a selection of the
-            work we&apos;re proud of.
-          </p>
+      <section
+        className="py-24 text-center relative overflow-hidden"
+        style={{ backgroundColor: '#060A12' }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, #1DBCD610 0%, transparent 70%)' }}
+        />
+        <div className="max-w-3xl mx-auto px-4 relative">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#1DBCD6' }}>
+              Our Work
+            </p>
+            <h1 className="text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              Projects That Define Us
+            </h1>
+            <p className="text-gray-400 text-lg">
+              From IoT deployments to full digital transformations — here&apos;s a selection of the
+              work we&apos;re proud of.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -349,11 +359,11 @@ export default function PortfolioPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sorted.map((p) =>
-              p.isReal
-                ? <RealCard key={p.title} p={p} />
-                : <PlaceholderCard key={p.title} p={p} />
-            )}
+            {sorted.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.06}>
+                {p.isReal ? <RealCard p={p} /> : <PlaceholderCard p={p} />}
+              </Reveal>
+            ))}
           </div>
 
           {/* Banner */}

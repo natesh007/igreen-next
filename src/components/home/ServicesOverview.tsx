@@ -1,4 +1,7 @@
+'use client';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Reveal } from '@/components/ui/Reveal';
 
 const iotServices = [
   {
@@ -86,6 +89,8 @@ const deliveryServices = [
   },
 ];
 
+const MotionLink = motion.create(Link);
+
 function ServiceCard({
   href,
   label,
@@ -100,34 +105,47 @@ function ServiceCard({
   accent: string;
 }) {
   return (
-    <Link
+    <MotionLink
       href={href}
-      className="group block rounded-xl p-6 border transition-all hover:-translate-y-1 hover:border-opacity-60"
+      className="group block rounded-xl p-6 border"
       style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+      whileHover={{
+        y: -5,
+        boxShadow: `0 0 0 1px ${accent}35, 0 8px 32px ${accent}18`,
+        borderColor: `${accent}30`,
+      }}
+      transition={{ duration: 0.22 }}
     >
-      <div
-        className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-colors"
+      <motion.div
+        className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
         style={{ backgroundColor: `${accent}18`, color: accent }}
+        whileHover={{ backgroundColor: `${accent}28`, scale: 1.05 }}
+        transition={{ duration: 0.2 }}
       >
         {icon}
-      </div>
-      <h3 className="font-semibold text-white mb-2 group-hover:text-white/90"
-        style={{ fontFamily: 'Poppins, sans-serif' }}>
+      </motion.div>
+      <h3 className="font-semibold text-white mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
         {label}
       </h3>
       <p className="text-sm text-gray-400 leading-relaxed">{desc}</p>
       <p className="mt-4 text-sm font-medium transition-colors" style={{ color: accent }}>
         Learn more →
       </p>
-    </Link>
+    </MotionLink>
   );
 }
 
 export default function ServicesOverview() {
   return (
-    <section className="py-24" style={{ backgroundColor: '#0A0F1C' }}>
+    <section
+      className="py-24 relative"
+      style={{
+        backgroundColor: '#0A0F1C',
+        background: 'radial-gradient(ellipse 60% 40% at 50% 0%, #1DBCD608 0%, #0A0F1C 70%)',
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <p className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: '#1DBCD6' }}>
             What We Do
           </p>
@@ -137,34 +155,42 @@ export default function ServicesOverview() {
           <p className="mt-4 text-gray-400 max-w-xl mx-auto">
             From IoT strategy to digital delivery — we cover the full spectrum of modern technology.
           </p>
-        </div>
+        </Reveal>
 
         {/* IoT & Digital Transformation */}
         <div className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#1DBCD6' }}>
-              IoT & Digital Transformation
-            </span>
-            <div className="flex-1 h-px" style={{ backgroundColor: '#1F2937' }} />
-          </div>
+          <Reveal delay={0.05}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#1DBCD6' }}>
+                IoT & Digital
+              </span>
+              <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, #1DBCD630, transparent)' }} />
+            </div>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            {iotServices.map((s) => (
-              <ServiceCard key={s.href} {...s} accent="#1DBCD6" />
+            {iotServices.map((s, i) => (
+              <Reveal key={s.href} delay={0.08 + i * 0.07}>
+                <ServiceCard {...s} accent="#1DBCD6" />
+              </Reveal>
             ))}
           </div>
         </div>
 
         {/* Digital Delivery */}
         <div>
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#5CB85C' }}>
-              Digital Delivery
-            </span>
-            <div className="flex-1 h-px" style={{ backgroundColor: '#1F2937' }} />
-          </div>
+          <Reveal delay={0.05}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#5CB85C' }}>
+                Digital Delivery
+              </span>
+              <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, #5CB85C30, transparent)' }} />
+            </div>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {deliveryServices.map((s) => (
-              <ServiceCard key={s.href} {...s} accent="#5CB85C" />
+            {deliveryServices.map((s, i) => (
+              <Reveal key={s.href} delay={0.08 + i * 0.08}>
+                <ServiceCard {...s} accent="#5CB85C" />
+              </Reveal>
             ))}
           </div>
         </div>
