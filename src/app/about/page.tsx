@@ -4,7 +4,7 @@ import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about iGreen Systems — 12+ years building IoT and digital transformation solutions across Hyderabad, Kakinada, and Andhra Pradesh.',
+  description: 'Learn about iGreen Systems — founded in Hyderabad in 2008, building IoT and digital transformation solutions across India and the Americas for 18+ years.',
 };
 
 const values = [
@@ -38,7 +38,7 @@ const team = [
 ];
 
 const stats = [
-  { value: '12+', label: 'Years', color: '#1DBCD6' },
+  { value: '18+', label: 'Years', color: '#1DBCD6' },
   { value: '25', label: 'Team', color: '#5CB85C' },
   { value: '232+', label: 'Clients', color: '#1DBCD6' },
   { value: '521+', label: 'Projects', color: '#5CB85C' },
@@ -62,14 +62,14 @@ export default function AboutPage() {
               About iGreen
             </p>
             <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              12 Years of Building{' '}
+              18 Years of Building{' '}
               <span style={{ color: '#5CB85C' }}>What&apos;s Next</span>
             </h1>
             <p className="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
-              We started as a software development studio and evolved into a full-spectrum IoT and
-              digital transformation partner. Today, iGreen helps businesses across Hyderabad,
-              Kakinada, and Andhra Pradesh harness connected technology to compete in a rapidly
-              changing world.
+              Founded in Hyderabad in 2008, iGreen started building software for businesses in
+              Andhra Pradesh and Telangana. As clients asked for connected systems, IoT monitoring,
+              and digital transformation — we evolved. Today we&apos;re a 25-person team with offices
+              in Hyderabad and Kakinada, working with clients from India to the Americas.
             </p>
           </Reveal>
         </div>
@@ -92,8 +92,9 @@ export default function AboutPage() {
                 understand, and act on that data to unlock real business value.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                We combine deep IoT expertise with strong software engineering to deliver solutions
-                that are not just technically excellent but commercially meaningful.
+                We&apos;ve built fire safety systems that alert before a crisis, restaurant platforms
+                that cut utility costs by 20%, and visa processing tools that reduced application
+                time by 80%. That&apos;s what good technology work looks like in practice.
               </p>
             </Reveal>
             <div className="grid grid-cols-2 gap-4">

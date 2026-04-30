@@ -11,7 +11,7 @@ const fadeUp = (delay: number) => ({
 });
 
 const stats = [
-  { value: '12+', label: 'Years Experience' },
+  { value: '18+', label: 'Years Experience' },
   { value: '25', label: 'Team Members' },
   { value: '232+', label: 'Clients' },
   { value: '521+', label: 'Projects Delivered' },
@@ -85,15 +85,15 @@ export default function Hero() {
           className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
-          Connecting the Future,
+          <span style={{ color: '#1DBCD6' }}>Smart Buildings.</span>{' '}
+          <span style={{ color: '#5CB85C' }}>Connected Devices.</span>
           <br />
-          <span style={{ color: '#1DBCD6' }}>Transforming</span>{' '}
-          <span style={{ color: '#5CB85C' }}>Business</span>
+          Real Results — Since 2008.
         </motion.h1>
 
         <motion.p {...fadeUp(0.2)} className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10">
-          End-to-end IoT solutions, intelligent connected systems, and digital transformation
-          strategies that turn data into competitive advantage.
+          From fire pump monitoring in Hyderabad to large-scale visa processing platforms, we deliver
+          practical technology solutions that solve real business problems.
         </motion.p>
 
         {/* CTAs */}
@@ -102,11 +102,11 @@ export default function Hero() {
             Explore Solutions
           </Link>
           <Link
-            href="/contact"
+            href="/portfolio"
             className="px-8 py-3.5 rounded-xl text-base font-semibold border transition-all hover:bg-white/5 hover:border-white/20"
             style={{ borderColor: '#374151', color: '#D1D5DB' }}
           >
-            Contact Us →
+            View Our Work →
           </Link>
         </motion.div>
 

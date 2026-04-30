@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useInView, motion } from 'framer-motion';
 
 const stats = [
-  { value: '12+', label: 'Years of Experience', desc: 'Over a decade building technology solutions', color: '#1DBCD6' },
+  { value: '18+', label: 'Years of Experience', desc: 'Building technology solutions since 2008', color: '#1DBCD6' },
   { value: '25', label: 'Team Members', desc: 'Engineers, designers, and consultants', color: '#5CB85C' },
   { value: '232+', label: 'Happy Clients', desc: 'From startups to global enterprises', color: '#1DBCD6' },
   { value: '521+', label: 'Projects Delivered', desc: 'Across IoT, web, mobile, and cloud', color: '#5CB85C' },

@@ -34,12 +34,12 @@ export default function CTA() {
               Ready to Transform?
             </p>
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-5 relative" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Let&apos;s Build Something{' '}
-              <span style={{ color: '#5CB85C' }}>Extraordinary</span>
+              Your next project{' '}
+              <span style={{ color: '#5CB85C' }}>belongs on this page.</span>
             </h2>
             <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto relative">
-              From IoT strategy to full-stack delivery — tell us your challenge and we&apos;ll show you
-              the path forward.
+              If you need an IoT platform, web application, mobile app, or cloud solution that
+              actually ships — let&apos;s talk.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center relative">

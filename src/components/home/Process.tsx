@@ -18,6 +18,7 @@ export default function Process() {
         background: 'radial-gradient(ellipse 60% 40% at 50% 100%, #5CB85C06 0%, #0A0F1C 70%)',
       }}
     >
+      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, #5CB85C25, transparent)' }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-16">
           <p className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: '#5CB85C' }}>
@@ -27,7 +28,7 @@ export default function Process() {
             Our Process
           </h2>
           <p className="mt-4 text-gray-400 max-w-xl mx-auto">
-            A structured, transparent approach that keeps you in the loop from day one.
+            A clear, collaborative process that keeps your project moving from planning to launch.
           </p>
         </Reveal>
 
@@ -53,7 +54,7 @@ export default function Process() {
                 <h3 className="text-lg font-semibold text-white mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   {step.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{step.desc}</p>
+                <p className="text-[15px] text-gray-300 leading-relaxed">{step.desc}</p>
               </div>
             </Reveal>
           ))}
