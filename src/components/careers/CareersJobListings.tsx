@@ -12,13 +12,6 @@ const openings = [
     desc: 'Design and implement end-to-end IoT architectures including sensor integration, edge processing, and cloud connectivity.',
   },
   {
-    title: 'Full Stack Developer',
-    type: 'Full-time',
-    location: 'On-site / Remote',
-    dept: 'Engineering',
-    desc: 'Build scalable web applications using React, Next.js, and Node.js with a strong focus on performance and developer experience.',
-  },
-  {
     title: 'Digital Transformation Consultant',
     type: 'Full-time',
     location: 'On-site',
