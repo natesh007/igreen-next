@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Reveal } from '@/components/ui/Reveal';
+import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -155,66 +156,7 @@ export default function ContactPage() {
 
             {/* Form */}
             <Reveal delay={0.12} className="lg:col-span-2">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Full Name <span style={{ color: '#1DBCD6' }}>*</span>
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="John Smith"
-                      className="w-full px-4 py-3 rounded-xl border text-white placeholder-gray-600 outline-none focus:border-[#1DBCD650] transition-colors"
-                      style={{ backgroundColor: '#111827', borderColor: '#1F2937', color: '#F9FAFB' }}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Email Address <span style={{ color: '#1DBCD6' }}>*</span>
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="john@company.com"
-                      className="w-full px-4 py-3 rounded-xl border text-white placeholder-gray-600 outline-none focus:border-[#1DBCD650] transition-colors"
-                      style={{ backgroundColor: '#111827', borderColor: '#1F2937', color: '#F9FAFB' }}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
-                  <select
-                    className="w-full px-4 py-3 rounded-xl border outline-none transition-colors"
-                    style={{ backgroundColor: '#111827', borderColor: '#1F2937', color: '#F9FAFB' }}
-                  >
-                    <option value="">Select a topic...</option>
-                    <option>IoT Solutions</option>
-                    <option>Digital Transformation</option>
-                    <option>Web / Mobile Development</option>
-                    <option>Cloud Solutions</option>
-                    <option>General Inquiry</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Message <span style={{ color: '#1DBCD6' }}>*</span>
-                  </label>
-                  <textarea
-                    required
-                    rows={6}
-                    placeholder="Tell us about your project, goals, and timeline..."
-                    className="w-full px-4 py-3 rounded-xl border text-white placeholder-gray-600 outline-none focus:border-[#1DBCD650] transition-colors resize-none"
-                    style={{ backgroundColor: '#111827', borderColor: '#1F2937', color: '#F9FAFB' }}
-                  />
-                </div>
-
-                <button type="submit" className="btn-primary w-full sm:w-auto px-10 py-3.5 rounded-xl text-base">
-                  Send Message
-                </button>
-              </form>
+              <ContactForm />
             </Reveal>
           </div>
         </div>
