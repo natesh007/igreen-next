@@ -7,10 +7,19 @@ originSessionId: f05839b9-b5a2-4447-9ef4-e1a3d2c468b1
 ## What This Is
 igreen-next is a Next.js 16 rebuild of the igreen CodeIgniter 4 PHP project.
 - **PHP source:** `e:/xampp/htdocs/igreen` (CodeIgniter 4, MySQL db: igreen_main)
-- **Next.js project:** `e:/xampp/htdocs/igreen-next`
+- **Next.js project:** `d:/xampp/htdocs/igreen-next` (current machine — previously e:/)
 - **Dev server:** `npm run dev` → http://localhost:3000 (kill any running instance with `taskkill /F /IM node.exe` first)
 
 **Why:** Modernising the company website from LAMP/CI4 to Next.js/React/Tailwind.
+
+---
+
+## Machine Setup (current dev machine)
+- **Node.js:** v24.15.0 LTS — installed via `winget install OpenJS.NodeJS.LTS`
+- **npm:** v11.12.1
+- **PowerShell execution policy:** `RemoteSigned` (set at user scope) — required to run npm scripts
+- **PATH refresh needed** in new PowerShell sessions until reboot: `$env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("PATH","User")`
+- After reboot, `npm run dev` works directly without PATH refresh
 
 ---
 
@@ -18,6 +27,8 @@ igreen-next is a Next.js 16 rebuild of the igreen CodeIgniter 4 PHP project.
 - Next.js 16.2.4, React 19, TypeScript
 - Tailwind CSS 4 (no tailwind.config.js — uses `@theme` in globals.css)
 - **Framer Motion** (installed) — used for scroll reveals, entrance animations, hover glows, counter animation
+- **Nodemailer** — Gmail SMTP email sending (careers apply + contact form)
+- **react-google-recaptcha** — reCAPTCHA v2 "I'm not a robot" widget (careers modal + contact form)
 - Google Fonts: Poppins (headings), Inter (body) via `next/font/google`
 - No external component library or icon package — inline SVG icons throughout
 
@@ -159,8 +170,11 @@ src/
 │   ├── globals.css                 — Tailwind 4 @theme, noise texture, .btn-primary shimmer, scrollbar
 │   ├── page.tsx                    — Home (Hero + ServicesOverview + Stats + Testimonials + Process + CTA)
 │   ├── about/page.tsx              — Reveal animations, radial spotlights, gradient value cards
-│   ├── contact/page.tsx            — Reveal animations, office cards, form (static, unwired)
-│   ├── careers/page.tsx            — 4 open positions + open application
+│   ├── contact/page.tsx            — Reveal animations, office cards, wired form (uses ContactForm client component)
+│   ├── careers/page.tsx            — server component (metadata + header + perks), uses CareersJobListings client component
+│   ├── api/
+│   │   ├── apply/route.ts          — POST handler: job applications → hr@igreensystems.com (FormData, resume attachment)
+│   │   └── contact/route.ts        — POST handler: contact form → contact@igreensystems.com (JSON)
 │   ├── portfolio/page.tsx          — 9 real cards, RealCard + PlaceholderCard, Reveal stagger
 │   ├── services/
 │   │   ├── page.tsx
@@ -189,8 +203,13 @@ src/
 │   │   ├── Testimonials.tsx        — 3 approved client quotes (Wenalytics, VWI, MubarakRishte)
 │   │   ├── Process.tsx             — Reveal stagger, hover glow
 │   │   └── CTA.tsx                 — Reveal, shimmer btn-primary button
-│   └── services/
-│       └── ServicePageTemplate.tsx
+│   ├── services/
+│   │   └── ServicePageTemplate.tsx
+│   ├── careers/
+│   │   ├── ApplyModal.tsx          — client, modal popup: cover letter + resume upload + reCAPTCHA v2 + success state
+│   │   └── CareersJobListings.tsx  — client, manages Apply Now buttons + modal state for all 4 positions + open application
+│   └── contact/
+│       └── ContactForm.tsx         — client, wired form with reCAPTCHA v2, POSTs to /api/contact
 public/
 └── igreen_1.png
 ```
@@ -202,7 +221,10 @@ public/
 - **`Reveal` component** — use for any section/card that should animate on scroll. Import from `@/components/ui/Reveal`.
 - **Cubic bezier in Framer Motion** — must define as `const EASE: [number, number, number, number]`, not inline `number[]` (TypeScript error).
 - **No `<div>` inside `<p>`** — AnimatedNumber uses `<span>` not `<div>` to avoid hydration errors.
-- **Contact form is static** — no backend wiring; form submit does nothing yet.
+- **Contact form is wired** — POSTs to `/api/contact`, sends to contact@igreensystems.com via Gmail SMTP.
+- **Careers apply modal is wired** — POSTs FormData to `/api/apply`, sends to hr@igreensystems.com with resume attachment.
+- **Email sender:** hr@igreensystems.com (Google Workspace Gmail) — credentials in `.env.local` (GMAIL_USER, GMAIL_APP_PASSWORD).
+- **reCAPTCHA:** v2 "I'm not a robot" — keys in `.env.local` (NEXT_PUBLIC_RECAPTCHA_SITE_KEY, RECAPTCHA_SECRET_KEY). Both forms verify server-side.
 - **Single logo file** — `igreen_1.png` is the authoritative logo.
 - **All service pages share `ServicePageTemplate`** — accepts badge, title, subtitle, accent color, features[], useCases[], relatedServices[].
 - **Tailwind 4 custom colors** — defined in `globals.css` under `@theme`.
@@ -213,7 +235,6 @@ public/
 
 ## Pending / Next Steps
 - **SEO fixes** (when user says "Let's work on SEO"): sitemap.xml, robots.txt, JSON-LD LocalBusiness schema, OG image, fix service page titles/descriptions, fix logo alt text. Full audit in `.claude/memory/seo_audit.md`.
-- **Contact form:** wire to email API (Resend or Nodemailer) when ready.
 - **Services pages:** content improvements (location keywords, outcome-focused descriptions). Could also add Reveal animations.
 - **Deploy:** not yet deployed; runs locally at localhost:3000.
 - **More portfolio PDFs** may be provided by user to add additional cards.
