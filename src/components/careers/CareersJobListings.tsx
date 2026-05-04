@@ -5,13 +5,6 @@ import ApplyModal from './ApplyModal';
 
 const openings = [
   {
-    title: 'IoT Solutions Engineer',
-    type: 'Full-time',
-    location: 'On-site / Hybrid',
-    dept: 'Engineering',
-    desc: 'Design and implement end-to-end IoT architectures including sensor integration, edge processing, and cloud connectivity.',
-  },
-  {
     title: 'Digital Transformation Consultant',
     type: 'Full-time',
     location: 'On-site',
