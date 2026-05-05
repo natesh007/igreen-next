@@ -86,7 +86,7 @@ export default function Hero() {
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
           <span style={{ color: '#1DBCD6' }}>Smart Buildings.</span>{' '}
-          <span style={{ color: '#5CB85C' }}>Connected Devices.</span>
+          <span style={{ color: '#5CB85C', whiteSpace: 'nowrap' }}>Connected Devices.</span>
           <br />
           Real Results — Since 2008.
         </motion.h1>
