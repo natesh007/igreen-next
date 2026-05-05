@@ -49,21 +49,12 @@ export const metadata: Metadata = {
     description:
       'IoT solutions and digital transformation company in Hyderabad & Kakinada, India. Smart building management, connected devices, industrial IoT, and web & mobile app development since 2008.',
     url: 'https://igreensystems.com',
-    images: [
-      {
-        url: '/igreen_1.png',
-        width: 120,
-        height: 36,
-        alt: 'iGreen Systems logo',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'iGreen Systems | IoT Solutions & Digital Transformation',
     description:
       'IoT solutions and digital transformation company in Hyderabad & Kakinada, India. Smart building management, connected devices, and web & mobile apps since 2008.',
-    images: ['/igreen_1.png'],
   },
   robots: {
     index: true,
