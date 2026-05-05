@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
-  title: 'Portfolio | iGreen',
-  description: 'Explore iGreen\'s project portfolio — IoT deployments, digital transformation initiatives, and web & mobile applications.',
+  title: 'Portfolio',
+  description: 'iGreen Systems project portfolio — IoT platforms, smart building management, digital transformation, visa processing, and web & mobile applications delivered for clients in Hyderabad, India, and the USA.',
 };
 
 type Project = {

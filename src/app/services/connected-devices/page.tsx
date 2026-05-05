@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Connected Devices | iGreen',
-  description: 'Intelligent connected device ecosystems — hardware selection, firmware integration, and cloud connectivity at scale.',
+  title: 'Connected Devices',
+  description: 'Connected device ecosystems from iGreen Systems, Hyderabad — hardware selection, firmware development, and cloud connectivity for industrial and commercial IoT deployments across India.',
 };
 
 export default function ConnectedDevicesPage() {
@@ -34,6 +34,7 @@ export default function ConnectedDevicesPage() {
         { href: '/services/edge-computing', label: 'Edge Computing' },
         { href: '/services/cloud-solutions', label: 'Cloud Solutions' },
       ]}
+      path="/services/connected-devices"
     />
   );
 }

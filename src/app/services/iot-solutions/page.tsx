@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'IoT Solutions | iGreen',
-  description: 'End-to-end IoT solutions from iGreen — architecture design, sensor integration, real-time data pipelines, and cloud connectivity.',
+  title: 'IoT Solutions',
+  description: 'End-to-end IoT solutions in Hyderabad, Andhra Pradesh & India — architecture design, sensor integration, real-time data pipelines, and cloud connectivity for smart buildings, factories, and enterprises.',
 };
 
 export default function IoTSolutionsPage() {
@@ -37,6 +37,7 @@ export default function IoTSolutionsPage() {
         { href: '/services/smart-manufacturing', label: 'Smart Manufacturing' },
         { href: '/services/cloud-solutions', label: 'Cloud Solutions' },
       ]}
+      path="/services/iot-solutions"
     />
   );
 }

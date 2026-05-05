@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Mobile Apps | iGreen',
-  description: 'Cross-platform and native mobile applications for iOS and Android — from concept through App Store launch.',
+  title: 'Mobile Apps',
+  description: 'Mobile app development in Hyderabad, India — cross-platform iOS & Android apps using Flutter and React Native for enterprises, IoT companion apps, and consumer products. Serving clients across India and globally.',
 };
 
 export default function MobileAppsPage() {
@@ -34,6 +34,7 @@ export default function MobileAppsPage() {
         { href: '/services/iot-solutions', label: 'IoT Solutions' },
         { href: '/services/cloud-solutions', label: 'Cloud Solutions' },
       ]}
+      path="/services/mobile-apps"
     />
   );
 }

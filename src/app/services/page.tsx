@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Services | iGreen',
-  description: 'IoT solutions, digital transformation consulting, web applications, mobile apps, and cloud solutions from iGreen.',
+  title: 'Services',
+  description: 'IoT solutions, digital transformation consulting, web applications, mobile apps, and cloud solutions from iGreen Systems, Hyderabad. Serving enterprises in Andhra Pradesh, Telangana, and globally since 2008.',
 };
 
 const iotServices = [

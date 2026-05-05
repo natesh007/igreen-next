@@ -4,7 +4,7 @@ import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with iGreen Systems for IoT solutions, digital transformation projects, and technology consulting in Hyderabad and Kakinada.',
+  description: 'Get in touch with iGreen Systems — IoT solutions and digital transformation consulting in Hyderabad and Kakinada. Offices in Telangana and Andhra Pradesh. Respond within 1 business day.',
 };
 
 const offices = [
@@ -39,9 +39,32 @@ const locationIcon = (
   </svg>
 );
 
+const contactJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://igreensystems.com' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Contact', 'item': 'https://igreensystems.com/contact' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    'name': 'Contact iGreen Systems',
+    'url': 'https://igreensystems.com/contact',
+    'description': 'Get in touch with iGreen Systems for IoT solutions, digital transformation, web and mobile app development in Hyderabad and Kakinada.',
+    'mainEntity': { '@id': 'https://igreensystems.com/#organization' },
+  },
+];
+
 export default function ContactPage() {
   return (
     <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       {/* Header */}
       <section
         className="py-24 text-center relative overflow-hidden"

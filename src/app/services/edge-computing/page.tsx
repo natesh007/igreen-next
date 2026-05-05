@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Edge Computing | iGreen',
-  description: 'Low-latency edge computing architectures that process data at the source, reduce bandwidth, and enable offline capability.',
+  title: 'Edge Computing',
+  description: 'Edge computing solutions from iGreen Systems, Hyderabad — low-latency IoT architectures that process data at the source, reduce bandwidth costs, and enable offline-first operations across India.',
 };
 
 export default function EdgeComputingPage() {
@@ -34,6 +34,7 @@ export default function EdgeComputingPage() {
         { href: '/services/connected-devices', label: 'Connected Devices' },
         { href: '/services/cloud-solutions', label: 'Cloud Solutions' },
       ]}
+      path="/services/edge-computing"
     />
   );
 }

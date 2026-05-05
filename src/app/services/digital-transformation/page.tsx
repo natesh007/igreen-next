@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Digital Transformation | iGreen',
-  description: 'End-to-end digital transformation consulting — process digitization, legacy modernization, and technology-aligned business strategy.',
+  title: 'Digital Transformation',
+  description: 'Digital transformation consulting for businesses in Hyderabad, Kakinada, and across India — process digitization, legacy modernization, and technology-aligned business strategy since 2008.',
 };
 
 export default function DigitalTransformationPage() {
@@ -34,6 +34,7 @@ export default function DigitalTransformationPage() {
         { href: '/services/web-applications', label: 'Web Applications' },
         { href: '/services/cloud-solutions', label: 'Cloud Solutions' },
       ]}
+      path="/services/digital-transformation"
     />
   );
 }

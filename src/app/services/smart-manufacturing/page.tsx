@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Smart Manufacturing | iGreen',
-  description: 'Industry 4.0 solutions — real-time production monitoring, predictive maintenance, and OEE optimization for modern factories.',
+  title: 'Smart Manufacturing',
+  description: 'Smart manufacturing and Industry 4.0 solutions from Hyderabad, India — real-time production monitoring, predictive maintenance, OEE optimization, and digital factory transformation for Indian enterprises.',
 };
 
 export default function SmartManufacturingPage() {
@@ -34,6 +34,7 @@ export default function SmartManufacturingPage() {
         { href: '/services/edge-computing', label: 'Edge Computing' },
         { href: '/services/digital-transformation', label: 'Digital Transformation' },
       ]}
+      path="/services/smart-manufacturing"
     />
   );
 }

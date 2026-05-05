@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Web Applications | iGreen',
-  description: 'Scalable, high-performance web applications built with React, Next.js, and cloud-native architectures.',
+  title: 'Web Applications',
+  description: 'Web application development in Hyderabad, India — scalable React and Next.js web apps, IoT dashboards, enterprise portals, and cloud-native platforms for businesses across Andhra Pradesh and beyond.',
 };
 
 export default function WebApplicationsPage() {
@@ -34,6 +34,7 @@ export default function WebApplicationsPage() {
         { href: '/services/cloud-solutions', label: 'Cloud Solutions' },
         { href: '/services/digital-transformation', label: 'Digital Transformation' },
       ]}
+      path="/services/web-applications"
     />
   );
 }

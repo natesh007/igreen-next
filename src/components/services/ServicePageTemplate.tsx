@@ -13,6 +13,7 @@ export interface ServicePageProps {
   features: ServiceFeature[];
   useCases: string[];
   relatedServices: { href: string; label: string }[];
+  path: string;
 }
 
 export default function ServicePageTemplate({
@@ -23,9 +24,44 @@ export default function ServicePageTemplate({
   features,
   useCases,
   relatedServices,
+  path,
 }: ServicePageProps) {
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://igreensystems.com' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'Services', 'item': 'https://igreensystems.com/services' },
+        { '@type': 'ListItem', 'position': 3, 'name': title, 'item': `https://igreensystems.com${path}` },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      'name': title,
+      'description': subtitle,
+      'serviceType': badge,
+      'provider': {
+        '@type': 'Organization',
+        '@id': 'https://igreensystems.com/#organization',
+      },
+      'areaServed': [
+        { '@type': 'City', 'name': 'Hyderabad' },
+        { '@type': 'City', 'name': 'Kakinada' },
+        { '@type': 'Country', 'name': 'India' },
+      ],
+      'url': `https://igreensystems.com${path}`,
+    },
+  ];
+
   return (
     <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero */}
       <section
         className="relative py-28 text-center overflow-hidden"

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import CareersJobListings from '@/components/careers/CareersJobListings';
 
 export const metadata: Metadata = {
-  title: 'Careers | iGreen',
-  description: "Join the iGreen team — we're hiring engineers, designers, and consultants passionate about IoT and digital transformation.",
+  title: 'Careers',
+  description: 'Join iGreen Systems in Hyderabad — we\'re hiring a Flutter Developer and a Digital Transformation Consultant. Build IoT solutions and digital platforms that matter. Freshers welcome.',
 };
 
 const perks = [
@@ -13,9 +13,78 @@ const perks = [
   { title: 'Growth Path', desc: 'Clear career progression with mentorship from senior engineers.' },
 ];
 
+const careersJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://igreensystems.com' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Careers', 'item': 'https://igreensystems.com/careers' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    'title': 'Flutter Developer (Android & iOS)',
+    'description': 'We are looking for a proactive Flutter Developer who can take ownership of mobile application development — both enhancing existing applications and building new ones from scratch. The ideal candidate should be capable of working independently, quickly understanding existing codebases, and delivering production-ready apps from day one.',
+    'datePosted': '2026-05-05',
+    'employmentType': 'FULL_TIME',
+    'hiringOrganization': {
+      '@type': 'Organization',
+      'name': 'iGreen Systems',
+      'sameAs': 'https://igreensystems.com',
+      'logo': 'https://igreensystems.com/igreen_1.png',
+    },
+    'jobLocation': {
+      '@type': 'Place',
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Hyderabad',
+        'addressRegion': 'Telangana',
+        'addressCountry': 'IN',
+      },
+    },
+    'jobLocationType': 'TELECOMMUTE',
+    'applicantLocationRequirements': { '@type': 'Country', 'name': 'India' },
+    'experienceRequirements': '0 to 2+ years. Freshers can apply but should be ready to contribute from day one.',
+    'skills': 'Flutter, Dart, Firebase, iOS, Android, Push Notifications, REST APIs, Git',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    'title': 'Digital Transformation Consultant',
+    'description': 'We are looking for a sharp, business-minded professional who can identify organizations still dependent on manual or semi-digital processes and help them transition toward digital solutions. This role combines business development with consultative selling.',
+    'datePosted': '2026-05-05',
+    'employmentType': 'FULL_TIME',
+    'hiringOrganization': {
+      '@type': 'Organization',
+      'name': 'iGreen Systems',
+      'sameAs': 'https://igreensystems.com',
+      'logo': 'https://igreensystems.com/igreen_1.png',
+    },
+    'jobLocation': {
+      '@type': 'Place',
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Hyderabad',
+        'addressRegion': 'Telangana',
+        'addressCountry': 'IN',
+      },
+    },
+    'jobLocationType': 'TELECOMMUTE',
+    'applicantLocationRequirements': { '@type': 'Country', 'name': 'India' },
+    'experienceRequirements': '0 to 3+ years. Freshers with strong communication and business understanding can apply.',
+    'skills': 'Consultative selling, Lead generation, Business communication, Digital transformation, Market research',
+  },
+];
+
 export default function CareersPage() {
   return (
     <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(careersJsonLd) }}
+      />
       {/* Header */}
       <section className="py-24 text-center" style={{ backgroundColor: '#060A12' }}>
         <div className="max-w-3xl mx-auto px-4">

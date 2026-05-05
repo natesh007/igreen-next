@@ -4,7 +4,7 @@ import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about iGreen Systems — founded in Hyderabad in 2008, building IoT and digital transformation solutions across India and the Americas for 18+ years.',
+  description: 'iGreen Systems — founded in Hyderabad in 2008, delivering IoT solutions and digital transformation across India and the Americas for 18+ years. 25 engineers, 232+ clients, 521+ projects.',
 };
 
 const values = [

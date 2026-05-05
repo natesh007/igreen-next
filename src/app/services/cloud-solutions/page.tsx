@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Cloud Solutions | iGreen',
-  description: 'AWS, Azure, and GCP architecture design, cloud migration, and DevOps automation from iGreen.',
+  title: 'Cloud Solutions',
+  description: 'Cloud solutions from Hyderabad, India — AWS, Azure, and GCP architecture, cloud migration, DevOps automation, and IoT cloud backends for enterprises across Andhra Pradesh and India.',
 };
 
 export default function CloudSolutionsPage() {
@@ -34,6 +34,7 @@ export default function CloudSolutionsPage() {
         { href: '/services/web-applications', label: 'Web Applications' },
         { href: '/services/edge-computing', label: 'Edge Computing' },
       ]}
+      path="/services/cloud-solutions"
     />
   );
 }
