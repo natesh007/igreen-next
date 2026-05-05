@@ -29,13 +29,13 @@ export default function Hero() {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
       >
         <source src="/hero-bg.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: '#0A0F1C', opacity: 0.6 }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: '#0A0F1C', opacity: 0.4 }} />
 
       {/* Grid pattern */}
       <div
