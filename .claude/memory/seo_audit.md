@@ -1,49 +1,33 @@
 ---
 name: SEO Audit — igreen-next
-description: Full SEO audit of igreen-next. Load this when user says "Let's work on SEO". Lists what's good and what's missing with priority levels.
+description: SEO audit for igreen-next. All items completed 2026-05-05. Kept for reference and remaining opportunities.
 type: project
 originSessionId: f05839b9-b5a2-4447-9ef4-e1a3d2c468b1
 ---
-## Trigger
-Load this memory whenever the user says "Let's work on SEO" or asks about SEO for igreen-next.
+
+## Status: COMPLETED ✅ (2026-05-05)
+All items from the original audit have been implemented.
 
 ---
 
-## What's Already Good
-- `lang="en"` on `<html>`
-- Title template (`%s | iGreen Systems`) in layout.tsx
-- Meta descriptions on most pages
-- OpenGraph + Twitter card tags in layout.tsx
-- Robots meta (`index: true, follow: true`)
-- `metadataBase` set to `https://igreensystems.com`
-- Semantic HTML — `<main>`, `<header>`, `<footer>`, `<nav>`, `<section>`
-- `aria-label` on social icons in Footer
-- `rel="noopener noreferrer"` on external links
-- Internal linking via nav + footer
-- `next/image` with `priority` on logo
+## What Was Implemented
+
+### ✅ High Priority (all done)
+1. **`sitemap.ts`** — `src/app/sitemap.ts`, 16 pages with priority/changeFreq, auto-served at `/sitemap.xml`
+2. **`robots.ts`** — `src/app/robots.ts`, allows all crawlers, disallows `/api/`, points to sitemap
+3. **JSON-LD structured data** — `layout.tsx`: `Organization` + `LocalBusiness` x2 (Hyderabad with geo + Kakinada) + `WebSite`. Per-page: `BreadcrumbList` + `Service` on all 8 service pages, `JobPosting` x2 on careers, `ContactPage` on contact.
+
+### ✅ Medium Priority (all done)
+4. **OG image** — `src/app/opengraph-image.tsx`: programmatic 1200×630 via Next.js `ImageResponse` (edge runtime). Dark branded card. Auto-serves `og:image` + `twitter:image`.
+5. **Service page titles fixed** — all removed manual `| iGreen`, now use template `%s | iGreen Systems`
+6. **Service page descriptions** — all include Hyderabad / Kakinada / Andhra Pradesh / India keywords
+
+### ✅ Low Priority (done)
+7. **Logo alt text** — changed from `"iGreen"` to `"iGreen Systems logo"` in `Logo.tsx`
 
 ---
 
-## Issues to Fix (priority order)
-
-### 🔴 High Priority
-1. **No `sitemap.xml`** — Google can't discover all pages. Fix: create `src/app/sitemap.ts` using Next.js built-in sitemap API.
-2. **No `robots.txt`** — No crawl guidance for bots. Fix: create `src/app/robots.ts`.
-3. **No JSON-LD structured data** — Critical for local SEO (Hyderabad/Kakinada searches). Need `LocalBusiness` schema for both offices + `Organization` schema. Add to `layout.tsx` via `<script type="application/ld+json">`.
-
-### 🟠 Medium Priority
-4. **No OG image** — Social shares show blank preview. Fix: add a default OG image (1200×630px) to `/public/` and reference in `metadataBase` openGraph.images.
-5. **Service page titles inconsistent** — All service pages use `'IoT Solutions | iGreen'` format (hardcoded, bypasses the `%s | iGreen Systems` template, and says "iGreen" not "iGreen Systems"). Fix: change to just `'IoT Solutions'` so the template applies.
-6. **Service page descriptions lack location keywords** — Missing Hyderabad/Kakinada/Andhra Pradesh in individual service page descriptions.
-
-### 🟡 Low Priority
-7. **Logo alt text** — Currently `"iGreen"`, should be `"iGreen Systems logo"`.
-
----
-
-## Files to Touch When Fixing
-- `src/app/sitemap.ts` — create new
-- `src/app/robots.ts` — create new
-- `src/app/layout.tsx` — add JSON-LD script block, add OG image
-- `src/app/services/*/page.tsx` — fix titles + descriptions (8 files)
-- `src/components/ui/Logo.tsx` — fix alt text
+## Remaining Opportunities
+- **Google Search Console:** submit `https://igreensystems.com/sitemap.xml` to accelerate indexing
+- **OG image upgrade:** current programmatic image is text-only; a richer illustrated version would improve click-through on social shares
+- **Review/Rating schema:** could add `AggregateRating` once enough client reviews are collected

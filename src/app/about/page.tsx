@@ -63,7 +63,7 @@ export default function AboutPage() {
             </p>
             <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
               18 Years of Building{' '}
-              <span style={{ color: '#5CB85C' }}>What&apos;s Next</span>
+              <span style={{ color: '#5CB85C', whiteSpace: 'nowrap' }}>What&apos;s Next</span>
             </h1>
             <p className="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
               Founded in Hyderabad in 2008, iGreen started building software for businesses in
