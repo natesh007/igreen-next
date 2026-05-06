@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Document,
-  Font,
   Page,
   StyleSheet,
   Text,
@@ -18,25 +17,6 @@ const MUTED  = '#9CA3AF';
 const BORDER = '#E5E7EB';
 const LIGHT  = '#F8FAFC';
 const WHITE  = '#FFFFFF';
-
-// Register Poppins so headings match the website brand
-Font.register({
-  family: 'Poppins',
-  fonts: [
-    {
-      src: 'https://fonts.gstatic.com/s/poppins/v22/pxiEyp8kv8JHgFVrJJfecg.woff',
-      fontWeight: 400,
-    },
-    {
-      src: 'https://fonts.gstatic.com/s/poppins/v22/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff',
-      fontWeight: 600,
-    },
-    {
-      src: 'https://fonts.gstatic.com/s/poppins/v22/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff',
-      fontWeight: 700,
-    },
-  ],
-});
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 const s = StyleSheet.create({
