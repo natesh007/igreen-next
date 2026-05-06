@@ -469,9 +469,8 @@ function AboutPage() {
           <Text
             style={{
               fontSize: 11,
-              fontFamily: 'Helvetica-Bold',
+              fontFamily: 'Helvetica-BoldOblique',
               color: CYAN,
-              fontStyle: 'italic',
               lineHeight: 1.5,
             }}
           >
