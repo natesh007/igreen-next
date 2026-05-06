@@ -575,7 +575,60 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* §10 — Final CTA */}
+      {/* §10 — Download Brochure */}
+      <section className="py-16" style={{ backgroundColor: '#0A0F1C' }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div
+              className="rounded-2xl px-10 py-10 flex flex-col sm:flex-row items-center justify-between gap-8 border"
+              style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+            >
+              {/* Icon + text */}
+              <div className="flex items-start gap-5">
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: '#1DBCD618' }}
+                >
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1DBCD6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="12" y1="18" x2="12" y2="12" />
+                    <polyline points="9 15 12 18 15 15" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: '#1DBCD6' }}>
+                    Company Profile
+                  </p>
+                  <h3 className="text-xl font-bold text-white mb-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    Download Our Company Brochure
+                  </h3>
+                  <p className="text-sm text-gray-400 leading-relaxed max-w-md">
+                    A complete overview of iGreen Systems — our story, services, portfolio highlights,
+                    and contact details in one shareable PDF.
+                  </p>
+                </div>
+              </div>
+              {/* CTA */}
+              <a
+                href="/api/company-brochure"
+                download="iGreen-Systems-Company-Profile.pdf"
+                className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all border hover:bg-white/5"
+                style={{ borderColor: '#1DBCD650', color: '#1DBCD6' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download PDF
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* §11 — Final CTA */}
       <section className="py-24" style={{ backgroundColor: '#060A12' }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal>
