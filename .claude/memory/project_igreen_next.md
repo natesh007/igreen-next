@@ -30,6 +30,7 @@ igreen-next is a Next.js 16 rebuild of the igreen CodeIgniter 4 PHP project.
 - **Framer Motion** (installed) — used for scroll reveals, entrance animations, hover glows, counter animation
 - **Nodemailer** — Gmail SMTP email sending (careers apply + contact form)
 - **react-google-recaptcha** — reCAPTCHA v2 "I'm not a robot" widget (careers modal + contact form)
+- **@react-pdf/renderer 4.5.1** — server-side PDF generation for company brochure (`/api/company-brochure`)
 - Google Fonts: Poppins (headings), Inter (body) via `next/font/google`
 - No external component library or icon package — inline SVG icons throughout
 
@@ -221,12 +222,13 @@ src/
 │   ├── sitemap.ts                  — auto-generates /sitemap.xml (16 pages)
 │   ├── robots.ts                   — auto-generates /robots.txt
 │   ├── opengraph-image.tsx         — programmatic 1200×630 OG image (edge runtime, ImageResponse)
-│   ├── about/page.tsx              — Reveal animations, radial spotlights, gradient value cards
+│   ├── about/page.tsx              — 10-section IoT-focused redesign (see About Page section below)
 │   ├── contact/page.tsx            — Reveal animations, office cards, wired form + BreadcrumbList JSON-LD
 │   ├── careers/page.tsx            — server component (metadata + header + perks + JobPosting JSON-LD)
 │   ├── api/
 │   │   ├── apply/route.ts          — POST handler: job applications → hr@igreensystems.com (FormData, resume attachment)
-│   │   └── contact/route.ts        — POST handler: contact form → contact@igreensystems.com (JSON)
+│   │   ├── contact/route.ts        — POST handler: contact form → contact@igreensystems.com (JSON)
+│   │   └── company-brochure/route.tsx — GET handler: generates 5-page A4 PDF brochure via @react-pdf/renderer
 │   ├── portfolio/page.tsx          — 9 real cards, RealCard + PlaceholderCard, Reveal stagger
 │   ├── services/
 │   │   ├── page.tsx
@@ -283,12 +285,41 @@ public/
 - **Tailwind 4 custom colors** — defined in `globals.css` under `@theme`.
 - **Addresses appear in:** Footer (Offices column) and Contact page (office cards above the form).
 - **Homepage is FROZEN** — do not change without explicit user instruction.
+- **`@react-pdf/renderer` rules** — must add to `serverExternalPackages` in `next.config.ts`; never use `Font.register()` with remote URLs (fails in serverless); for bold-italic use `fontFamily: 'Helvetica-BoldOblique'` not `fontFamily: 'Helvetica-Bold'` + `fontStyle: 'italic'`; wrap `renderToBuffer()` result as `new Uint8Array(buffer)` for `Response`. See `feedback_react_pdf.md`.
+
+---
+
+## About Page — 10-Section Redesign (2026-05-06)
+Complete rewrite of `src/app/about/page.tsx`. Sections in order:
+1. **Hero** — center-aligned, badge pill, H1, subtext, `btn-primary` CTA → `/contact`
+2. **Who We Are** — 2-col: text left + 2×2 stat cards right
+3. **What We Do** — 5 pillar cards (Smart Building Automation, Asset Lifecycle Management, Connected Field Operations, System Integrations, Predictive Maintenance)
+4. **Founder Story** — centered, pull quote `blockquote` in cyan with decorative `"` marks (use `aria-hidden="true"` on quote spans)
+5. **Our Approach** — Fragment-based horizontal step flow (Discover → Design → Build → Deploy → Optimize) with connector lines on desktop
+6. **Our Impact** — 2-col grid, 5 outcome items
+7. **Vision** — centered, goal bullets with cyan dot accents
+8. **Why iGreen** — 5 differentiator cards, 5th card centered in 3-col grid via `lg:col-start-2`
+9. **Global Outlook** — gradient-border highlight card (reuses CTA.tsx mask technique)
+10. **Download Brochure** — card banner with PDF download link → `/api/company-brochure`
+11. **Final CTA** — gradient-border card, "Let's Build Something Intelligent"
+
+Heading fix: `whiteSpace: 'nowrap'` on `"What's Next"` span (same pattern as Hero's "Connected Devices." span).
+
+---
+
+## Company Brochure PDF
+- **Route:** `GET /api/company-brochure` → `src/app/api/company-brochure/route.tsx`
+- **Library:** `@react-pdf/renderer` 4.5.1
+- **Pages:** Cover · About+Stats · Services · Portfolio (6 projects) · Why iGreen+Contact
+- **Design:** Light/white, A4, Helvetica built-in fonts, brand cyan/green accents
+- **Download filename:** `iGreen-Systems-Company-Profile.pdf`
+- **`next.config.ts`** has `serverExternalPackages: ['@react-pdf/renderer']` — required
 
 ---
 
 ## Pending / Next Steps
-- **OG image:** Current programmatic image uses text only. A richer branded image (with logo graphic, gradient backgrounds, illustrated elements) would further improve social sharing previews.
-- **More portfolio PDFs** may be provided by user to add additional cards.
+- **OG image:** Current programmatic image uses text only. A richer branded image would improve social sharing previews.
+- **More portfolio cards** may be provided by user to add to `portfolio/page.tsx` and the PDF brochure.
 - **Next gains** (per review): case studies, portfolio depth, stronger service detail pages.
 - **Google Search Console:** Submit sitemap at `https://igreensystems.com/sitemap.xml` once site is indexed.
 - **Careers:** Add or remove roles as hiring needs change — edit the `openings` array in `CareersJobListings.tsx` and the `careersJsonLd` array in `careers/page.tsx`.

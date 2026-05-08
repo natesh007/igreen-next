@@ -611,7 +611,7 @@ export default function AboutPage() {
               </div>
               {/* CTA */}
               <a
-                href="/api/company-brochure"
+                href="/iGreen-Systems-Company-Profile.pdf"
                 download="iGreen-Systems-Company-Profile.pdf"
                 className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all border hover:bg-white/5"
                 style={{ borderColor: '#1DBCD650', color: '#1DBCD6' }}
