@@ -97,7 +97,7 @@ IoT & Digital Transformation as umbrella, web/mobile/cloud as delivery capabilit
 ## Contact Details
 - **General email:** contact@igreensystems.com
 - **HR/Careers email:** hr@igreensystems.com
-- **Phone:** +91 9849481081, +91 9676067666
+- **Phone:** +91 984 948 1081, +91 934 785 1081
 
 ### Hyderabad Office
 #1, 1-98/9/12C, Jaihind Enclave, Near Image Gardens, Madhapur, Hyderabad, Telangana 500081, India.

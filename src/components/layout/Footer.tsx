@@ -26,12 +26,12 @@ const offices = [
   {
     city: 'Hyderabad',
     address: '#1, 1-98/9/12C, Jaihind Enclave, Near Image Gardens, Madhapur, Hyderabad, Telangana 500081, India.',
-    phones: ['+91 9849481081', '+91 9676067666'],
+    phones: ['+91 984 948 1081', '+91 934 785 1081'],
   },
   {
     city: 'Kakinada',
     address: '4/52-2, Sita Enclave, Rama Reddy Nagar, Pratap Nagar Bridge, Kakinada, Andhra Pradesh 533004, India.',
-    phones: ['+91 9849481081', '+91 9676067666'],
+    phones: ['+91 984 948 1081', '+91 934 785 1081'],
   },
 ];
 

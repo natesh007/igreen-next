@@ -89,7 +89,7 @@ const jsonLd = {
       'foundingDate': '2008',
       'numberOfEmployees': { '@type': 'QuantitativeValue', 'value': 25 },
       'email': 'contact@igreensystems.com',
-      'telephone': '+91-9849481081',
+      'telephone': '+91-984-948-1081',
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': '#1, 1-98/9/12C, Jaihind Enclave, Near Image Gardens, Madhapur',
@@ -118,7 +118,7 @@ const jsonLd = {
       'name': 'iGreen Systems',
       'url': 'https://igreensystems.com',
       'image': 'https://igreensystems.com/igreen_1.png',
-      'telephone': '+91-9849481081',
+      'telephone': '+91-984-948-1081',
       'email': 'contact@igreensystems.com',
       'address': {
         '@type': 'PostalAddress',
@@ -147,7 +147,7 @@ const jsonLd = {
       'name': 'iGreen Systems — Kakinada',
       'url': 'https://igreensystems.com',
       'image': 'https://igreensystems.com/igreen_1.png',
-      'telephone': '+91-9849481081',
+      'telephone': '+91-984-948-1081',
       'email': 'contact@igreensystems.com',
       'address': {
         '@type': 'PostalAddress',

@@ -954,8 +954,8 @@ function ContactPage() {
             >
               PHONE
             </Text>
-            <Text style={{ fontSize: 9, color: BODY }}>+91 9849481081</Text>
-            <Text style={{ fontSize: 9, color: BODY }}>+91 9676067666</Text>
+            <Text style={{ fontSize: 9, color: BODY }}>+91 984 948 1081</Text>
+            <Text style={{ fontSize: 9, color: BODY }}>+91 934 785 1081</Text>
           </View>
           <View
             style={{
