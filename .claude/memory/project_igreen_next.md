@@ -265,7 +265,8 @@ src/
 │   └── contact/
 │       └── ContactForm.tsx         — client, wired form with reCAPTCHA v2, POSTs to /api/contact
 public/
-└── igreen_1.png
+├── igreen_1.png
+└── iGreen-Systems-Company-Profile.pdf  — user-supplied static brochure (served at /iGreen-Systems-Company-Profile.pdf)
 ```
 
 ---
@@ -300,7 +301,7 @@ Complete rewrite of `src/app/about/page.tsx`. Sections in order:
 7. **Vision** — centered, goal bullets with cyan dot accents
 8. **Why iGreen** — 5 differentiator cards, 5th card centered in 3-col grid via `lg:col-start-2`
 9. **Global Outlook** — gradient-border highlight card (reuses CTA.tsx mask technique)
-10. **Download Brochure** — card banner with PDF download link → `/api/company-brochure`
+10. **Download Brochure** — card banner with PDF download link → `/iGreen-Systems-Company-Profile.pdf` (static file in `public/`)
 11. **Final CTA** — gradient-border card, "Let's Build Something Intelligent"
 
 Heading fix: `whiteSpace: 'nowrap'` on `"What's Next"` span (same pattern as Hero's "Connected Devices." span).
@@ -308,12 +309,10 @@ Heading fix: `whiteSpace: 'nowrap'` on `"What's Next"` span (same pattern as Her
 ---
 
 ## Company Brochure PDF
-- **Route:** `GET /api/company-brochure` → `src/app/api/company-brochure/route.tsx`
-- **Library:** `@react-pdf/renderer` 4.5.1
-- **Pages:** Cover · About+Stats · Services · Portfolio (6 projects) · Why iGreen+Contact
-- **Design:** Light/white, A4, Helvetica built-in fonts, brand cyan/green accents
+- **Static file:** `public/iGreen-Systems-Company-Profile.pdf` — user-supplied custom PDF, served directly by Next.js/Vercel CDN
+- **Download link:** `/iGreen-Systems-Company-Profile.pdf` (on About page download banner)
 - **Download filename:** `iGreen-Systems-Company-Profile.pdf`
-- **`next.config.ts`** has `serverExternalPackages: ['@react-pdf/renderer']` — required
+- **Note:** `src/app/api/company-brochure/route.tsx` still exists (server-generated PDF via `@react-pdf/renderer`) but is no longer linked from the site — the static file replaced it. Keep `serverExternalPackages: ['@react-pdf/renderer']` in `next.config.ts` as long as the route file exists.
 
 ---
 
