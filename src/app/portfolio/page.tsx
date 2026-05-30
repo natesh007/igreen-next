@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Reveal } from '@/components/ui/Reveal';
+import CTA from '@/components/home/CTA';
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -380,6 +381,8 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+
+      <CTA />
     </div>
   );
 }
