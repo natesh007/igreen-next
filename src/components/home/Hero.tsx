@@ -10,12 +10,6 @@ const fadeUp = (delay: number) => ({
   transition: { duration: 0.7, delay, ease: EASE },
 });
 
-const stats = [
-  { value: '25', label: 'Team Members' },
-  { value: '232+', label: 'Clients' },
-  { value: '521+', label: 'Projects Delivered' },
-];
-
 export default function Hero() {
   return (
     <section
@@ -108,24 +102,6 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Stats strip */}
-        <motion.div
-          {...fadeUp(0.45)}
-          className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mt-20 pt-10 border-t"
-          style={{ borderColor: '#1F2937' }}
-        >
-          {stats.map((s, i) => (
-            <div key={s.label} className="text-center">
-              <p
-                className="text-3xl font-bold"
-                style={{ fontFamily: 'Poppins, sans-serif', color: i % 2 === 0 ? '#1DBCD6' : '#5CB85C' }}
-              >
-                {s.value}
-              </p>
-              <p className="text-sm text-gray-400 mt-1">{s.label}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
