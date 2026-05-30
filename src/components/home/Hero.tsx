@@ -92,8 +92,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p {...fadeUp(0.2)} className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10">
-          From fire pump monitoring in Hyderabad to large-scale visa processing platforms, we deliver
-          practical technology solutions that solve real business problems.
+          From safeguarding critical infrastructure to powering large-scale digital platforms, we engineer solutions that bridge the physical and digital worlds—solving real business problems with precision and impact.
         </motion.p>
 
         {/* CTAs */}

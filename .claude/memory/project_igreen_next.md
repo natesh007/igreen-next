@@ -202,7 +202,7 @@ Homepage scored ~8.8/10 after full content + UI polish pass. Considered launch-r
 
 ### Key homepage copy (finalized):
 - **Hero headline:** "Smart Buildings. Connected Devices. Real Results — Since 2008."
-- **Hero subtext:** "From fire pump monitoring in Hyderabad to large-scale visa processing platforms, we deliver practical technology solutions that solve real business problems."
+- **Hero subtext:** "From safeguarding critical infrastructure to powering large-scale digital platforms, we engineer solutions that bridge the physical and digital worlds—solving real business problems with precision and impact."
 - **Secondary CTA:** "View Our Work →" → `/portfolio`
 
 ### Testimonials (approved by clients):
