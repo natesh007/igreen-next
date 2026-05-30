@@ -9,8 +9,8 @@ export default function Home() {
     <>
       <Hero />
       <ServicesOverview />
-      <Testimonials />
       <Process />
+      <Testimonials />
       <CTA />
     </>
   );
