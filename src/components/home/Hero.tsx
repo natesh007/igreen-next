@@ -11,7 +11,6 @@ const fadeUp = (delay: number) => ({
 });
 
 const stats = [
-  { value: '18+', label: 'Years Experience' },
   { value: '25', label: 'Team Members' },
   { value: '232+', label: 'Clients' },
   { value: '521+', label: 'Projects Delivered' },
@@ -112,7 +111,7 @@ export default function Hero() {
         {/* Stats strip */}
         <motion.div
           {...fadeUp(0.45)}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto mt-20 pt-10 border-t"
+          className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mt-20 pt-10 border-t"
           style={{ borderColor: '#1F2937' }}
         >
           {stats.map((s, i) => (
