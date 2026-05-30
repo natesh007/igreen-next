@@ -534,8 +534,105 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* §9 — Global Outlook */}
-      <section className="py-24" style={{ backgroundColor: '#060A12' }}>
+      {/* §9 — Standards & Compliance */}
+      <section className="py-24 relative" style={{ backgroundColor: '#060A12' }}>
+        <div
+          className="absolute top-0 inset-x-0 h-px"
+          style={{ background: 'linear-gradient(90deg, transparent, #1DBCD625, transparent)' }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-14">
+            <p className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: '#1DBCD6' }}>
+              Trust &amp; Compliance
+            </p>
+            <h2 className="text-4xl font-bold text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              Built to Enterprise Standards
+            </h2>
+            <p className="text-gray-400 mt-4 max-w-xl mx-auto">
+              Our solutions are designed and delivered in alignment with internationally recognised standards — giving enterprise clients the confidence to deploy at scale.
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                name: 'ISO 9001:2015',
+                subtitle: 'Quality Management',
+                benefit: 'Consistent, auditable delivery processes from requirements through deployment.',
+                color: '#1DBCD6',
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="M9 12l2 2 4-4" />
+                  </svg>
+                ),
+              },
+              {
+                name: 'IEC 62443',
+                subtitle: 'Industrial Cybersecurity',
+                benefit: 'Industrial control systems secured against cyber threats — end-to-end.',
+                color: '#5CB85C',
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                ),
+              },
+              {
+                name: 'GDPR Compliant',
+                subtitle: 'Data Privacy',
+                benefit: 'Data collection, storage, and processing aligned with EU privacy regulations.',
+                color: '#1DBCD6',
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 8v4" />
+                    <path d="M12 16h.01" />
+                  </svg>
+                ),
+              },
+              {
+                name: 'IGBC Certified',
+                subtitle: 'Green Building',
+                benefit: 'Smart building solutions aligned with India Green Building Council sustainability ratings.',
+                color: '#5CB85C',
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22V12" />
+                    <path d="M12 12C12 7 7 4 7 4s0 5 5 8z" />
+                    <path d="M12 12c0-5 5-8 5-8s0 5-5 8z" />
+                  </svg>
+                ),
+              },
+            ].map((cert, i) => (
+              <Reveal key={cert.name} delay={i * 0.08}>
+                <div
+                  className="rounded-2xl p-7 border h-full flex flex-col transition-all duration-300 hover:border-[#1DBCD630] hover:shadow-[0_0_24px_#1DBCD610]"
+                  style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+                >
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
+                    style={{ backgroundColor: `${cert.color}18`, color: cert.color }}
+                  >
+                    {cert.icon}
+                  </div>
+                  <p className="text-base font-semibold text-white mb-0.5" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    {cert.name}
+                  </p>
+                  <p className="text-xs font-medium mb-3" style={{ color: cert.color }}>
+                    {cert.subtitle}
+                  </p>
+                  <p className="text-sm text-gray-400 leading-relaxed flex-1">{cert.benefit}</p>
+                  <div className="mt-4 h-0.5 rounded-full" style={{ backgroundColor: `${cert.color}40` }} />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* §10 — Global Outlook */}
+      <section className="py-24" style={{ backgroundColor: '#0A0F1C' }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-10">
             <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#1DBCD6' }}>

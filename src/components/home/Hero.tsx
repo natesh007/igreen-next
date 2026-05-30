@@ -16,20 +16,6 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: '#0A0F1C' }}
     >
-      {/* Video background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
-      >
-        <source src="/hero-bg.mp4" type="video/mp4" />
-      </video>
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: '#0A0F1C', opacity: 0.4 }} />
-
       {/* Grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.07]"

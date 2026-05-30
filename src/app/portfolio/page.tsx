@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Reveal } from '@/components/ui/Reveal';
 import CTA from '@/components/home/CTA';
 
@@ -367,18 +368,54 @@ export default function PortfolioPage() {
             ))}
           </div>
 
-          {/* Banner */}
-          <div
-            className="mt-14 rounded-2xl p-10 text-center border"
-            style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-          >
-            <p className="text-white font-semibold text-lg mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              More Case Studies in Preparation
-            </p>
-            <p className="text-gray-400 text-sm max-w-md mx-auto">
-              More detailed case studies are in preparation — reach out and we&apos;ll walk you through our work directly.
-            </p>
-          </div>
+          {/* Scale metrics strip */}
+          <Reveal>
+            <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {[
+                { value: '200+', label: 'Locations Monitored', sub: 'OilCop tank network', color: '#1DBCD6' },
+                { value: '80%', label: 'Admin Effort Reduced', sub: 'VWI visa processing', color: '#5CB85C' },
+                { value: '6×', label: 'Throughput Gain', sub: 'MubarakRishte platform', color: '#1DBCD6' },
+                { value: '10+', label: 'IoT Modules per Platform', sub: 'WIS smart building', color: '#5CB85C' },
+              ].map((m) => (
+                <div
+                  key={m.label}
+                  className="rounded-2xl p-6 text-center border"
+                  style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+                >
+                  <p className="text-4xl font-bold mb-1" style={{ fontFamily: 'Poppins, sans-serif', color: m.color }}>
+                    {m.value}
+                  </p>
+                  <p className="text-sm font-semibold text-white leading-tight">{m.label}</p>
+                  <p className="text-xs text-gray-500 mt-1">{m.sub}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* Enterprise callout */}
+          <Reveal>
+            <div
+              className="mt-6 rounded-2xl p-10 border"
+              style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+            >
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                  <p className="text-white font-semibold text-lg mb-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    Need a Technical Deep-Dive?
+                  </p>
+                  <p className="text-gray-400 text-sm max-w-lg">
+                    We can walk enterprise and procurement teams through architecture diagrams, data flow specs, and scale benchmarks for any project. More detailed case studies are also in preparation.
+                  </p>
+                </div>
+                <Link
+                  href="/contact"
+                  className="btn-primary flex-shrink-0 px-6 py-3 rounded-xl text-sm"
+                >
+                  Request a Briefing →
+                </Link>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
