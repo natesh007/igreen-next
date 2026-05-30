@@ -26,6 +26,69 @@ export default function Hero() {
         }}
       />
 
+      {/* IoT node network — interconnected nodes hinting at connected devices / smart buildings */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ opacity: 0.18 }}
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <defs>
+          <style>{`
+            @keyframes iot-pulse {
+              0%, 100% { opacity: 0.25; r: 3; }
+              50% { opacity: 0.9; r: 5; }
+            }
+            @keyframes iot-pulse-slow {
+              0%, 100% { opacity: 0.15; r: 2.5; }
+              50% { opacity: 0.7; r: 4.5; }
+            }
+            @keyframes iot-line-flow {
+              0% { stroke-dashoffset: 40; opacity: 0.1; }
+              50% { opacity: 0.45; }
+              100% { stroke-dashoffset: 0; opacity: 0.1; }
+            }
+            .iot-node { animation: iot-pulse 3.5s ease-in-out infinite; fill: #1DBCD6; }
+            .iot-node-green { animation: iot-pulse-slow 4.5s ease-in-out infinite; fill: #5CB85C; }
+            .iot-node-2 { animation-delay: 0.8s; }
+            .iot-node-3 { animation-delay: 1.6s; }
+            .iot-node-4 { animation-delay: 2.4s; }
+            .iot-node-5 { animation-delay: 3.2s; }
+            .iot-line { stroke: #1DBCD6; stroke-width: 0.8; stroke-dasharray: 6 34; fill: none; animation: iot-line-flow 4s ease-in-out infinite; }
+            .iot-line-green { stroke: #5CB85C; stroke-width: 0.8; stroke-dasharray: 5 30; fill: none; animation: iot-line-flow 5s ease-in-out infinite; animation-delay: 1s; }
+            .iot-line-2 { animation-delay: 1.3s; }
+            .iot-line-3 { animation-delay: 2.6s; }
+          `}</style>
+        </defs>
+        {/* Left cluster — smart building nodes */}
+        <line className="iot-line" x1="8%" y1="20%" x2="18%" y2="38%" />
+        <line className="iot-line iot-line-2" x1="18%" y1="38%" x2="28%" y2="25%" />
+        <line className="iot-line iot-line-3" x1="18%" y1="38%" x2="22%" y2="58%" />
+        <circle className="iot-node" cx="8%" cy="20%" r="3" />
+        <circle className="iot-node iot-node-2" cx="18%" cy="38%" r="3" />
+        <circle className="iot-node iot-node-3" cx="28%" cy="25%" r="3" />
+        <circle className="iot-node-green iot-node-4" cx="22%" cy="58%" r="2.5" />
+
+        {/* Right cluster — connected device nodes */}
+        <line className="iot-line-green" x1="72%" y1="18%" x2="82%" y2="32%" />
+        <line className="iot-line-green iot-line-2" x1="82%" y1="32%" x2="90%" y2="20%" />
+        <line className="iot-line iot-line-3" x1="82%" y1="32%" x2="78%" y2="52%" />
+        <line className="iot-line iot-line-2" x1="78%" y1="52%" x2="88%" y2="62%" />
+        <circle className="iot-node iot-node-2" cx="72%" cy="18%" r="3" />
+        <circle className="iot-node-green" cx="82%" cy="32%" r="3" />
+        <circle className="iot-node iot-node-3" cx="90%" cy="20%" r="2.5" />
+        <circle className="iot-node-green iot-node-5" cx="78%" cy="52%" r="3" />
+        <circle className="iot-node iot-node-4" cx="88%" cy="62%" r="2.5" />
+
+        {/* Bottom edge — subtle infrastructure grid anchor nodes */}
+        <line className="iot-line iot-line-3" x1="12%" y1="78%" x2="25%" y2="70%" />
+        <line className="iot-line-green iot-line-2" x1="75%" y1="72%" x2="88%" y2="80%" />
+        <circle className="iot-node-green iot-node-3" cx="12%" cy="78%" r="2.5" />
+        <circle className="iot-node iot-node-2" cx="25%" cy="70%" r="2.5" />
+        <circle className="iot-node iot-node-4" cx="75%" cy="72%" r="2.5" />
+        <circle className="iot-node-green iot-node-5" cx="88%" cy="80%" r="2.5" />
+      </svg>
+
       {/* Radial spotlight behind heading */}
       <div
         className="absolute inset-0 pointer-events-none"
