@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -16,6 +17,22 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: '#0A0F1C' }}
     >
+      {/* Animated gradient background */}
+      <BackgroundGradientAnimation
+        containerClassName="absolute inset-0 h-full w-full"
+        gradientBackgroundStart="rgb(10, 15, 28)"
+        gradientBackgroundEnd="rgb(6, 10, 18)"
+        firstColor="29, 188, 214"
+        secondColor="92, 184, 92"
+        thirdColor="29, 188, 214"
+        fourthColor="0, 80, 120"
+        fifthColor="0, 120, 60"
+        pointerColor="29, 188, 214"
+        blendingValue="screen"
+        size="70%"
+        interactive={false}
+      />
+
       {/* Grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.07]"

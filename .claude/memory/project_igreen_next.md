@@ -184,16 +184,17 @@ Managed in `src/components/careers/CareersJobListings.tsx`. Each card has a coll
 ---
 
 ## Homepage — FROZEN (do not change without user instruction)
-Homepage scored ~8.8/10 after full content + UI polish pass. Considered launch-ready.
+Homepage scored ~8.8/10 after full content + UI polish pass. Considered launch-ready. Re-frozen 2026-06-07 after hero gradient background addition.
 
 ### Hero notes:
-- Background video (`/hero-bg.mp4`): `opacity-40`, dark overlay `opacity: 0.4`
+- **Background:** `BackgroundGradientAnimation` (from `components/ui/background-gradient-animation.tsx`) rendered as `absolute inset-0 h-full w-full` behind all other layers. Colors: brand cyan `29,188,214` + brand green `92,184,92` orbs on dark `rgb(10,15,28)` base. `blendingValue="screen"`, `size="70%"`, `interactive={false}`.
+- IoT node network SVG and radial grid pattern overlay the gradient
 - "Connected Devices." span has `whiteSpace: 'nowrap'` to prevent mid-phrase line break on desktop
 
 ### Homepage section order & backgrounds:
 | Section | Background | File |
 |---------|-----------|------|
-| Hero | `#0A0F1C` | `components/home/Hero.tsx` |
+| Hero | `#0A0F1C` + `BackgroundGradientAnimation` | `components/home/Hero.tsx` |
 | Services | `#0A0F1C` + radial | `components/home/ServicesOverview.tsx` |
 | Stats | gradient `#060A12→#0A0F1C→#060A12` | `components/home/Stats.tsx` |
 | Testimonials | `#060A12` | `components/home/Testimonials.tsx` |
