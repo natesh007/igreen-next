@@ -66,17 +66,19 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
-      {/* Header */}
+      {/* Hero + Office Cards — single section so balls fall behind both */}
       <section
-        className="py-24 text-center relative overflow-hidden"
+        className="pt-20 pb-14 text-center relative overflow-hidden"
         style={{ backgroundColor: '#060A12' }}
       >
         <BallpitCanvas />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, #1DBCD615 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 30%, #1DBCD615 0%, transparent 70%)' }}
         />
-        <div className="max-w-2xl mx-auto px-4 relative z-10">
+
+        {/* Title */}
+        <div className="max-w-2xl mx-auto px-4 relative z-10 mb-12">
           <Reveal>
             <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#1DBCD6' }}>
               Contact Us
@@ -89,17 +91,20 @@ export default function ContactPage() {
             </p>
           </Reveal>
         </div>
-      </section>
 
-      {/* Office Cards */}
-      <section className="py-10" style={{ backgroundColor: '#060A12' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+        {/* Office Cards — float over the ball pit */}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {offices.map((o, i) => (
-              <Reveal key={o.city} delay={i * 0.1}>
+              <Reveal key={o.city} delay={i * 0.12}>
                 <div
-                  className="rounded-2xl p-6 border h-full transition-all duration-300 hover:border-[#1DBCD630] hover:shadow-[0_0_20px_#1DBCD610]"
-                  style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+                  className="rounded-2xl p-6 border h-full text-left transition-all duration-300 hover:border-[#1DBCD640] hover:shadow-[0_0_28px_#1DBCD618]"
+                  style={{
+                    backgroundColor: 'rgba(17, 24, 39, 0.72)',
+                    backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
+                    borderColor: 'rgba(31, 41, 55, 0.8)',
+                  }}
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span style={{ color: '#1DBCD6' }}>{locationIcon}</span>
