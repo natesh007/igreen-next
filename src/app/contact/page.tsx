@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Reveal } from '@/components/ui/Reveal';
 import ContactForm from '@/components/contact/ContactForm';
+import { BallpitCanvas } from '@/components/ui/interactive-hero-backgrounds';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -70,11 +71,12 @@ export default function ContactPage() {
         className="py-24 text-center relative overflow-hidden"
         style={{ backgroundColor: '#060A12' }}
       >
+        <BallpitCanvas />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, #1DBCD610 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, #1DBCD615 0%, transparent 70%)' }}
         />
-        <div className="max-w-2xl mx-auto px-4 relative">
+        <div className="max-w-2xl mx-auto px-4 relative z-10">
           <Reveal>
             <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#1DBCD6' }}>
               Contact Us
