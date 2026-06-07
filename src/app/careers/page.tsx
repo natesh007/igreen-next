@@ -86,8 +86,14 @@ export default function CareersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(careersJsonLd) }}
       />
       {/* Header */}
-      <section className="py-24 text-center" style={{ backgroundColor: '#060A12' }}>
-        <div className="max-w-3xl mx-auto px-4">
+      <section className="py-24 text-center relative overflow-hidden" style={{ backgroundColor: '#060A12' }}>
+        {/* Background video */}
+        <video autoPlay loop muted playsInline className="absolute inset-0 h-full w-full object-cover" src="/videos/prisma-bg.mp4" />
+        {/* Noise overlay */}
+        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay" />
+        {/* Gradient overlay — darkens edges so text stays readable */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+        <div className="max-w-3xl mx-auto px-4 relative z-10">
           <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#5CB85C' }}>
             Join Our Team
           </p>

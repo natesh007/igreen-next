@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ui/Reveal';
+import { ShapesBackground } from '@/components/ui/shape-landing-hero';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -73,6 +74,7 @@ export default function ServicePageTemplate({
         className="relative py-28 text-center overflow-hidden"
         style={{ backgroundColor: '#060A12' }}
       >
+        <ShapesBackground />
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{

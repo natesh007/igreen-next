@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ShapesBackground } from '@/components/ui/shape-landing-hero';
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -93,8 +94,9 @@ export default function ServicesPage() {
   return (
     <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
       {/* Header */}
-      <section className="py-24 text-center" style={{ backgroundColor: '#060A12' }}>
-        <div className="max-w-3xl mx-auto px-4">
+      <section className="py-24 text-center relative overflow-hidden" style={{ backgroundColor: '#060A12' }}>
+        <ShapesBackground />
+        <div className="max-w-3xl mx-auto px-4 relative z-10">
           <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#1DBCD6' }}>
             Services
           </p>

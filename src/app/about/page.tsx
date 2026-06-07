@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import { Reveal } from '@/components/ui/Reveal';
+import CybercoreBackground from '@/components/ui/cybercore-section-hero';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -175,6 +176,8 @@ export default function AboutPage() {
 
       {/* §1 — Hero */}
       <section className="py-28 text-center relative overflow-hidden" style={{ backgroundColor: '#060A12' }}>
+        {/* Cybercore animated beam background */}
+        <CybercoreBackground className="scene-contained" beamCount={50} />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, #1DBCD612 0%, transparent 70%)' }}

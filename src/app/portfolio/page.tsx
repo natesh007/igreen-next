@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Reveal } from '@/components/ui/Reveal';
 import CTA from '@/components/home/CTA';
+import { WovenCanvas } from '@/components/ui/woven-light-hero';
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -316,6 +317,7 @@ export default function PortfolioPage() {
         className="py-24 text-center relative overflow-hidden"
         style={{ backgroundColor: '#060A12' }}
       >
+        <WovenCanvas />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, #1DBCD610 0%, transparent 70%)' }}

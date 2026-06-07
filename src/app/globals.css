@@ -10,6 +10,7 @@
   --color-dark-600: #374151;
   --font-sans: var(--font-inter);
   --font-heading: var(--font-poppins);
+  --color-primary: #E1E0CC;
 
   /* Background gradient animation keyframe utilities */
   --animate-first: moveVertical 30s ease infinite;
@@ -121,3 +122,124 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-track { background: #0A0F1C; }
 ::-webkit-scrollbar-thumb { background: #1DBCD6; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #5CB85C; }
+
+/* ── Cybercore background component ── */
+:root {
+  --cybercore-bg: #000308;
+  --cybercore-light: #00e5ff;
+  --cybercore-highlight: #ffb86c;
+  --cybercore-glow-1: rgba(0, 229, 255, 0.8);
+  --cybercore-glow-2: rgba(0, 150, 255, 0.6);
+  --cybercore-highlight-glow: rgba(255, 184, 108, 0.7);
+}
+
+@keyframes rise {
+  0%   { transform: translateY(100%); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes fade {
+  0%, 100% { opacity: 0; }
+  5%, 85%  { opacity: 0.8; }
+}
+
+@keyframes floorGlow {
+  0%, 100% { transform: scale(0.95); opacity: 0.7; }
+  50%      { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes mainGlow {
+  from { opacity: 0.5; filter: blur(30px); }
+  to   { opacity: 0.7; filter: blur(20px); }
+}
+
+@keyframes moveGrid {
+  from { background-position: 0 0; }
+  to   { background-position: -100px -50px; }
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  background-color: var(--cybercore-bg);
+  overflow: hidden;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 100px 50px;
+  animation: moveGrid 8s linear infinite;
+}
+
+.floor {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 40%;
+  background: radial-gradient(ellipse at center bottom,
+    rgba(0, 229, 255, 0.18) 0%,
+    rgba(0, 150, 255, 0.08) 40%,
+    transparent 70%);
+  animation: floorGlow 4s ease-in-out infinite;
+}
+
+.main-column {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--cybercore-glow-1) 40%,
+    var(--cybercore-glow-2) 60%,
+    transparent 100%
+  );
+  animation: mainGlow 2s ease-in-out infinite alternate;
+}
+
+.light-stream-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.light-beam {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  border-radius: 2px;
+  animation-name: rise, fade;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.light-beam.primary {
+  background: linear-gradient(to top, var(--cybercore-glow-1), transparent);
+  box-shadow: 0 0 8px var(--cybercore-light), 0 0 2px var(--cybercore-light);
+}
+
+.light-beam.secondary {
+  background: linear-gradient(to top, var(--cybercore-highlight-glow), transparent);
+  box-shadow: 0 0 8px var(--cybercore-highlight), 0 0 2px var(--cybercore-highlight);
+}
+
+/* Noise overlay for Prisma hero (grain texture via mix-blend-overlay) */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+}
+
+/* Used when CybercoreBackground is embedded inside a section (not full-page) */
+.scene.scene-contained {
+  position: absolute;
+  inset: 0;
+}
