@@ -1,4 +1,10 @@
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Reveal } from '@/components/ui/Reveal';
+
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export interface ServiceFeature {
   title: string;
@@ -74,20 +80,38 @@ export default function ServicePageTemplate({
           }}
         />
         <div className="relative max-w-3xl mx-auto px-4">
-          <span
+          <motion.span
             className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6 border"
             style={{ color: accent, borderColor: `${accent}40`, backgroundColor: `${accent}10` }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: EASE }}
           >
             {badge}
-          </span>
-          <h1
+          </motion.span>
+          <motion.h1
             className="text-5xl font-bold text-white mb-6"
             style={{ fontFamily: 'Poppins, sans-serif' }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
           >
             {title}
-          </h1>
-          <p className="text-lg text-gray-400 leading-relaxed">{subtitle}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+          </motion.h1>
+          <motion.p
+            className="text-lg text-gray-400 leading-relaxed"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.2, ease: EASE }}
+          >
+            {subtitle}
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.3, ease: EASE }}
+          >
             <Link
               href="/contact"
               className="px-8 py-3 rounded-xl font-semibold text-white transition-all hover:opacity-90"
@@ -102,38 +126,43 @@ export default function ServicePageTemplate({
             >
               All Services
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Features */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            className="text-3xl font-bold text-white mb-10"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            What We Deliver
-          </h2>
+          <Reveal className="mb-10">
+            <h2
+              className="text-3xl font-bold text-white"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              What We Deliver
+            </h2>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map((f) => (
-              <div
-                key={f.title}
-                className="rounded-2xl p-7 border"
-                style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-              >
-                <div
-                  className="w-1 h-8 rounded mb-4"
-                  style={{ backgroundColor: accent }}
-                />
-                <h3
-                  className="font-semibold text-white mb-2"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
+            {features.map((f, i) => (
+              <Reveal key={f.title} delay={i * 0.07}>
+                <motion.div
+                  className="rounded-2xl p-7 border"
+                  style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+                  whileHover={{ boxShadow: `0 0 28px ${accent}30` }}
+                  transition={{ duration: 0.22 }}
                 >
-                  {f.title}
-                </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{f.desc}</p>
-              </div>
+                  <div
+                    className="w-1 h-8 rounded mb-4"
+                    style={{ backgroundColor: accent }}
+                  />
+                  <h3
+                    className="font-semibold text-white mb-2"
+                    style={{ fontFamily: 'Poppins, sans-serif' }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">{f.desc}</p>
+                </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -142,22 +171,28 @@ export default function ServicePageTemplate({
       {/* Use Cases */}
       <section className="py-16" style={{ backgroundColor: '#060A12' }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            className="text-3xl font-bold text-white mb-8"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            Common Use Cases
-          </h2>
+          <Reveal className="mb-8">
+            <h2
+              className="text-3xl font-bold text-white"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              Common Use Cases
+            </h2>
+          </Reveal>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {useCases.map((uc) => (
-              <li
+            {useCases.map((uc, i) => (
+              <motion.li
                 key={uc}
                 className="flex items-center gap-3 px-5 py-3 rounded-xl border text-sm text-gray-300"
                 style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
               >
                 <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: accent }} />
                 {uc}
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
@@ -166,46 +201,50 @@ export default function ServicePageTemplate({
       {/* Related Services */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            className="text-2xl font-bold text-white mb-6"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            Related Services
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {relatedServices.map((s) => (
-              <Link
-                key={s.href}
-                href={s.href}
-                className="px-5 py-2 rounded-xl text-sm font-medium border transition-all hover:bg-white/5"
-                style={{ borderColor: '#374151', color: '#D1D5DB' }}
-              >
-                {s.label} →
-              </Link>
-            ))}
-          </div>
+          <Reveal>
+            <h2
+              className="text-2xl font-bold text-white mb-6"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              Related Services
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {relatedServices.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  className="px-5 py-2 rounded-xl text-sm font-medium border transition-all hover:bg-white/5"
+                  style={{ borderColor: '#374151', color: '#D1D5DB' }}
+                >
+                  {s.label} →
+                </Link>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 text-center" style={{ backgroundColor: '#060A12' }}>
         <div className="max-w-xl mx-auto px-4">
-          <h2
-            className="text-3xl font-bold text-white mb-4"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            Ready to get started?
-          </h2>
-          <p className="text-gray-400 mb-8">
-            Let&apos;s talk about how we can apply this to your specific challenges.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-3.5 rounded-xl text-base font-semibold text-white transition-all hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg, #1DBCD6, #5CB85C)' }}
-          >
-            Get in Touch
-          </Link>
+          <Reveal>
+            <h2
+              className="text-3xl font-bold text-white mb-4"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              Ready to get started?
+            </h2>
+            <p className="text-gray-400 mb-8">
+              Let&apos;s talk about how we can apply this to your specific challenges.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-3.5 rounded-xl text-base font-semibold text-white transition-all hover:opacity-90"
+              style={{ background: 'linear-gradient(135deg, #1DBCD6, #5CB85C)' }}
+            >
+              Get in Touch
+            </Link>
+          </Reveal>
         </div>
       </section>
     </div>

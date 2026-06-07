@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ApplyModal from './ApplyModal';
+import { Reveal } from '@/components/ui/Reveal';
 
 interface Section {
   heading: string;
@@ -153,90 +155,107 @@ function JobCard({
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div
-      className="rounded-2xl border overflow-hidden"
-      style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+    <motion.div
+      className="rounded-2xl"
+      whileHover={{ boxShadow: '0 0 28px #1DBCD625' }}
+      transition={{ duration: 0.22 }}
     >
-      {/* Always-visible header */}
-      <div className="p-7">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-1">
-              <span
-                className="text-xs font-semibold px-2 py-0.5 rounded-full"
-                style={{ backgroundColor: '#1DBCD620', color: '#1DBCD6' }}
-              >
-                {job.dept}
-              </span>
-            </div>
-            <h3
-              className="text-xl font-semibold text-white mb-2"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              {job.title}
-            </h3>
-            <p className="text-sm text-gray-400 leading-relaxed mb-3">{job.desc}</p>
-            <div className="flex flex-wrap gap-3 text-xs text-gray-500">
-              <span className="flex items-center gap-1">
-                <span style={{ color: '#5CB85C' }}>●</span> {job.type}
-              </span>
-              <span className="flex items-center gap-1">
-                <span style={{ color: '#5CB85C' }}>●</span> {job.location}
-              </span>
-              <span className="flex items-center gap-1">
-                <span style={{ color: '#5CB85C' }}>●</span> {job.experience}
-              </span>
-            </div>
-          </div>
-          <div className="flex flex-row sm:flex-col items-center sm:items-end gap-3 flex-shrink-0">
-            <button
-              onClick={() => onApply(job.title)}
-              className="px-6 py-2.5 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90"
-              style={{ background: 'linear-gradient(135deg, #1DBCD6, #5CB85C)' }}
-            >
-              Apply Now
-            </button>
-            <button
-              onClick={() => setExpanded((v) => !v)}
-              className="text-sm font-medium transition-colors"
-              style={{ color: '#1DBCD6' }}
-            >
-              {expanded ? 'View less ↑' : 'View more ↓'}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Expandable details */}
-      {expanded && (
-        <div
-          className="px-7 pb-7 border-t"
-          style={{ borderColor: '#1F2937' }}
-        >
-          <p className="text-sm text-gray-300 leading-relaxed mt-6 mb-6">{job.about}</p>
-          <div className="space-y-5">
-            {job.sections.map((section) => (
-              <div key={section.heading}>
-                <h4
-                  className="text-sm font-semibold text-white mb-2"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
+      <div
+        className="rounded-2xl border overflow-hidden"
+        style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
+      >
+        {/* Always-visible header */}
+        <div className="p-7">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-1">
+                <span
+                  className="text-xs font-semibold px-2 py-0.5 rounded-full"
+                  style={{ backgroundColor: '#1DBCD620', color: '#1DBCD6' }}
                 >
-                  {section.heading}
-                </h4>
-                <ul className="space-y-1.5">
-                  {section.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-400">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: '#1DBCD6' }} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                  {job.dept}
+                </span>
               </div>
-            ))}
+              <h3
+                className="text-xl font-semibold text-white mb-2"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                {job.title}
+              </h3>
+              <p className="text-sm text-gray-400 leading-relaxed mb-3">{job.desc}</p>
+              <div className="flex flex-wrap gap-3 text-xs text-gray-500">
+                <span className="flex items-center gap-1">
+                  <span style={{ color: '#5CB85C' }}>●</span> {job.type}
+                </span>
+                <span className="flex items-center gap-1">
+                  <span style={{ color: '#5CB85C' }}>●</span> {job.location}
+                </span>
+                <span className="flex items-center gap-1">
+                  <span style={{ color: '#5CB85C' }}>●</span> {job.experience}
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-row sm:flex-col items-center sm:items-end gap-3 flex-shrink-0">
+              <button
+                onClick={() => onApply(job.title)}
+                className="px-6 py-2.5 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90"
+                style={{ background: 'linear-gradient(135deg, #1DBCD6, #5CB85C)' }}
+              >
+                Apply Now
+              </button>
+              <button
+                onClick={() => setExpanded((v) => !v)}
+                className="text-sm font-medium transition-colors"
+                style={{ color: '#1DBCD6' }}
+              >
+                {expanded ? 'View less ↑' : 'View more ↓'}
+              </button>
+            </div>
           </div>
         </div>
-      )}
-    </div>
+
+        {/* Expandable details */}
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              key="details"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              style={{ overflow: 'hidden' }}
+            >
+              <div
+                className="px-7 pb-7 border-t"
+                style={{ borderColor: '#1F2937' }}
+              >
+                <p className="text-sm text-gray-300 leading-relaxed mt-6 mb-6">{job.about}</p>
+                <div className="space-y-5">
+                  {job.sections.map((section) => (
+                    <div key={section.heading}>
+                      <h4
+                        className="text-sm font-semibold text-white mb-2"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
+                      >
+                        {section.heading}
+                      </h4>
+                      <ul className="space-y-1.5">
+                        {section.items.map((item) => (
+                          <li key={item} className="flex items-start gap-2 text-sm text-gray-400">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: '#1DBCD6' }} />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
   );
 }
 
@@ -247,38 +266,44 @@ export default function CareersJobListings() {
     <>
       <section className="py-16" style={{ backgroundColor: '#060A12' }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            className="text-3xl font-bold text-white mb-10"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            Open Positions
-          </h2>
+          <Reveal className="mb-10">
+            <h2
+              className="text-3xl font-bold text-white"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              Open Positions
+            </h2>
+          </Reveal>
           <div className="space-y-4">
-            {openings.map((job) => (
-              <JobCard key={job.title} job={job} onApply={(title) => setSelectedJob({ title })} />
+            {openings.map((job, i) => (
+              <Reveal key={job.title} delay={i * 0.1}>
+                <JobCard job={job} onApply={(title) => setSelectedJob({ title })} />
+              </Reveal>
             ))}
           </div>
 
           {/* Open Application CTA */}
-          <div
-            className="mt-10 rounded-2xl p-8 text-center border"
-            style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-          >
-            <p className="text-white font-semibold mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Don&apos;t see a role that fits?
-            </p>
-            <p className="text-gray-400 text-sm mb-5">
-              We&apos;re always open to exceptional talent. Send us your resume and we&apos;ll keep
-              you in mind.
-            </p>
-            <button
-              onClick={() => setSelectedJob({ title: 'Open Application' })}
-              className="inline-block px-6 py-2.5 rounded-lg text-sm font-semibold border transition-all hover:bg-white/5"
-              style={{ borderColor: '#374151', color: '#D1D5DB' }}
+          <Reveal delay={0.2} className="mt-10">
+            <div
+              className="rounded-2xl p-8 text-center border"
+              style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
             >
-              Send Open Application
-            </button>
-          </div>
+              <p className="text-white font-semibold mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                Don&apos;t see a role that fits?
+              </p>
+              <p className="text-gray-400 text-sm mb-5">
+                We&apos;re always open to exceptional talent. Send us your resume and we&apos;ll keep
+                you in mind.
+              </p>
+              <button
+                onClick={() => setSelectedJob({ title: 'Open Application' })}
+                className="inline-block px-6 py-2.5 rounded-lg text-sm font-semibold border transition-all hover:bg-white/5"
+                style={{ borderColor: '#374151', color: '#D1D5DB' }}
+              >
+                Send Open Application
+              </button>
+            </div>
+          </Reveal>
         </div>
       </section>
 
