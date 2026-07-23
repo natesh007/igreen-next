@@ -3,12 +3,12 @@ import { Reveal } from '@/components/ui/Reveal';
 const testimonials = [
   {
     quote:
-      'iGreen built the core IoT infrastructure that powers the WIS platform. What impressed us most was their ability to handle the complexity — 10+ monitoring modules, hardware integration, and a real-time dashboard — delivered on schedule. They don\'t just write code; they understand the engineering problem.',
-    name: 'Hriday',
-    title: 'Co-Founder',
-    company: 'Wenalytics IoT Solutions',
+      'iGreen built the core IoT infrastructure that powers the Oilcop platform. What impressed us most was their ability to handle the complexity — 10+ monitoring modules, hardware integration, and a real-time dashboard — delivered on schedule. They don\'t just write code; they understand the engineering problem.',
+    name: 'Mark',
+    title: 'Manager',
+    company: 'Liquidynamics Inc, USA',
     accent: '#1DBCD6',
-    initial: 'H',
+    initial: 'M',
   },
   {
     quote:

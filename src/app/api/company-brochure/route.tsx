@@ -749,8 +749,8 @@ function ServicesPage() {
 function PortfolioPage() {
   const projects = [
     {
-      title: 'WIS — Smart Building Management Platform',
-      client: 'Wenalytics IoT Solutions, Hyderabad',
+      title: 'iGreen — Smart Building Management Platform',
+      client: 'iGreen Systems & Technologies, Hyderabad',
       category: 'IoT',
       color: CYAN,
       desc: 'Comprehensive smart building platform with 10+ modules covering energy management, HVAC control, access control, and real-time facility operations.',
@@ -763,15 +763,15 @@ function PortfolioPage() {
       desc: 'End-to-end visa processing system that reduced application processing time by 80%, enabling faster turnaround for 10,000+ applications.',
     },
     {
-      title: 'WIS — Fire Pump IoT Safety Monitoring',
-      client: 'Wenalytics IoT Solutions, Hyderabad',
+      title: 'iGreen — Fire Pump IoT Safety Monitoring',
+      client: 'iGreen Systems & Technologies, Hyderabad',
       category: 'IoT',
       color: CYAN,
       desc: 'Real-time IoT monitoring system for fire pump health, pressure, and flow — enabling predictive maintenance and regulatory compliance.',
     },
     {
-      title: 'WIS CSMS — Cold Storage Monitoring',
-      client: 'Wenalytics IoT Solutions',
+      title: 'iGreen CSMS — Cold Storage Monitoring',
+      client: 'iGreen Systems & Technologies',
       category: 'IoT',
       color: CYAN,
       desc: 'Connected sensor network for cold storage and freezer monitoring with real-time alerts, compliance logging, and remote management.',

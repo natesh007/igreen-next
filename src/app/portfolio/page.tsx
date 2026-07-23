@@ -24,8 +24,8 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: 'WIS — Smart Building Management Platform',
-    client: 'Wenalytics IoT Solutions, Hyderabad',
+    title: 'iGreen — Smart Building Management Platform',
+    client: 'iGreen Systems & Technologies, Hyderabad',
     description:
       'End-to-end IoT platform enabling sustainable facility management across Water, Energy, Air, Light & Analytics. Covers 10+ monitoring and automation modules for smart buildings — from flow meters and AHU control to indoor air quality and preventive maintenance analytics.',
     category: 'IoT',
@@ -59,8 +59,8 @@ const projects: Project[] = [
     isReal: true,
   },
   {
-    title: 'WIS — Hotel & Enterprise Facility Management',
-    client: 'Wenalytics IoT Solutions (Hospitality Enterprises)',
+    title: 'iGreen — Hotel & Enterprise Facility Management',
+    client: 'iGreen Systems & Technologies (Hospitality Enterprises)',
     description:
       'End-to-end IoT and facility management platform for hotel enterprises — covering Room, Property and Portfolio levels. Integrates 100+ sensor types with building automation, predictive maintenance, and portfolio-wide KPI dashboards for engineering and C-suite teams.',
     category: 'IoT',
@@ -76,8 +76,8 @@ const projects: Project[] = [
     isReal: true,
   },
   {
-    title: 'WIS — Intelligent Facility Operations Platform',
-    client: 'Wenalytics IoT Solutions',
+    title: 'iGreen — Intelligent Facility Operations Platform',
+    client: 'iGreen Systems & Technologies',
     description:
       'A Digital Twin platform that digitizes your entire property portfolio in two steps. Unifies asset tagging, helpdesk ticketing, document management, planned preventive maintenance and manpower management — giving every stakeholder a single pane of glass.',
     category: 'Digital Transformation',
@@ -93,8 +93,8 @@ const projects: Project[] = [
     isReal: true,
   },
   {
-    title: 'WIS - Fire Pump, IoT Safety Monitoring System',
-    client: 'Wenalytics IoT Solutions, Hyderabad',
+    title: 'iGreen - Fire Pump, IoT Safety Monitoring System',
+    client: 'iGreen Systems & Technologies, Hyderabad',
     description:
       'IoT-based fire pump monitoring system that makes fire safety measurable and crisis-ready. Real-time dashboards track switch positions, line pressure, motor running hours, fire sump water levels and diesel fuel — with instant anomaly alerts before a crisis strikes.',
     category: 'IoT',
@@ -110,8 +110,8 @@ const projects: Project[] = [
     isReal: true,
   },
   {
-    title: 'WIS CSMS — Cold Storage & Freezer Monitoring System',
-    client: 'Wenalytics IoT Solutions',
+    title: 'iGreen CSMS — Cold Storage & Freezer Monitoring System',
+    client: 'iGreen Systems & Technologies',
     description:
       'Cloud-based IoT monitoring system for cold storages, island freezers and cold rooms — covering temperature, humidity, door activity, compressor health and energy consumption. Serves pharma, food retail and industrial cold storage operators from a single central platform.',
     category: 'IoT',
@@ -127,8 +127,8 @@ const projects: Project[] = [
     isReal: true,
   },
   {
-    title: 'WIS — Restaurant Facility Automation',
-    client: 'Wenalytics IoT Solutions (Americas)',
+    title: 'iGreen — Restaurant Facility Automation',
+    client: 'iGreen Systems & Technologies (Americas)',
     description:
       'AI-driven IoT platform for Quick Service and Full Service Restaurants — automating facility operations across utilities, kitchen equipment, HVAC and maintenance workflows. Delivers real-time electricity, water and gas monitoring with measurable cost savings.',
     category: 'IoT',
@@ -377,7 +377,7 @@ export default function PortfolioPage() {
                 { value: '200+', label: 'Locations Monitored', sub: 'OilCop tank network', color: '#1DBCD6' },
                 { value: '80%', label: 'Admin Effort Reduced', sub: 'VWI visa processing', color: '#5CB85C' },
                 { value: '6×', label: 'Throughput Gain', sub: 'MubarakRishte platform', color: '#1DBCD6' },
-                { value: '10+', label: 'IoT Modules per Platform', sub: 'WIS smart building', color: '#5CB85C' },
+                { value: '10+', label: 'IoT Modules per Platform', sub: 'iGreen smart building', color: '#5CB85C' },
               ].map((m) => (
                 <div
                   key={m.label}
