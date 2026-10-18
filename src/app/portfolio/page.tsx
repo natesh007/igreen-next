@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Reveal } from '@/components/ui/Reveal';
 import CTA from '@/components/home/CTA';
 import { WovenCanvas } from '@/components/ui/woven-light-hero';
+import ProjectArt, { type ProjectArtKind } from '@/components/visuals/ProjectArt';
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -19,6 +20,7 @@ type Project = {
   capabilities?: string[];
   highlights?: string[];
   featured?: boolean;
+  art?: ProjectArtKind;
   isReal: boolean;
 };
 
@@ -38,6 +40,7 @@ const projects: Project[] = [
       'Intelligent alerts & anomaly detection',
     ],
     featured: true,
+    art: 'building',
     isReal: true,
   },
   {
@@ -55,6 +58,7 @@ const projects: Project[] = [
       'Automated document verification — 80% reduction in admin review effort',
       'Thousands of applications processed — live in production',
     ],
+    art: 'visa',
     isReal: true,
   },
   {
@@ -72,6 +76,7 @@ const projects: Project[] = [
       'Room-to-portfolio visibility with 3-level management hierarchy',
       '52-week PPM, predictive maintenance & ESG reporting',
     ],
+    art: 'hotel',
     isReal: true,
   },
   {
@@ -89,6 +94,7 @@ const projects: Project[] = [
       'Integrated helpdesk, document vault & PPM scheduling',
       'Single Pane of Glass: portfolio-wide visibility & standardization',
     ],
+    art: 'twin',
     isReal: true,
   },
   {
@@ -105,6 +111,7 @@ const projects: Project[] = [
       'Real-time diesel pump monitoring: fuel level & battery voltage',
       'Instant alerts for pressure drops & unexpected running hours',
     ],
+    art: 'firepump',
     isReal: true,
   },
   {
@@ -122,6 +129,7 @@ const projects: Project[] = [
       'Door open count & duration with buzzer alerts on breach',
       'Central monitoring: compressors, heat pumps & ODU performance',
     ],
+    art: 'cold',
     isReal: true,
   },
   {
@@ -139,6 +147,7 @@ const projects: Project[] = [
       'Condition-based HVAC automation & indoor air quality',
       'Full workflow digitization: PPM, inventory & vendor mgmt',
     ],
+    art: 'restaurant',
     isReal: true,
   },
   {
@@ -156,6 +165,7 @@ const projects: Project[] = [
       'Intelligent analysis of groom/bride expectations for precise matching',
       'WhatsApp integration, payment gateway & native Android/iOS apps',
     ],
+    art: 'matching',
     isReal: true,
   },
   {
@@ -173,6 +183,7 @@ const projects: Project[] = [
       'Equipment Sentry + Discrepancy Tracking System (DTS) for anomaly management',
       'User-defined high/low alarms, reorder alerts & automated delivery reports',
     ],
+    art: 'tank',
     isReal: true,
   },
 ];
@@ -196,6 +207,7 @@ function RealCard({ p }: { p: Project }) {
     >
       {/* Top accent bar */}
       <div className="h-1 w-full" style={{ backgroundColor: p.tagColor }} />
+      {p.art && <ProjectArt kind={p.art} color={p.tagColor} />}
 
       <div className="p-6 flex flex-col flex-1">
         {/* Header row: tag + featured badge */}
