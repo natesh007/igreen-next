@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PinArt } from '@/components/visuals/MapArt';
 import { Reveal } from '@/components/ui/Reveal';
 import ContactForm from '@/components/contact/ContactForm';
 import { BallpitCanvas } from '@/components/ui/interactive-hero-backgrounds';
@@ -98,7 +99,7 @@ export default function ContactPage() {
             {offices.map((o, i) => (
               <Reveal key={o.city} delay={i * 0.12}>
                 <div
-                  className="rounded-2xl p-6 border h-full text-left transition-all duration-300 hover:border-[#1DBCD640] hover:shadow-[0_0_28px_#1DBCD618]"
+                  className="relative overflow-hidden rounded-2xl p-6 border h-full text-left transition-all duration-300 hover:border-[#1DBCD640] hover:shadow-[0_0_28px_#1DBCD618]"
                   style={{
                     backgroundColor: 'rgba(17, 24, 39, 0.72)',
                     backdropFilter: 'blur(10px)',
@@ -106,6 +107,7 @@ export default function ContactPage() {
                     borderColor: 'rgba(31, 41, 55, 0.8)',
                   }}
                 >
+                  <PinArt color={i === 0 ? '#1DBCD6' : '#F59E0B'} className="absolute -top-1 right-2 w-20 h-20 opacity-60 pointer-events-none" />
                   <div className="flex items-center gap-2 mb-3">
                     <span style={{ color: '#1DBCD6' }}>{locationIcon}</span>
                     <p className="font-semibold text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>

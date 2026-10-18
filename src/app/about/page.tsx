@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 import { Reveal } from '@/components/ui/Reveal';
 import CybercoreBackground from '@/components/ui/cybercore-section-hero';
+import { MapArt, BrochureArt } from '@/components/visuals/MapArt';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -33,7 +34,7 @@ const pillars = [
   {
     title: 'Asset Lifecycle Management',
     desc: 'Track, manage, and extend the life of critical operational assets.',
-    color: '#5CB85C',
+    color: '#F59E0B',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12a9 9 0 11-6.219-8.56" />
@@ -44,7 +45,7 @@ const pillars = [
   {
     title: 'Connected Field Operations',
     desc: 'Digitize service workflows and improve execution efficiency on-site.',
-    color: '#1DBCD6',
+    color: '#8B5CF6',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="2" />
@@ -66,7 +67,7 @@ const pillars = [
   {
     title: 'Predictive Maintenance',
     desc: 'Move from reactive fixes to data-driven, proactive maintenance cycles.',
-    color: '#1DBCD6',
+    color: '#F43F5E',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
@@ -112,6 +113,8 @@ const goalBullets = [
   'Improve sustainability and efficiency',
   'Operate with clarity, control, and confidence',
 ];
+
+const DIFF_COLORS = ['#3B82F6', '#EC4899', '#F59E0B', '#14B8A6', '#8B5CF6'];
 
 const differentiators = [
   {
@@ -522,7 +525,7 @@ export default function AboutPage() {
                 >
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                    style={{ backgroundColor: '#1DBCD618', color: '#1DBCD6' }}
+                    style={{ backgroundColor: `${DIFF_COLORS[i]}1F`, color: DIFF_COLORS[i] }}
                   >
                     {d.icon}
                   </div>
@@ -561,7 +564,7 @@ export default function AboutPage() {
                 name: 'IEC 62443',
                 subtitle: 'Industrial Cybersecurity',
                 benefit: 'Industrial control systems secured against cyber threats — end-to-end.',
-                color: '#5CB85C',
+                color: '#F59E0B',
                 icon: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -573,7 +576,7 @@ export default function AboutPage() {
                 name: 'GDPR Compliant',
                 subtitle: 'Data Privacy',
                 benefit: 'Data collection, storage, and processing aligned with EU privacy regulations.',
-                color: '#1DBCD6',
+                color: '#8B5CF6',
                 icon: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
@@ -639,6 +642,9 @@ export default function AboutPage() {
                 className="absolute inset-0 rounded-2xl pointer-events-none"
                 style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, #1DBCD608 0%, transparent 70%)' }}
               />
+              <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none opacity-35">
+                <MapArt className="h-full w-full" />
+              </div>
               <p className="text-gray-300 leading-relaxed text-lg text-center relative">
                 Our solutions are designed to be scalable, adaptable, and relevant across geographies.
                 With experience working across diverse operational environments — from smart buildings in
@@ -660,17 +666,7 @@ export default function AboutPage() {
             >
               {/* Icon + text */}
               <div className="flex items-start gap-5">
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: '#1DBCD618' }}
-                >
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1DBCD6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="12" y1="18" x2="12" y2="12" />
-                    <polyline points="9 15 12 18 15 15" />
-                  </svg>
-                </div>
+                <BrochureArt className="w-14 h-[72px] flex-shrink-0" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: '#1DBCD6' }}>
                     Company Profile

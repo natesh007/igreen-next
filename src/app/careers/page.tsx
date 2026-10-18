@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import CareersJobListings from '@/components/careers/CareersJobListings';
+import { PerkArt, type PerkKind } from '@/components/visuals/MapArt';
 
 export const metadata: Metadata = {
   title: 'Careers',
@@ -57,6 +58,13 @@ const careersJsonLd = [
   }
 ];
 
+const perkArt: { kind: PerkKind; color: string }[] = [
+  { kind: 'flex', color: '#F59E0B' },
+  { kind: 'learn', color: '#8B5CF6' },
+  { kind: 'projects', color: '#1DBCD6' },
+  { kind: 'growth', color: '#5CB85C' },
+];
+
 export default function CareersPage() {
   return (
     <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
@@ -94,12 +102,13 @@ export default function CareersPage() {
             {perks.map((p, i) => (
               <div
                 key={p.title}
-                className="rounded-xl p-6 border"
+                className="relative overflow-hidden rounded-xl p-6 border"
                 style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
               >
+                <PerkArt kind={perkArt[i].kind} color={perkArt[i].color} className="absolute top-3 right-3 w-14 h-14 opacity-40 pointer-events-none" />
                 <div
                   className="w-8 h-1 rounded mb-4"
-                  style={{ backgroundColor: i % 2 === 0 ? '#1DBCD6' : '#5CB85C' }}
+                  style={{ backgroundColor: perkArt[i].color }}
                 />
                 <h3 className="font-semibold text-white mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   {p.title}
