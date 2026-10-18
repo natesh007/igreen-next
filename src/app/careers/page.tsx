@@ -3,7 +3,7 @@ import CareersJobListings from '@/components/careers/CareersJobListings';
 
 export const metadata: Metadata = {
   title: 'Careers',
-  description: 'Join iGreen Systems in Hyderabad — we\'re hiring a Flutter Developer and a Digital Transformation Consultant. Build IoT solutions and digital platforms that matter. Freshers welcome.',
+  description: 'Join iGreen Systems in Hyderabad — we\'re hiring a Technology Solutions Associate. Build IoT solutions and digital platforms that matter. Freshers welcome.',
 };
 
 const perks = [
@@ -25,15 +25,18 @@ const careersJsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
-    'title': 'Flutter Developer (Android & iOS)',
-    'description': 'We are looking for a proactive Flutter Developer who can take ownership of mobile application development — both enhancing existing applications and building new ones from scratch. The ideal candidate should be capable of working independently, quickly understanding existing codebases, and delivering production-ready apps from day one.',
-    'datePosted': '2026-05-05',
-    'employmentType': 'FULL_TIME',
+    'title': 'Technology Solutions Associate',
+    'description': 'Learn about our SaaS products, IoT solutions and digital platforms, identify potential customers, understand their business requirements, and explain how our solutions can help solve their problems. Develop skills in technology sales, customer communication, product demonstrations, and business development.',
+    'datePosted': '2026-10-18',
+    'employmentType': [
+      'FULL_TIME',
+      'INTERN'
+    ],
     'hiringOrganization': {
       '@type': 'Organization',
       'name': 'iGreen Systems',
       'sameAs': 'https://igreensystems.com',
-      'logo': 'https://igreensystems.com/igreen_1.png',
+      'logo': 'https://igreensystems.com/igreen_1.png'
     },
     'jobLocation': {
       '@type': 'Place',
@@ -41,41 +44,17 @@ const careersJsonLd = [
         '@type': 'PostalAddress',
         'addressLocality': 'Hyderabad',
         'addressRegion': 'Telangana',
-        'addressCountry': 'IN',
-      },
+        'addressCountry': 'IN'
+      }
     },
     'jobLocationType': 'TELECOMMUTE',
-    'applicantLocationRequirements': { '@type': 'Country', 'name': 'India' },
-    'experienceRequirements': '0 to 2+ years. Freshers can apply but should be ready to contribute from day one.',
-    'skills': 'Flutter, Dart, Firebase, iOS, Android, Push Notifications, REST APIs, Git',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'JobPosting',
-    'title': 'Digital Transformation Consultant',
-    'description': 'We are looking for a sharp, business-minded professional who can identify organizations still dependent on manual or semi-digital processes and help them transition toward digital solutions. This role combines business development with consultative selling.',
-    'datePosted': '2026-05-05',
-    'employmentType': 'FULL_TIME',
-    'hiringOrganization': {
-      '@type': 'Organization',
-      'name': 'iGreen Systems',
-      'sameAs': 'https://igreensystems.com',
-      'logo': 'https://igreensystems.com/igreen_1.png',
+    'applicantLocationRequirements': {
+      '@type': 'Country',
+      'name': 'India'
     },
-    'jobLocation': {
-      '@type': 'Place',
-      'address': {
-        '@type': 'PostalAddress',
-        'addressLocality': 'Hyderabad',
-        'addressRegion': 'Telangana',
-        'addressCountry': 'IN',
-      },
-    },
-    'jobLocationType': 'TELECOMMUTE',
-    'applicantLocationRequirements': { '@type': 'Country', 'name': 'India' },
-    'experienceRequirements': '0 to 3+ years. Freshers with strong communication and business understanding can apply.',
-    'skills': 'Consultative selling, Lead generation, Business communication, Digital transformation, Market research',
-  },
+    'experienceRequirements': 'Freshers and students welcome. Prior sales experience and coding skills are not required.',
+    'skills': 'Communication, Lead generation, B2B sales, Research, Customer relationship management, Product presentations'
+  }
 ];
 
 export default function CareersPage() {
