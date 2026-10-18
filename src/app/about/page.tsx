@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import { Reveal } from '@/components/ui/Reveal';
 import CybercoreBackground from '@/components/ui/cybercore-section-hero';
 import { MapArt, BrochureArt } from '@/components/visuals/MapArt';
+import ArtBanner from '@/components/visuals/ArtBanner';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -286,15 +287,12 @@ export default function AboutPage() {
                 className={i === 4 ? 'lg:col-start-2 xl:col-start-auto' : ''}
               >
                 <div
-                  className="rounded-2xl p-7 border h-full flex flex-col transition-all duration-300 hover:border-[#1DBCD630] hover:shadow-[0_0_24px_#1DBCD610]"
+                  className="rounded-2xl p-7 border h-full flex flex-col overflow-hidden transition-all duration-300 hover:border-[#1DBCD630] hover:shadow-[0_0_24px_#1DBCD610]"
                   style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
                 >
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
-                    style={{ backgroundColor: `${p.color}18`, color: p.color }}
-                  >
-                    {p.icon}
-                  </div>
+                  <ArtBanner color={p.color} className="-mx-7 -mt-7 mb-5 flex-shrink-0">
+                    <div style={{ color: p.color }} className="[&>svg]:w-12 [&>svg]:h-12 [&>svg]:stroke-[1.2]">{p.icon}</div>
+                  </ArtBanner>
                   <h3 className="text-base font-semibold text-white mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                     {p.title}
                   </h3>
@@ -520,15 +518,12 @@ export default function AboutPage() {
                 className={i === 4 ? 'sm:col-span-2 lg:col-span-1 lg:col-start-2' : ''}
               >
                 <div
-                  className="rounded-2xl p-7 border h-full transition-all duration-300 hover:border-[#1DBCD630] hover:shadow-[0_0_24px_#1DBCD610]"
+                  className="rounded-2xl p-7 border h-full overflow-hidden transition-all duration-300 hover:border-[#1DBCD630] hover:shadow-[0_0_24px_#1DBCD610]"
                   style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
                 >
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                    style={{ backgroundColor: `${DIFF_COLORS[i]}1F`, color: DIFF_COLORS[i] }}
-                  >
-                    {d.icon}
-                  </div>
+                  <ArtBanner color={DIFF_COLORS[i]} className="-mx-7 -mt-7 mb-5">
+                    <div style={{ color: DIFF_COLORS[i] }} className="[&>svg]:w-12 [&>svg]:h-12 [&>svg]:stroke-[1.2]">{d.icon}</div>
+                  </ArtBanner>
                   <h3 className="text-lg font-semibold text-white mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
                     {d.title}
                   </h3>
@@ -588,15 +583,12 @@ export default function AboutPage() {
             ].map((cert, i) => (
               <Reveal key={cert.name} delay={i * 0.08}>
                 <div
-                  className="rounded-2xl p-7 border h-full flex flex-col transition-all duration-300 hover:border-[#1DBCD630] hover:shadow-[0_0_24px_#1DBCD610]"
+                  className="rounded-2xl p-7 border h-full flex flex-col overflow-hidden transition-all duration-300 hover:border-[#1DBCD630] hover:shadow-[0_0_24px_#1DBCD610]"
                   style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
                 >
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
-                    style={{ backgroundColor: `${cert.color}18`, color: cert.color }}
-                  >
-                    {cert.icon}
-                  </div>
+                  <ArtBanner color={cert.color} className="-mx-7 -mt-7 mb-5 flex-shrink-0">
+                    <div style={{ color: cert.color }} className="[&>svg]:w-12 [&>svg]:h-12 [&>svg]:stroke-[1.2]">{cert.icon}</div>
+                  </ArtBanner>
                   <p className="text-base font-semibold text-white mb-0.5" style={{ fontFamily: 'Poppins, sans-serif' }}>
                     {cert.name}
                   </p>

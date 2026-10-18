@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ui/Reveal';
 import ServiceArt, { SERVICE_PALETTE } from '@/components/visuals/ServiceArt';
+import ArtBanner from '@/components/visuals/ArtBanner';
 
 const iotServices = [
   {
@@ -68,7 +69,7 @@ function ServiceCard({
   return (
     <MotionLink
       href={href}
-      className="group block rounded-xl p-6 border"
+      className="group block rounded-xl p-6 border overflow-hidden"
       style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
       whileHover={{
         y: -5,
@@ -77,14 +78,9 @@ function ServiceCard({
       }}
       transition={{ duration: 0.22 }}
     >
-      <motion.div
-        className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-        style={{ backgroundColor: `${artColor}1F` }}
-        whileHover={{ backgroundColor: `${artColor}30`, scale: 1.05 }}
-        transition={{ duration: 0.2 }}
-      >
-        <ServiceArt slug={slug} className="w-10 h-10" />
-      </motion.div>
+      <ArtBanner color={artColor} className="-mx-6 -mt-6 mb-5">
+        <ServiceArt slug={slug} className="w-[88px] h-[88px]" />
+      </ArtBanner>
       <h3 className="font-semibold text-white mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
         {label}
       </h3>
