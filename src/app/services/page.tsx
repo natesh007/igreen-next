@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShapesBackground } from '@/components/ui/shape-landing-hero';
-import ServiceArt from '@/components/visuals/ServiceArt';
+import ServiceArt, { SERVICE_PALETTE } from '@/components/visuals/ServiceArt';
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -71,9 +71,9 @@ function ServiceRow({ service }: { service: (typeof iotServices)[0] }) {
     >
       <div
         className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center mt-0.5"
-        style={{ backgroundColor: `${service.color}18` }}
+        style={{ backgroundColor: `${(SERVICE_PALETTE[service.href.split('/').pop()!] ?? [service.color])[0]}1F` }}
       >
-        <ServiceArt slug={service.href.split('/').pop()!} color={service.color} className="w-11 h-11" />
+        <ServiceArt slug={service.href.split('/').pop()!} className="w-11 h-11" />
       </div>
       <div className="flex-1">
         <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-white/90"

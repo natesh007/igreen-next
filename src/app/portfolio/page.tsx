@@ -207,7 +207,7 @@ function RealCard({ p }: { p: Project }) {
     >
       {/* Top accent bar */}
       <div className="h-1 w-full" style={{ backgroundColor: p.tagColor }} />
-      {p.art && <ProjectArt kind={p.art} color={p.tagColor} />}
+      {p.art && <ProjectArt kind={p.art} />}
 
       <div className="p-6 flex flex-col flex-1">
         {/* Header row: tag + featured badge */}
