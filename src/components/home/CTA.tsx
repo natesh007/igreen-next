@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Reveal } from '@/components/ui/Reveal';
+import AbstractBackdrop from '@/components/visuals/AbstractBackdrop';
 
 export default function CTA() {
   return (
@@ -29,6 +30,8 @@ export default function CTA() {
                 background: 'radial-gradient(ellipse 60% 50% at 50% 50%, #1DBCD610 0%, transparent 70%)',
               }}
             />
+
+            <AbstractBackdrop />
 
             <p className="text-sm font-semibold uppercase tracking-wider mb-4 relative" style={{ color: '#1DBCD6' }}>
               Ready to Transform?

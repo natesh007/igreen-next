@@ -323,3 +323,13 @@ Heading fix: `whiteSpace: 'nowrap'` on `"What's Next"` span (same pattern as Her
 - **Next gains** (per review): case studies, portfolio depth, stronger service detail pages.
 - **Google Search Console:** Submit sitemap at `https://igreensystems.com/sitemap.xml` once site is indexed.
 - **Careers:** Add or remove roles as hiring needs change — edit the `openings` array in `CareersJobListings.tsx` and the `careersJsonLd` array in `careers/page.tsx`.
+
+---
+
+## Visuals (added 2026-10-18)
+All imagery is generated inline SVG in `src/components/visuals/` (no photo assets, no next/image config needed). Each service/project has its own colour pair:
+- `ServiceArt.tsx` — 8 service illustrations, palette in `SERVICE_PALETTE`. Used on /services rows, service page heroes (`ServicePageTemplate`), and homepage `ServicesOverview` cards.
+- `ProjectArt.tsx` — 9 dashboard-style banners for portfolio cards (`art` key on each project, palette in `PROJECT_PALETTE`).
+- `MapArt.tsx` — `MapArt` (About Global Reach), `PinArt` (Contact office cards), `BrochureArt` (About download banner), `PerkArt` (Careers perks).
+- `AbstractBackdrop.tsx` — node clusters in the homepage CTA card.
+Homepage was updated here with explicit user approval (ServicesOverview icon boxes + CTA backdrop only). Homepage order now: Hero, ServicesOverview, TrustStrip, Process, Testimonials, CTA (Stats unused). TrustStrip/About/Portfolio no longer claim ISO 9001 / IGBC (iGreen holds neither). Locally /contact needs NEXT_PUBLIC_RECAPTCHA_SITE_KEY (no .env.local on this machine).
