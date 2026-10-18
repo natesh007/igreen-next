@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ui/Reveal';
 import { ShapesBackground } from '@/components/ui/shape-landing-hero';
+import ServiceArt from '@/components/visuals/ServiceArt';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -80,6 +81,16 @@ export default function ServicePageTemplate({
           style={{
             backgroundImage: `radial-gradient(ellipse at center, ${accent} 0%, transparent 70%)`,
           }}
+        />
+        <ServiceArt
+          slug={path.split('/').pop()!}
+          color={accent}
+          className="hidden xl:block absolute right-[4%] top-1/2 -translate-y-1/2 w-60 h-60 opacity-25 pointer-events-none"
+        />
+        <ServiceArt
+          slug={path.split('/').pop()!}
+          color={accent}
+          className="hidden xl:block absolute left-[4%] top-1/2 -translate-y-1/2 w-60 h-60 opacity-[0.07] -scale-x-100 pointer-events-none"
         />
         <div className="relative max-w-3xl mx-auto px-4">
           <motion.span
