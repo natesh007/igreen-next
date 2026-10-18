@@ -555,20 +555,8 @@ export default function AboutPage() {
               Our solutions are designed and delivered in alignment with internationally recognised standards — giving enterprise clients the confidence to deploy at scale.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {[
-              {
-                name: 'ISO 9001:2015',
-                subtitle: 'Quality Management',
-                benefit: 'Consistent, auditable delivery processes from requirements through deployment.',
-                color: '#1DBCD6',
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="M9 12l2 2 4-4" />
-                  </svg>
-                ),
-              },
               {
                 name: 'IEC 62443',
                 subtitle: 'Industrial Cybersecurity',
@@ -591,19 +579,6 @@ export default function AboutPage() {
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 8v4" />
                     <path d="M12 16h.01" />
-                  </svg>
-                ),
-              },
-              {
-                name: 'IGBC Certified',
-                subtitle: 'Green Building',
-                benefit: 'Smart building solutions aligned with India Green Building Council sustainability ratings.',
-                color: '#5CB85C',
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 22V12" />
-                    <path d="M12 12C12 7 7 4 7 4s0 5 5 8z" />
-                    <path d="M12 12c0-5 5-8 5-8s0 5-5 8z" />
                   </svg>
                 ),
               },

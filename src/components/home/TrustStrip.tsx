@@ -2,16 +2,6 @@ import { Reveal } from '@/components/ui/Reveal';
 
 const certs = [
   {
-    name: 'ISO 9001:2015',
-    subtitle: 'Quality Management',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1DBCD6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
-  },
-  {
     name: 'IEC 62443',
     subtitle: 'Industrial Cybersecurity',
     icon: (
@@ -32,16 +22,6 @@ const certs = [
       </svg>
     ),
   },
-  {
-    name: 'IGBC Certified',
-    subtitle: 'Green Building',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1DBCD6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22V12M12 12C12 12 7 9 7 4a5 5 0 0110 0c0 5-5 8-5 8z" />
-        <path d="M12 12c0 0-3 1.5-3 5" />
-      </svg>
-    ),
-  },
 ];
 
 export default function TrustStrip() {
@@ -56,7 +36,7 @@ export default function TrustStrip() {
             Standards &amp; Frameworks We Work To
           </p>
         </Reveal>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
           {certs.map((cert, i) => (
             <Reveal key={cert.name} delay={i * 0.07}>
               <div
