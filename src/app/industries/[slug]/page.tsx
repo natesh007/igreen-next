@@ -54,7 +54,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       <noscript>
         <style>{'.v-rv{opacity:1!important;transform:none!important}'}</style>
       </noscript>
-      <Effects chip={false} />
+      <Effects />
 
       <section className="v-w v-ihero two" aria-labelledby="ind-h">
         <div>

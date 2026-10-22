@@ -70,13 +70,6 @@ body:has(.vibrant)::before { display: none; }
 /* progress + HUD */
 .v-bar { position: fixed; inset: 0 0 auto 0; height: 7px; background: var(--v-ink); z-index: 60; }
 .v-bar i { display: block; height: 100%; width: 0; background: var(--v-gb); }
-.v-hud {
-  position: fixed; left: max(12px, env(safe-area-inset-left)); bottom: max(12px, env(safe-area-inset-bottom)); z-index: 60;
-  display: flex; gap: 10px; align-items: center; background: var(--v-ink); color: #fff;
-  border: 2px solid var(--v-ink); padding: 8px 14px 8px 8px; border-radius: 999px;
-  box-shadow: var(--v-shadow); font-weight: 800; font-size: 0.85rem;
-}
-.v-hud b { background: var(--v-green); color: var(--v-ink); border-radius: 999px; padding: 0.2em 0.7em; font-family: var(--font-unbounded); font-size: 0.72rem; }
 
 /* section heads */
 .v-sec { padding-block: clamp(48px, 7vw, 110px); }
@@ -147,8 +140,6 @@ body:has(.vibrant)::before { display: none; }
 .v-card .n { font-family: var(--font-unbounded); font-weight: 700; font-size: 0.85rem; }
 .v-card .go { align-self: flex-end; width: 46px; height: 46px; border: var(--v-bw) solid var(--v-ink); border-radius: 50%; display: grid; place-items: center; background: var(--v-ink); color: var(--v-paper); font-weight: 700; transition: 0.2s; }
 .v-card:hover .go { background: var(--v-paper); color: var(--v-ink); transform: rotate(-45deg); }
-.v-card.iot { background: var(--v-cyan); }
-.v-card.del { background: var(--v-green); }
 
 /* demo (game) */
 .v-game { display: grid; gap: clamp(18px, 2.4vw, 40px); grid-template-columns: 1fr; padding: clamp(20px, 3vw, 52px); background: var(--v-ink); color: #fff; border-block: var(--v-bw) solid var(--v-ink); }
@@ -172,10 +163,6 @@ body:has(.vibrant)::before { display: none; }
 .v-read b { font-family: var(--font-unbounded); font-weight: 700; font-size: clamp(1.15rem, 1.8vw, 1.6rem); color: var(--v-lime); }
 .v-meter { height: 16px; border: 2px solid #fff; }
 .v-meter u { display: block; height: 100%; width: 0; background: linear-gradient(120deg, var(--v-lime), var(--v-cyan)); transition: width 0.4s; }
-.v-badge { display: none; align-items: center; gap: 12px; background: var(--v-amber); color: var(--v-ink); border: var(--v-bw) solid var(--v-ink); padding: 12px 14px; font-weight: 800; }
-.v-badge.on { display: flex; animation: v-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1); }
-@keyframes v-pop { from { transform: scale(0.6) rotate(-6deg); opacity: 0; } }
-.v-conf { position: fixed; width: 10px; height: 14px; z-index: 70; pointer-events: none; }
 
 /* case studies */
 .v-work { display: grid; gap: clamp(22px, 3vw, 56px); grid-template-columns: 1fr; }
@@ -321,7 +308,7 @@ body:has(.vibrant)::before { display: none; }
 .v-foot .office { margin-bottom: 18px; font-size: 0.92rem; line-height: 1.5; color: rgba(255, 247, 227, 0.82); }
 .v-foot .office a { display: block; }
 .v-foot .office .city { font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; color: var(--v-cyan); margin-bottom: 4px; }
-.v-foot .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px var(--v-pad) 78px; border-top: 1px solid rgba(255, 247, 227, 0.2); font-size: 0.9rem; color: rgba(255, 247, 227, 0.7); }
+.v-foot .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px var(--v-pad) 22px; border-top: 1px solid rgba(255, 247, 227, 0.2); font-size: 0.9rem; color: rgba(255, 247, 227, 0.7); }
 .v-foot .bottom div { display: flex; gap: 20px; }
 
 .vibrant.v-page { padding-bottom: clamp(40px, 6vw, 90px); }
@@ -391,8 +378,18 @@ body:has(.vibrant)::before { display: none; }
 /* ── calmer, more corporate finish: soft corners ── */
 .vibrant .v-brut, .vibrant .v-btn, .vibrant .v-art, .vibrant .v-devices, .vibrant .v-ihero .pic, .vibrant .v-night,
 .vibrant .v-form, .vibrant .v-form input, .vibrant .v-form textarea, .vibrant .v-panel, .vibrant .v-cta, .vibrant .v-cso,
-.vibrant .v-metrics div, .vibrant .v-why, .vibrant .v-pick, .vibrant .v-face, .vibrant .v-browser, .vibrant .v-badge,
+.vibrant .v-metrics div, .vibrant .v-why, .vibrant .v-pick, .vibrant .v-face, .vibrant .v-browser,
 .v-menu-btn, .v-dd-panel, .v-dd-panel a, .v-foot .li { border-radius: var(--v-r); }
 .vibrant .v-cso, .vibrant .v-why, .vibrant .v-ihero .pic, .vibrant .v-devices { overflow: hidden; }
 .vibrant .v-browser .bar { border-radius: calc(var(--v-r) - 3px) calc(var(--v-r) - 3px) 0 0; }
 .vibrant .v-form input:focus-visible, .vibrant .v-form textarea:focus-visible { outline-offset: 2px; }
+
+/* quiet confirmation in the demo panel */
+.v-done { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: var(--v-r); background: rgba(255, 255, 255, 0.06); }
+.v-done .tick { flex: none; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--v-lime); color: var(--v-ink); font-weight: 800; }
+.v-done strong { display: block; font-weight: 800; }
+.v-done small { display: block; font-weight: 600; font-size: 0.875rem; opacity: 0.85; }
+
+/* service cards: white with a coloured top edge */
+.v-card.iot { background: #fff; border-top: 8px solid var(--v-cyan); }
+.v-card.del { background: #fff; border-top: 8px solid var(--v-green); }

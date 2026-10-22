@@ -11,33 +11,10 @@ const DEVICES = [
   { label: 'Pump', reading: 'Pump pressure', base: 7.1, unit: ' bar', digits: 1, x: 59, y: 74.3 },
 ];
 
-function confetti() {
-  const colors = ['#C8FF2E', '#1DBCD6', '#5CB85C', '#FFB300', '#FF4FA3'];
-  for (let i = 0; i < 46; i++) {
-    const d = document.createElement('i');
-    d.className = 'v-conf';
-    d.style.background = colors[i % 5];
-    d.style.left = 30 + Math.random() * 40 + 'vw';
-    d.style.top = '40vh';
-    document.body.appendChild(d);
-    d.animate(
-      [
-        { transform: 'translate(0,0) rotate(0)', opacity: 1 },
-        {
-          transform: `translate(${(Math.random() - 0.5) * 500}px, ${200 + Math.random() * 320}px) rotate(${Math.random() * 720}deg)`,
-          opacity: 0,
-        },
-      ],
-      { duration: 1400 + Math.random() * 900, easing: 'cubic-bezier(.2,.8,.3,1)' }
-    ).onfinish = () => d.remove();
-  }
-}
-
 export default function IotDemo() {
   const [on, setOn] = useState<boolean[]>([false, false, false, false]);
   const onRef = useRef(on); // always-current copy so rapid taps never read stale state
   const [vals, setVals] = useState<number[]>(DEVICES.map((d) => d.base));
-  const [won, setWon] = useState(false);
   const count = on.filter(Boolean).length;
 
   useEffect(() => {
@@ -52,10 +29,6 @@ export default function IotDemo() {
     const next = onRef.current.map((v, j) => (j === i ? !v : v));
     onRef.current = next;
     setOn(next);
-    if (!won && next.every(Boolean)) {
-      setWon(true);
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) confetti();
-    }
   };
 
   return (
@@ -124,16 +97,17 @@ export default function IotDemo() {
             <u style={{ width: count * 25 + '%' }} />
           </div>
         </div>
-        <div className={`v-badge${won ? ' on' : ''}`}>
-          <span className="v-disp" style={{ fontSize: '1.6rem' }} aria-hidden="true">
-            ★
-          </span>
-          <span>
-            Badge unlocked: <b>Smart Building</b>
-            <br />
-            <small style={{ fontWeight: 700, fontSize: '0.9rem' }}>The real platform runs 10+ modules like these.</small>
-          </span>
-        </div>
+        {count === 4 && (
+          <div className="v-done" role="status">
+            <span className="tick" aria-hidden="true">
+              ✓
+            </span>
+            <span>
+              <strong>All systems connected</strong>
+              <small>The real platform runs 10+ modules like these.</small>
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );

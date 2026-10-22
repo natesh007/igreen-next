@@ -1,20 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-// Milestones for the scroll "XP" chip.
-const STEPS: [number, string, string][] = [
-  [0, 'LVL 1', 'Founded 2008'],
-  [0.2, 'LVL 2', '232+ clients'],
-  [0.45, 'LVL 3', '521+ projects'],
-  [0.7, 'LVL 4', '18+ years strong'],
-  [0.97, 'MAX', 'Let’s build together'],
-];
-
-/** Scroll reveals, count-up numbers and the scroll progress / level chip. Renders no layout of its own. */
-export default function Effects({ chip = true }: { chip?: boolean }) {
+/** Scroll reveals, count-up numbers and a thin reading-progress bar. Renders no layout of its own. */
+export default function Effects() {
   const barRef = useRef<HTMLElement>(null);
-  const [step, setStep] = useState(STEPS[0]);
 
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -62,11 +52,6 @@ export default function Effects({ chip = true }: { chip?: boolean }) {
         const h = document.documentElement;
         const p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
         if (barRef.current) barRef.current.style.width = p * 100 + '%';
-        let s = STEPS[0];
-        STEPS.forEach((x) => {
-          if (p >= x[0]) s = x;
-        });
-        setStep((prev) => (prev[0] === s[0] ? prev : s));
       });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -80,16 +65,8 @@ export default function Effects({ chip = true }: { chip?: boolean }) {
   }, []);
 
   return (
-    <>
-      <div className="v-bar" aria-hidden="true">
-        <i ref={barRef} />
-      </div>
-      {chip && (
-        <div className="v-hud" aria-hidden="true">
-          <b>{step[1]}</b>
-          <span>{step[2]}</span>
-        </div>
-      )}
-    </>
+    <div className="v-bar" aria-hidden="true">
+      <i ref={barRef} />
+    </div>
   );
 }

@@ -28,7 +28,7 @@ export default function IndustriesPage() {
       <noscript>
         <style>{'.v-rv{opacity:1!important;transform:none!important}'}</style>
       </noscript>
-      <Effects chip={false} />
+      <Effects />
 
       <section className="v-w v-ihero" aria-labelledby="ind-page-h">
         <div>
