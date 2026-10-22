@@ -12,7 +12,7 @@ const STEPS: [number, string, string][] = [
 ];
 
 /** Scroll reveals, count-up numbers and the scroll progress / level chip. Renders no layout of its own. */
-export default function Effects() {
+export default function Effects({ chip = true }: { chip?: boolean }) {
   const barRef = useRef<HTMLElement>(null);
   const [step, setStep] = useState(STEPS[0]);
 
@@ -84,10 +84,12 @@ export default function Effects() {
       <div className="v-bar" aria-hidden="true">
         <i ref={barRef} />
       </div>
-      <div className="v-hud" aria-hidden="true">
-        <b>{step[1]}</b>
-        <span>{step[2]}</span>
-      </div>
+      {chip && (
+        <div className="v-hud" aria-hidden="true">
+          <b>{step[1]}</b>
+          <span>{step[2]}</span>
+        </div>
+      )}
     </>
   );
 }

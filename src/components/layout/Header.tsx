@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import Logo from '../ui/Logo';
+import Image from 'next/image';
 
 const iotServices = [
   { href: '/services/iot-solutions', label: 'IoT Solutions' },
@@ -20,6 +20,7 @@ const deliveryServices = [
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
+  { href: '/industries', label: 'Industries' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/careers', label: 'Careers' },
 ];
@@ -33,7 +34,7 @@ export default function Header() {
     <header className="vibrant v-head">
       <div className="in">
         <Link href="/" className="v-logo" aria-label="iGreen Systems home">
-          <Logo />
+          <Image src="/igreen_1.png" alt="iGreen Systems logo" width={154} height={37} style={{ height: 34, width: 'auto' }} priority />
         </Link>
 
         {/* Desktop nav */}
@@ -68,6 +69,7 @@ export default function Header() {
             </div>
           </div>
 
+          <Link href="/industries">Industries</Link>
           <Link href="/portfolio">Portfolio</Link>
           <Link href="/careers">Careers</Link>
           <Link href="/contact" className="v-btn v-btn-sm">

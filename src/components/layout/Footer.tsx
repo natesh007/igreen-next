@@ -17,6 +17,7 @@ const deliveryServices = [
 
 const companyLinks = [
   { href: '/about', label: 'About Us' },
+  { href: '/industries', label: 'Industries' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/careers', label: 'Careers' },
   { href: '/contact', label: 'Contact' },

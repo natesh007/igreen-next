@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { industries } from './data';
+import { industries } from '@/components/industries/data';
+import IndustryCards from '@/components/industries/IndustryCards';
 
 export default function Industries() {
   return (
@@ -8,19 +9,14 @@ export default function Industries() {
         <h2 className="v-disp" id="ind-h">
           Solutions by industry
         </h2>
-        <p>The sectors where our systems are already running.</p>
+        <p>Pick your industry to see what we have built and the results it delivered.</p>
       </div>
-      <div className="v-ind">
-        {industries.map((i) => (
-          <Link className="v-brut v-rv" href="/portfolio" key={i.title}>
-            <span>
-              {i.title}
-              <em>{i.sub}</em>
-            </span>
-            <span className="dot" style={{ background: i.dot }} />
-          </Link>
-        ))}
-      </div>
+      <IndustryCards items={industries} />
+      <p style={{ marginTop: 24 }}>
+        <Link className="v-btn alt" href="/industries">
+          All industries →
+        </Link>
+      </p>
     </section>
   );
 }

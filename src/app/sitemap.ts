@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { industries } from '@/components/industries/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://igreensystems.com';
@@ -16,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services/web-applications`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/services/mobile-apps`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/services/cloud-solutions`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/industries`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    ...industries.map((i) => ({ url: `${base}/industries/${i.slug}`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 })),
     { url: `${base}/portfolio`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${base}/careers`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${base}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
