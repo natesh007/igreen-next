@@ -529,3 +529,14 @@ body:has(.vibrant)::before { display: none; }
 .v-collage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .v-collage figcaption { position: absolute; left: 8px; top: 8px; background: #fff; color: var(--v-ink); border: 2px solid var(--v-ink); font-weight: 800; font-size: 0.75rem; letter-spacing: 0.04em; padding: 0.25em 0.6em; border-radius: 6px; }
 .v-collage .cap { position: absolute; left: 8px; bottom: 8px; background: var(--v-ink); color: #fff; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3em 0.7em; }
+.v-legal { display: grid; gap: clamp(18px, 3vw, 44px); grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 960px) { .v-legal { grid-template-columns: minmax(0, 280px) minmax(0, 1fr); } .v-legal .toc { position: sticky; top: 96px; } }
+.v-legal .toc { background: #fff; padding: 18px 20px; display: grid; gap: 10px; }
+.v-legal .toc ol { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; font-weight: 700; font-size: 0.95rem; }
+.v-legal .toc a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; display: inline-block; padding: 4px 0; }
+.v-legal .doc { display: grid; gap: clamp(22px, 3vw, 36px); max-width: 46em; }
+.v-legal .doc section { display: grid; gap: 12px; scroll-margin-top: 96px; }
+.v-legal .doc h2 { font-weight: 700; font-size: clamp(1.25rem, 1.8vw, 1.7rem); letter-spacing: -0.02em; line-height: 1.15; }
+.v-legal .doc p, .v-legal .doc li { font-weight: 600; }
+.v-legal .doc ul { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
+.v-legal .doc a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; font-weight: 800; }
