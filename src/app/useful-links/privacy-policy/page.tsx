@@ -104,7 +104,17 @@ const sections: LegalSection[] = [
             and Terms.
           </li>
           <li>
-            <strong>Analytics.</strong> We use Vercel Analytics for aggregate page-view statistics.
+            <strong>Analytics.</strong> We use Google Analytics to understand, in aggregate, how visitors use the site (for example which pages are
+            viewed and how people arrive). Google Analytics uses cookies and similar identifiers and receives technical data such as your IP
+            address and device information, under the{' '}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+              Google Privacy Policy
+            </a>
+            . You can opt out with the{' '}
+            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">
+              Google Analytics opt-out browser add-on
+            </a>
+            .
           </li>
         </ul>
         <p>
@@ -139,11 +149,16 @@ const sections: LegalSection[] = [
     id: 'cookies',
     title: 'Cookies and similar technologies',
     body: (
-      <p>
-        This site does not run advertising or tracking cookies. Our providers, such as Google reCAPTCHA and our analytics, may use limited
-        technical storage to operate and secure the service. You can block or clear cookies in your browser settings; the forms may not work
-        without reCAPTCHA.
-      </p>
+      <>
+        <p>
+          This site does not use advertising cookies. Google Analytics sets cookies and uses similar identifiers to count visits and see which pages
+          are used, and Google reCAPTCHA uses limited technical storage to keep our forms safe from bots.
+        </p>
+        <p>
+          You can block or clear cookies in your browser settings, or use the Google Analytics opt-out add-on. Blocking reCAPTCHA may stop our
+          forms from working; you can always email us instead.
+        </p>
+      </>
     ),
   },
   {
