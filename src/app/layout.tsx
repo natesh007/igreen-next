@@ -4,8 +4,7 @@ import "./globals.css";
 import "./vibrant.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 const unbounded = Unbounded({ variable: "--font-unbounded", subsets: ["latin"], weight: ["500", "700", "900"], display: "swap" });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], weight: ["400", "500", "700", "800"], display: "swap" });
@@ -178,8 +177,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <Analytics />
-        <SpeedInsights />
+        {/* Google tag (gtag.js) — one tag for the whole site, loaded from the root layout */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-JBSWRHXTX4" strategy="afterInteractive" />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-JBSWRHXTX4');`}
+        </Script>
       </body>
     </html>
   );
