@@ -1,4 +1,4 @@
-import type { ProjectArtKind } from '@/components/visuals/ProjectArt';
+export type ProjectArtKind = 'building' | 'visa' | 'hotel' | 'twin' | 'firepump' | 'cold' | 'restaurant' | 'matching' | 'tank';
 
 export type Project = {
   title: string;
