@@ -4,6 +4,7 @@ import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 export const metadata: Metadata = {
   title: 'Cloud Solutions',
   description: 'Cloud solutions from Hyderabad, India — AWS, Azure, and GCP architecture, cloud migration, DevOps automation, and IoT cloud backends for enterprises across Andhra Pradesh and India.',
+  alternates: { canonical: '/services/cloud-solutions' },
 };
 
 export default function CloudSolutionsPage() {

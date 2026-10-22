@@ -4,6 +4,7 @@ import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 export const metadata: Metadata = {
   title: 'Smart Manufacturing',
   description: 'Smart manufacturing and Industry 4.0 solutions from Hyderabad, India — real-time production monitoring, predictive maintenance, OEE optimization, and digital factory transformation for Indian enterprises.',
+  alternates: { canonical: '/services/smart-manufacturing' },
 };
 
 export default function SmartManufacturingPage() {

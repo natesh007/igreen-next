@@ -4,6 +4,7 @@ import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 export const metadata: Metadata = {
   title: 'Digital Transformation',
   description: 'Digital transformation consulting for businesses in Hyderabad, Kakinada, and across India — process digitization, legacy modernization, and technology-aligned business strategy since 2008.',
+  alternates: { canonical: '/services/digital-transformation' },
 };
 
 export default function DigitalTransformationPage() {

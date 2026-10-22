@@ -4,6 +4,7 @@ import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 export const metadata: Metadata = {
   title: 'Connected Devices',
   description: 'Connected device ecosystems from iGreen Systems, Hyderabad — hardware selection, firmware development, and cloud connectivity for industrial and commercial IoT deployments across India.',
+  alternates: { canonical: '/services/connected-devices' },
 };
 
 export default function ConnectedDevicesPage() {

@@ -4,6 +4,7 @@ import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 export const metadata: Metadata = {
   title: 'Edge Computing',
   description: 'Edge computing solutions from iGreen Systems, Hyderabad — low-latency IoT architectures that process data at the source, reduce bandwidth costs, and enable offline-first operations across India.',
+  alternates: { canonical: '/services/edge-computing' },
 };
 
 export default function EdgeComputingPage() {

@@ -4,6 +4,7 @@ import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 export const metadata: Metadata = {
   title: 'Web Applications',
   description: 'Web application development in Hyderabad, India — scalable React and Next.js web apps, IoT dashboards, enterprise portals, and cloud-native platforms for businesses across Andhra Pradesh and beyond.',
+  alternates: { canonical: '/services/web-applications' },
 };
 
 export default function WebApplicationsPage() {
