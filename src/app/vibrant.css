@@ -85,26 +85,6 @@ body:has(.vibrant)::before { display: none; }
 .v-hero h1 .g { background: var(--v-gb); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .v-hero .v-lead { margin: clamp(16px, 2vw, 28px) 0; }
 .v-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
-.v-artwrap { position: relative; }
-.v-art { position: relative; aspect-ratio: 5 / 4; min-height: 300px; border: var(--v-bw) solid var(--v-ink); box-shadow: var(--v-shadow-lg); overflow: hidden; background: var(--v-sky); isolation: isolate; }
-.v-art .blob { position: absolute; border-radius: 50%; filter: blur(clamp(24px, 5vw, 60px)); z-index: -1; will-change: transform; }
-.v-art .b1 { width: 70%; aspect-ratio: 1; left: -12%; top: -20%; background: var(--v-cyan); animation: v-f1 11s ease-in-out infinite alternate; }
-.v-art .b2 { width: 65%; aspect-ratio: 1; right: -14%; top: 10%; background: var(--v-green); animation: v-f2 13s ease-in-out infinite alternate; }
-.v-art .b3 { width: 60%; aspect-ratio: 1; left: 20%; bottom: -30%; background: #8fe3ee; animation: v-f3 15s ease-in-out infinite alternate; }
-@keyframes v-f1 { to { transform: translate(30%, 25%) scale(1.15); } }
-@keyframes v-f2 { to { transform: translate(-28%, 20%) scale(0.9); } }
-@keyframes v-f3 { to { transform: translate(-25%, -30%) scale(1.2); } }
-.v-art .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; z-index: -1; }
-.v-art .tint { position: absolute; inset: 0; z-index: -1; background: linear-gradient(135deg, rgba(29, 188, 214, 0.42), rgba(92, 184, 92, 0.3)); mix-blend-mode: multiply; }
-.v-browser { position: absolute; left: 6%; top: 10%; width: 74%; border: var(--v-bw) solid var(--v-ink); background: rgba(12, 14, 28, 0.46); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); box-shadow: var(--v-shadow); }
-.v-browser .bar { display: flex; align-items: center; gap: 6px; padding: 7px 10px; border-bottom: var(--v-bw) solid var(--v-ink); background: rgba(255, 247, 227, 0.82); }
-.v-browser .bar i { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--v-ink); background: #fff; }
-.v-browser .bar span { margin-left: 8px; font-size: 0.78rem; font-weight: 800; background: #fff; border: 2px solid var(--v-ink); border-radius: 999px; padding: 0 0.7em; }
-.v-browser img { width: 100%; background: transparent; }
-.v-phone { position: absolute; right: 5%; bottom: 7%; width: 27%; aspect-ratio: 560 / 835; border: var(--v-bw) solid var(--v-ink); border-radius: 22px; overflow: hidden; background: #fff; box-shadow: var(--v-shadow); transform: rotate(4deg); animation: v-bob 5s ease-in-out infinite alternate; }
-.v-phone img { width: 100%; height: 100%; object-fit: cover; }
-@keyframes v-bob { to { transform: rotate(2deg) translateY(-8px); } }
-.v-art .cap { position: absolute; left: 10px; bottom: 10px; background: var(--v-ink); color: #fff; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.35em 0.8em; }
 
 /* ticker */
 
@@ -393,3 +373,50 @@ body:has(.vibrant)::before { display: none; }
 /* service cards: white with a coloured top edge */
 .v-card.iot { background: #fff; border-top: 8px solid var(--v-cyan); }
 .v-card.del { background: #fff; border-top: 8px solid var(--v-green); }
+
+/* ── hero mosaic: one tidy grid for the breadth of services ── */
+.v-mosaic { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); grid-template-areas: "bld bld" "rest fuel" "visa match"; grid-auto-rows: minmax(150px, auto); }
+.v-mosaic .bld { grid-area: bld; min-height: 250px; }
+.v-mosaic .rest { grid-area: rest; }
+.v-mosaic .fuel { grid-area: fuel; }
+.v-mosaic .visa { grid-area: visa; }
+.v-mosaic .match { grid-area: match; }
+@media (min-width: 960px) {
+  .v-mosaic { grid-template-columns: repeat(3, 1fr); grid-template-areas: "bld bld rest" "fuel visa match"; grid-template-rows: minmax(250px, 1.15fr) minmax(220px, 1fr); min-height: 500px; }
+  .v-mosaic .bld { min-height: 0; }
+}
+.v-mosaic .m { position: relative; margin: 0; overflow: hidden; isolation: isolate; border: var(--v-bw) solid var(--v-ink); border-radius: var(--v-r); box-shadow: var(--v-shadow); background: var(--v-ink); opacity: 0; transform: translateY(14px); animation: v-m-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; animation-delay: calc(var(--i, 0) * 90ms); }
+@keyframes v-m-in { to { opacity: 1; transform: none; } }
+.v-mosaic .ph { object-fit: cover; transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.v-mosaic .bld .ph { object-position: 52% 42%; }
+.v-mosaic .m:hover .ph { transform: scale(1.05); }
+.v-mosaic .shade { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(20, 17, 28, 0) 38%, rgba(20, 17, 28, 0.84)); }
+.v-mosaic .cap { position: absolute; left: 12px; right: 12px; bottom: 10px; z-index: 2; display: grid; gap: 2px; color: #fff; }
+.v-mosaic .cap strong { font-family: var(--font-unbounded); font-weight: 700; font-size: 0.95rem; line-height: 1.1; letter-spacing: -0.02em; }
+.v-mosaic .cap em { font-style: normal; font-weight: 700; font-size: 0.8125rem; opacity: 0.92; line-height: 1.25; }
+.v-mosaic .cap.dark { color: var(--v-ink); }
+.v-mosaic .tag { position: absolute; top: 10px; left: 10px; z-index: 2; display: inline-flex; align-items: center; gap: 7px; padding: 0.25em 0.75em; border-radius: 999px; background: rgba(255, 255, 255, 0.92); color: var(--v-ink); font-weight: 800; font-size: 0.8125rem; }
+.v-mosaic .tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--v-green); box-shadow: 0 0 0 3px rgba(92, 184, 92, 0.3); animation: v-live 2s ease-in-out infinite; }
+@keyframes v-live { 50% { box-shadow: 0 0 0 6px rgba(92, 184, 92, 0.08); } }
+.v-mosaic .glass { position: absolute; z-index: 1; left: 10px; width: 42%; bottom: 62px; border: 1.5px solid rgba(255, 255, 255, 0.55); border-radius: 10px; overflow: hidden; background: rgba(12, 14, 28, 0.42); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.v-mosaic .glass img { width: 100%; height: auto; }
+/* product tiles */
+.v-mosaic .visa { background: linear-gradient(160deg, #ffffff, #e5f7ec); }
+.v-mosaic .match { background: linear-gradient(160deg, #ffffff, #e3f4fa); }
+.v-mosaic .ui { position: absolute; inset: 0; padding: 14px 14px 62px; display: grid; align-content: center; gap: 10px; color: var(--v-ink); }
+.v-mosaic .chk { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.v-mosaic .chk li { position: relative; padding-left: 28px; font-weight: 700; font-size: 0.875rem; line-height: 1.2; }
+.v-mosaic .chk li::before { content: '✓'; position: absolute; left: 0; top: -1px; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: var(--v-green); color: #fff; font-size: 0.75rem; font-weight: 800; }
+.v-mosaic .bar { display: block; height: 8px; border-radius: 999px; background: rgba(20, 17, 28, 0.12); overflow: hidden; }
+.v-mosaic .bar u { display: block; height: 100%; width: 100%; border-radius: 999px; background: var(--v-gb); }
+.v-mosaic .rank { display: grid; grid-template-columns: 28px 1fr 18px; align-items: center; gap: 8px; }
+.v-mosaic .rank .av { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--v-sky); color: #3b6f7c; }
+.v-mosaic .rank b { font-size: 0.8125rem; font-weight: 800; opacity: 0.6; }
+.v-mosaic-foot { margin: 18px 2px 0; font-weight: 700; font-size: 0.9375rem; color: #4a4560; }
+.v-mosaic-foot a { color: var(--v-ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .v-mosaic .m { opacity: 1; transform: none; } }
+
+/* soft brand glow behind the hero grid */
+.v-mosaicwrap { position: relative; isolation: isolate; }
+.v-mosaicwrap::before { content: ''; position: absolute; inset: -34px -28px; z-index: -1; pointer-events: none; background: radial-gradient(55% 55% at 85% 12%, rgba(29, 188, 214, 0.32), transparent 72%), radial-gradient(50% 50% at 8% 92%, rgba(92, 184, 92, 0.3), transparent 72%); filter: blur(14px); }
+@media (min-width: 960px) { .v-mosaic { min-height: 530px; } }
