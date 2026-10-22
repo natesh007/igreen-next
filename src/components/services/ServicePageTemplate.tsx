@@ -1,12 +1,8 @@
-'use client';
-
+import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Reveal } from '@/components/ui/Reveal';
-import { ShapesBackground } from '@/components/ui/shape-landing-hero';
-import ServiceArt from '@/components/visuals/ServiceArt';
-
-const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+import Effects from '@/components/homepage/Effects';
+import EnquiryCta from '@/components/homepage/EnquiryCta';
+import { serviceImages } from './serviceImages';
 
 export interface ServiceFeature {
   title: string;
@@ -34,230 +30,134 @@ export default function ServicePageTemplate({
   relatedServices,
   path,
 }: ServicePageProps) {
+  const slug = path.split('/').pop()!;
+  const img = serviceImages[slug];
+  const kind = accent === '#5CB85C' ? 'del' : 'iot';
+
   const jsonLd = [
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      'itemListElement': [
-        { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://igreensystems.com' },
-        { '@type': 'ListItem', 'position': 2, 'name': 'Services', 'item': 'https://igreensystems.com/services' },
-        { '@type': 'ListItem', 'position': 3, 'name': title, 'item': `https://igreensystems.com${path}` },
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://igreensystems.com' },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://igreensystems.com/services' },
+        { '@type': 'ListItem', position: 3, name: title, item: `https://igreensystems.com${path}` },
       ],
     },
     {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'name': title,
-      'description': subtitle,
-      'serviceType': badge,
-      'provider': {
-        '@type': 'Organization',
-        '@id': 'https://igreensystems.com/#organization',
-      },
-      'areaServed': [
-        { '@type': 'City', 'name': 'Hyderabad' },
-        { '@type': 'City', 'name': 'Kakinada' },
-        { '@type': 'Country', 'name': 'India' },
+      name: title,
+      description: subtitle,
+      serviceType: badge,
+      provider: { '@type': 'Organization', '@id': 'https://igreensystems.com/#organization' },
+      areaServed: [
+        { '@type': 'City', name: 'Hyderabad' },
+        { '@type': 'City', name: 'Kakinada' },
+        { '@type': 'Country', name: 'India' },
       ],
-      'url': `https://igreensystems.com${path}`,
+      url: `https://igreensystems.com${path}`,
     },
   ];
 
   return (
-    <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <div className="vibrant v-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <noscript>
+        <style>{'.v-rv{opacity:1!important;transform:none!important}'}</style>
+      </noscript>
+      <Effects />
 
-      {/* Hero */}
-      <section
-        className="relative py-28 text-center overflow-hidden"
-        style={{ backgroundColor: '#060A12' }}
-      >
-        <ShapesBackground />
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: `radial-gradient(ellipse at center, ${accent} 0%, transparent 70%)`,
-          }}
-        />
-        <ServiceArt
-          slug={path.split('/').pop()!}
-          className="hidden xl:block absolute right-[4%] top-1/2 -translate-y-1/2 w-60 h-60 opacity-25 pointer-events-none"
-        />
-        <ServiceArt
-          slug={path.split('/').pop()!}
-          className="hidden xl:block absolute left-[4%] top-1/2 -translate-y-1/2 w-60 h-60 opacity-[0.07] -scale-x-100 pointer-events-none"
-        />
-        <div className="relative max-w-3xl mx-auto px-4">
-          <motion.span
-            className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6 border"
-            style={{ color: accent, borderColor: `${accent}40`, backgroundColor: `${accent}10` }}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: EASE }}
-          >
+      <section className="v-w v-ihero two" aria-labelledby="svc-h">
+        <div>
+          <nav className="v-crumbs" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/services">Services</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{title}</span>
+          </nav>
+          <span className="v-chip" style={{ background: kind === 'del' ? 'var(--v-lime)' : 'var(--v-sky)' }}>
             {badge}
-          </motion.span>
-          <motion.h1
-            className="text-5xl font-bold text-white mb-6"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
-          >
-            {title}
-          </motion.h1>
-          <motion.p
-            className="text-lg text-gray-400 leading-relaxed"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.2, ease: EASE }}
-          >
-            {subtitle}
-          </motion.p>
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.3, ease: EASE }}
-          >
-            <Link
-              href="/contact"
-              className="px-8 py-3 rounded-xl font-semibold text-white transition-all hover:opacity-90"
-              style={{ background: `linear-gradient(135deg, ${accent}, #5CB85C)` }}
-            >
-              Discuss Your Project
+          </span>
+          <h1 id="svc-h">{title}</h1>
+          <p className="v-lead">{subtitle}</p>
+          <div className="v-cta-row" style={{ marginTop: 22 }}>
+            <Link className="v-btn" href="#enquire">
+              Discuss your project →
             </Link>
-            <Link
-              href="/services"
-              className="px-8 py-3 rounded-xl font-semibold border transition-all hover:bg-white/5"
-              style={{ borderColor: '#374151', color: '#D1D5DB' }}
-            >
-              All Services
+            <Link className="v-btn alt" href="/services">
+              All services
             </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="mb-10">
-            <h2
-              className="text-3xl font-bold text-white"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              What We Deliver
-            </h2>
-          </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map((f, i) => (
-              <Reveal key={f.title} delay={i * 0.07}>
-                <motion.div
-                  className="rounded-2xl p-7 border"
-                  style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-                  whileHover={{ boxShadow: `0 0 28px ${accent}30` }}
-                  transition={{ duration: 0.22 }}
-                >
-                  <div
-                    className="w-1 h-8 rounded mb-4"
-                    style={{ backgroundColor: accent }}
-                  />
-                  <h3
-                    className="font-semibold text-white mb-2"
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
-                    {f.title}
-                  </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{f.desc}</p>
-                </motion.div>
-              </Reveal>
-            ))}
           </div>
         </div>
+        {img && (
+          <div className="pic v-rv">
+            <Image src={img.hero} alt={img.alt} width={1400} height={788} sizes="(min-width: 960px) 48vw, 100vw" priority />
+            <span className="cap">{img.cap}</span>
+          </div>
+        )}
       </section>
 
-      {/* Use Cases */}
-      <section className="py-16" style={{ backgroundColor: '#060A12' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="mb-8">
-            <h2
-              className="text-3xl font-bold text-white"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              Common Use Cases
-            </h2>
-          </Reveal>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {useCases.map((uc, i) => (
-              <motion.li
-                key={uc}
-                className="flex items-center gap-3 px-5 py-3 rounded-xl border text-sm text-gray-300"
-                style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
-              >
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: accent }} />
-                {uc}
-              </motion.li>
-            ))}
-          </ul>
+      <section className="v-w v-sec" style={{ paddingTop: 0 }} aria-labelledby="feat-h">
+        <div className="v-sh">
+          <h2 className="v-disp" id="feat-h">
+            What we deliver
+          </h2>
         </div>
-      </section>
-
-      {/* Related Services */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <h2
-              className="text-2xl font-bold text-white mb-6"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              Related Services
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              {relatedServices.map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  className="px-5 py-2 rounded-xl text-sm font-medium border transition-all hover:bg-white/5"
-                  style={{ borderColor: '#374151', color: '#D1D5DB' }}
-                >
-                  {s.label} →
-                </Link>
-              ))}
+        <div className="v-svc" style={{ marginBottom: 0 }}>
+          {features.map((f, i) => (
+            <div className={`v-card v-brut ${kind} v-rv`} key={f.title}>
+              <div>
+                <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
+              </div>
             </div>
-          </Reveal>
+          ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 text-center" style={{ backgroundColor: '#060A12' }}>
-        <div className="max-w-xl mx-auto px-4">
-          <Reveal>
-            <h2
-              className="text-3xl font-bold text-white mb-4"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              Ready to get started?
-            </h2>
-            <p className="text-gray-400 mb-8">
-              Let&apos;s talk about how we can apply this to your specific challenges.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block px-8 py-3.5 rounded-xl text-base font-semibold text-white transition-all hover:opacity-90"
-              style={{ background: 'linear-gradient(135deg, #1DBCD6, #5CB85C)' }}
-            >
-              Get in Touch
+      {img && (
+        <section className="v-w" style={{ paddingBottom: 'clamp(30px, 5vw, 70px)' }} aria-label="In the field">
+          <div className="v-band v-brut v-rv">
+            <Image src={img.band} alt={img.bandAlt} width={1400} height={640} sizes="100vw" />
+            <span className="cap">{img.bandCap ?? img.cap}</span>
+          </div>
+        </section>
+      )}
+
+      <section className="v-w v-sec" style={{ paddingTop: 0 }} aria-labelledby="uc-h">
+        <div className="v-sh">
+          <h2 className="v-disp" id="uc-h">
+            Common use cases
+          </h2>
+        </div>
+        <ul className="v-checks">
+          {useCases.map((uc) => (
+            <li className="v-brut v-rv" key={uc}>
+              {uc}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="v-w v-sec" style={{ paddingTop: 0 }} aria-labelledby="rel-h">
+        <div className="v-sh">
+          <h2 className="v-disp" id="rel-h">
+            Related services
+          </h2>
+        </div>
+        <div className="v-cta-row">
+          {relatedServices.map((s) => (
+            <Link className="v-btn alt" href={s.href} key={s.href}>
+              {s.label} →
             </Link>
-          </Reveal>
+          ))}
         </div>
       </section>
+
+      <EnquiryCta />
     </div>
   );
 }

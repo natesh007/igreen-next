@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import { PinArt } from '@/components/visuals/MapArt';
-import { Reveal } from '@/components/ui/Reveal';
+import Image from 'next/image';
+import Link from 'next/link';
+import Effects from '@/components/homepage/Effects';
 import ContactForm from '@/components/contact/ContactForm';
-import { BallpitCanvas } from '@/components/ui/interactive-hero-backgrounds';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
   description: 'Get in touch with iGreen Systems — IoT solutions and digital transformation consulting in Hyderabad and Kakinada. Offices in Telangana and Andhra Pradesh. Respond within 1 business day.',
+  alternates: { canonical: '/contact' },
 };
 
 const offices = [
@@ -21,25 +22,6 @@ const offices = [
     phones: ['+91 984 948 1081', '+91 934 785 1081'],
   },
 ];
-
-const phoneIcon = (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-  </svg>
-);
-
-const emailIcon = (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-  </svg>
-);
-
-const locationIcon = (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-  </svg>
-);
 
 const contactJsonLd = [
   {
@@ -62,135 +44,81 @@ const contactJsonLd = [
 
 export default function ContactPage() {
   return (
-    <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
-      />
-      {/* Hero + Office Cards — single section so balls fall behind both */}
-      <section
-        className="pt-20 pb-14 text-center relative overflow-hidden"
-        style={{ backgroundColor: '#060A12' }}
-      >
-        <BallpitCanvas />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 30%, #1DBCD615 0%, transparent 70%)' }}
-        />
+    <div className="vibrant v-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }} />
+      <noscript>
+        <style>{'.v-rv{opacity:1!important;transform:none!important}'}</style>
+      </noscript>
+      <Effects />
 
-        {/* Title */}
-        <div className="max-w-2xl mx-auto px-4 relative z-10 mb-12">
-          <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#1DBCD6' }}>
-              Contact Us
-            </p>
-            <h1 className="text-5xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Let&apos;s Start a Conversation
-            </h1>
-            <p className="text-gray-400 text-lg">
-              Tell us about your project and we&apos;ll get back to you within one business day.
-            </p>
-          </Reveal>
+      <section className="v-w v-ihero two" aria-labelledby="con-h">
+        <div>
+          <nav className="v-crumbs" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Contact</span>
+          </nav>
+          <span className="v-chip" style={{ background: 'var(--v-sky)' }}>
+            Contact us
+          </span>
+          <h1 id="con-h">Let&apos;s start a conversation</h1>
+          <p className="v-lead">Tell us about your project and we&apos;ll get back to you within one business day.</p>
         </div>
-
-        {/* Office Cards — float over the ball pit */}
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {offices.map((o, i) => (
-              <Reveal key={o.city} delay={i * 0.12}>
-                <div
-                  className="relative overflow-hidden rounded-2xl p-6 border h-full text-left transition-all duration-300 hover:border-[#1DBCD640] hover:shadow-[0_0_28px_#1DBCD618]"
-                  style={{
-                    backgroundColor: 'rgba(17, 24, 39, 0.72)',
-                    backdropFilter: 'blur(10px)',
-                    WebkitBackdropFilter: 'blur(10px)',
-                    borderColor: 'rgba(31, 41, 55, 0.8)',
-                  }}
-                >
-                  <PinArt color={i === 0 ? '#1DBCD6' : '#F59E0B'} className="absolute -top-1 right-2 w-20 h-20 opacity-60 pointer-events-none" />
-                  <div className="flex items-center gap-2 mb-3">
-                    <span style={{ color: '#1DBCD6' }}>{locationIcon}</span>
-                    <p className="font-semibold text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      {o.city}
-                    </p>
-                  </div>
-                  <p className="text-sm text-gray-400 leading-relaxed mb-3">{o.address}</p>
-                  {o.phones.map((p) => (
-                    <a
-                      key={p}
-                      href={`tel:${p.replace(/\s/g, '')}`}
-                      className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors mb-1"
-                    >
-                      <span className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#5CB85C' }}>
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                        </svg>
-                      </span>
-                      {p}
-                    </a>
-                  ))}
-                </div>
-              </Reveal>
-            ))}
-          </div>
+        <div className="pic v-rv">
+          <Image src="/images/home/office-soft.webp" alt="An open-plan iGreen office with plants and the iGreen sign wall; faces blurred" width={1400} height={560} sizes="(min-width: 960px) 48vw, 100vw" priority />
+          <span className="cap">Illustrative image</span>
         </div>
       </section>
 
-      {/* Form + Info */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Info */}
-            <Reveal>
-              <div className="space-y-5">
-                <h2 className="text-xl font-semibold text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                  Get in Touch
-                </h2>
-
-                <a
-                  href="mailto:contact@igreensystems.com"
-                  className="flex items-center gap-3 p-4 rounded-xl border transition-all duration-200 hover:border-[#1DBCD640] hover:shadow-[0_0_16px_#1DBCD610]"
-                  style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-                >
-                  <span style={{ color: '#1DBCD6' }}>{emailIcon}</span>
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider">Email</p>
-                    <p className="text-white text-sm mt-0.5">contact@igreensystems.com</p>
-                  </div>
-                </a>
-
-                <a
-                  href="tel:+919849481081"
-                  className="flex items-center gap-3 p-4 rounded-xl border transition-all duration-200 hover:border-[#1DBCD640] hover:shadow-[0_0_16px_#1DBCD610]"
-                  style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-                >
-                  <span style={{ color: '#1DBCD6' }}>{phoneIcon}</span>
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider">Phone</p>
-                    <p className="text-white text-sm mt-0.5">+91 984 948 1081</p>
-                    <p className="text-white text-sm">+91 934 785 1081</p>
-                  </div>
-                </a>
-
-                <div
-                  className="rounded-xl p-5 border"
-                  style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-                >
-                  <p className="text-sm font-semibold text-white mb-2">Response Time</p>
-                  <p className="text-sm text-gray-400">
-                    We respond to all inquiries within{' '}
-                    <span style={{ color: '#5CB85C' }}>1 business day</span>.
-                    For urgent matters, mention it in your message.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Form */}
-            <Reveal delay={0.12} className="lg:col-span-2">
-              <ContactForm />
-            </Reveal>
+      <section className="v-w v-sec" style={{ paddingTop: 0 }} aria-label="Contact details and form">
+        <div className="v-contact">
+          <div className="info">
+            <a className="v-brut v-rv" href="mailto:contact@igreensystems.com">
+              <small>Email</small>
+              <strong>contact@igreensystems.com</strong>
+            </a>
+            <div className="v-brut v-rv">
+              <small>Phone</small>
+              <a href="tel:+919849481081">
+                <strong>+91 984 948 1081</strong>
+              </a>
+              <a href="tel:+919347851081">
+                <strong>+91 934 785 1081</strong>
+              </a>
+            </div>
+            <div className="v-brut v-rv">
+              <small>Response time</small>
+              <p>
+                We respond to all inquiries within <strong>1 business day</strong>. For urgent matters, mention it in your message.
+              </p>
+            </div>
           </div>
+          <ContactForm />
+        </div>
+      </section>
+
+      <section className="v-w v-sec" style={{ paddingTop: 0 }} aria-labelledby="off-h">
+        <div className="v-sh">
+          <h2 className="v-disp" id="off-h">
+            Our offices
+          </h2>
+        </div>
+        <div className="v-svc" style={{ marginBottom: 0 }}>
+          {offices.map((o, i) => (
+            <div className={`v-card v-brut ${i ? 'del' : 'iot'} v-rv`} key={o.city}>
+              <div>
+                <h3>{o.city}</h3>
+                <p>{o.address}</p>
+                <p style={{ marginTop: 10 }}>
+                  {o.phones.map((p) => (
+                    <a key={p} href={`tel:${p.replace(/\s/g, '')}`} style={{ display: 'block', fontWeight: 800, textDecoration: 'underline' }}>
+                      {p}
+                    </a>
+                  ))}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>

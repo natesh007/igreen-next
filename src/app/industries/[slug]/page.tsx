@@ -79,9 +79,9 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             </Link>
           </div>
         </div>
-        <div className="pic v-rv">
+        <div className={`pic v-rv${industry.heroTall ? ' tall' : ''}`}>
           <Image src={industry.hero} alt={industry.alt} width={1400} height={640} sizes="100vw" priority />
-          <span className="cap">Illustrative image</span>
+          <span className="cap">{industry.cap ?? 'Illustrative image'}</span>
         </div>
       </section>
 

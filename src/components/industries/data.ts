@@ -7,6 +7,10 @@ export type Industry = {
   photo: string; // 4:3 card image
   hero: string; // wide page image
   alt: string;
+  /** caption on the page image; defaults to 'Illustrative image' */
+  cap?: string;
+  /** show the hero image at 4:3 on every screen (for screenshot compositions) */
+  heroTall?: boolean;
   dot: string;
   solves: string[];
   /** exact project titles from src/data/projects.ts */
@@ -182,9 +186,11 @@ export const industries: Industry[] = [
     h1: 'Consumer web and mobile platforms',
     intro:
       'We transformed a manual, Excel-macro-driven matchmaking operation into an AI-powered digital platform. Intelligent profile analysis surfaces ranked matches instantly, delivered as web, Android and iOS apps with WhatsApp and payment gateway integrations.',
-    photo: '/images/industries/consumer-platforms.webp',
-    hero: '/images/industries/consumer-platforms-wide.webp',
-    alt: 'The iGreen engineering team at work',
+    photo: '/images/industries/consumer-screens.webp',
+    hero: '/images/industries/consumer-screens.webp',
+    alt: 'The Visa World India website with two MubarakRishte app screens layered over it',
+    cap: 'Web and app screens',
+    heroTall: true,
     dot: GREEN,
     solves: [
       'Matches ranked instantly from profile analysis',

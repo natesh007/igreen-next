@@ -36,15 +36,6 @@ export default function ApplyModal({ job, onClose }: ApplyModalProps) {
     };
   }, []);
 
-  useEffect(() => {
-    setCoverLetter('');
-    setResume(null);
-    setCaptchaToken(null);
-    setStatus('idle');
-    setErrorMsg('');
-    recaptchaRef.current?.reset();
-  }, [job?.title]);
-
   if (!job) return null;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,153 +89,86 @@ export default function ApplyModal({ job, onClose }: ApplyModalProps) {
     }
   };
 
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(4px)' }}
+      className="v-modal"
       onClick={(e) => {
         if (e.target === overlayRef.current) onClose();
       }}
     >
-      <div
-        className="relative w-full max-w-lg rounded-2xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
-        style={{
-          backgroundColor: '#111827',
-          border: '1px solid #1DBCD640',
-          boxShadow: '0 0 40px #1DBCD615',
-        }}
-      >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-          aria-label="Close"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+      <div className="box v-brut" role="dialog" aria-modal="true" aria-labelledby="apply-h">
+        <button type="button" onClick={onClose} className="x" aria-label="Close">
+          ×
         </button>
 
         {status === 'success' ? (
-          <div className="text-center py-8">
-            <div
-              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-              style={{ backgroundColor: '#5CB85C20' }}
-            >
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="#5CB85C" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3
-              className="text-xl font-semibold text-white mb-2"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              Application Sent!
+          <div className="done" role="status">
+            <h3 className="v-disp" id="apply-h">
+              Application sent!
             </h3>
-            <p className="text-gray-400 text-sm mb-6">
-              We&apos;ve received your application for{' '}
-              <span style={{ color: '#1DBCD6' }}>{job.title}</span>. We&apos;ll be in touch soon.
+            <p>
+              We&apos;ve received your application for <strong>{job.title}</strong>. We&apos;ll be in touch soon.
             </p>
-            <button onClick={onClose} className="btn-primary px-8 py-2.5 rounded-xl text-sm">
+            <button type="button" onClick={onClose} className="v-btn">
               Close
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
-            {/* Header */}
-            <div className="mb-6 pr-6">
-              <p
-                className="text-xs font-semibold uppercase tracking-wider mb-1"
-                style={{ color: '#1DBCD6' }}
-              >
-                Applying for a Position
-              </p>
-              <h2
-                className="text-xl font-bold text-white"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
-              >
-                {job.title}
-              </h2>
-            </div>
+            <span className="v-chip" style={{ background: 'var(--v-sky)' }}>
+              Applying for a position
+            </span>
+            <h2 className="v-disp" id="apply-h">
+              {job.title}
+            </h2>
 
-            {/* Cover Letter */}
-            <div className="mb-5">
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Cover Letter <span style={{ color: '#1DBCD6' }}>*</span>
-              </label>
-              <textarea
-                rows={5}
-                required
-                placeholder="Tell us why you're a great fit for this role..."
-                value={coverLetter}
-                onChange={(e) => setCoverLetter(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border text-white placeholder-gray-600 outline-none focus:border-[#1DBCD650] transition-colors resize-none"
-                style={{ backgroundColor: '#0A0F1C', borderColor: '#1F2937', color: '#F9FAFB' }}
-              />
-            </div>
+            <label className="fld" htmlFor="apply-cover">
+              Cover letter <span aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="apply-cover"
+              rows={5}
+              required
+              placeholder="Tell us why you're a great fit for this role..."
+              value={coverLetter}
+              onChange={(e) => setCoverLetter(e.target.value)}
+            />
 
-            {/* Resume Upload */}
-            <div className="mb-5">
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Resume{' '}
-                <span className="text-gray-500 font-normal">(PDF, DOC, DOCX — max 5MB)</span>
-              </label>
-              <label
-                className="flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-colors hover:border-[#1DBCD650]"
-                style={{ backgroundColor: '#0A0F1C', borderColor: '#1F2937' }}
-              >
-                <svg
-                  className="w-5 h-5 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  style={{ color: '#1DBCD6' }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
-                  />
-                </svg>
-                <span className="text-sm truncate" style={{ color: resume ? '#F9FAFB' : '#6B7280' }}>
-                  {resume ? resume.name : 'Click to upload your resume…'}
-                </span>
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  onChange={handleFileChange}
-                  className="sr-only"
+            <label className="fld" htmlFor="apply-resume">
+              Resume <small>(PDF, DOC, DOCX — max 5MB)</small>
+            </label>
+            <label className="file" htmlFor="apply-resume">
+              <span>{resume ? resume.name : 'Click to upload your resume…'}</span>
+              <input id="apply-resume" type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} className="sr-only" />
+            </label>
+
+            <div className="captcha">
+              {siteKey ? (
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={siteKey}
+                  onChange={(token) => setCaptchaToken(token)}
+                  onExpired={() => setCaptchaToken(null)}
                 />
-              </label>
+              ) : (
+                <p className="v-note">
+                  The application form is temporarily unavailable. Please email your resume to{' '}
+                  <a href="mailto:hr@igreensystems.com">hr@igreensystems.com</a>.
+                </p>
+              )}
             </div>
 
-            {/* reCAPTCHA */}
-            <div className="mb-5">
-              <ReCAPTCHA
-                ref={recaptchaRef}
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                onChange={(token) => setCaptchaToken(token)}
-                onExpired={() => setCaptchaToken(null)}
-                theme="dark"
-              />
-            </div>
-
-            {/* Error */}
             {errorMsg && (
-              <p className="text-sm mb-4" style={{ color: '#F87171' }}>
+              <p className="err" role="alert">
                 {errorMsg}
               </p>
             )}
 
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              className="btn-primary w-full py-3 rounded-xl text-base disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {status === 'loading' ? 'Sending…' : 'Submit Application'}
+            <button type="submit" disabled={status === 'loading' || !siteKey} className="v-btn" style={{ width: '100%' }}>
+              {status === 'loading' ? 'Sending…' : 'Submit application'}
             </button>
           </form>
         )}

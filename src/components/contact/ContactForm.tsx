@@ -3,12 +3,15 @@
 import { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [showCaptcha, setShowCaptcha] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -36,63 +39,51 @@ export default function ContactForm() {
         setEmail('');
         setSubject('');
         setMessage('');
-        recaptchaRef.current?.reset();
-        setCaptchaToken(null);
       } else {
         setErrorMsg(data.error || 'Something went wrong. Please try again.');
         setStatus('idle');
-        recaptchaRef.current?.reset();
-        setCaptchaToken(null);
       }
     } catch {
       setErrorMsg('Network error. Please try again.');
       setStatus('idle');
-      recaptchaRef.current?.reset();
-      setCaptchaToken(null);
     }
+    recaptchaRef.current?.reset();
+    setCaptchaToken(null);
   };
 
+  if (!SITE_KEY) {
+    return (
+      <div className="v-form">
+        <h2 className="v-disp" style={{ fontSize: '1.4rem' }}>
+          Email us your requirements
+        </h2>
+        <p>
+          The contact form is temporarily unavailable. Please write to{' '}
+          <a href="mailto:contact@igreensystems.com" style={{ textDecoration: 'underline', fontWeight: 800 }}>
+            contact@igreensystems.com
+          </a>{' '}
+          and we will reply within one business day.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Full Name <span style={{ color: '#1DBCD6' }}>*</span>
-          </label>
-          <input
-            type="text"
-            required
-            placeholder="John Smith"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border text-white placeholder-gray-600 outline-none focus:border-[#1DBCD650] transition-colors"
-            style={{ backgroundColor: '#111827', borderColor: '#1F2937', color: '#F9FAFB' }}
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Email Address <span style={{ color: '#1DBCD6' }}>*</span>
-          </label>
-          <input
-            type="email"
-            required
-            placeholder="john@company.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border text-white placeholder-gray-600 outline-none focus:border-[#1DBCD650] transition-colors"
-            style={{ backgroundColor: '#111827', borderColor: '#1F2937', color: '#F9FAFB' }}
-          />
-        </div>
+    <form className="v-form" onSubmit={handleSubmit} onFocus={() => setShowCaptcha(true)} aria-label="Contact form">
+      <div className="row2">
+        <label>
+          Full name *
+          <input type="text" required autoComplete="name" placeholder="John Smith" value={name} onChange={(e) => setName(e.target.value)} />
+        </label>
+        <label>
+          Email address *
+          <input type="email" required autoComplete="email" placeholder="john@company.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </label>
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
-        <select
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          className="w-full px-4 py-3 rounded-xl border outline-none transition-colors"
-          style={{ backgroundColor: '#111827', borderColor: '#1F2937', color: '#F9FAFB' }}
-        >
+      <label>
+        Subject
+        <select value={subject} onChange={(e) => setSubject(e.target.value)}>
           <option value="">Select a topic...</option>
           <option>IoT Solutions</option>
           <option>Digital Transformation</option>
@@ -100,54 +91,31 @@ export default function ContactForm() {
           <option>Cloud Solutions</option>
           <option>General Inquiry</option>
         </select>
-      </div>
+      </label>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Message <span style={{ color: '#1DBCD6' }}>*</span>
-        </label>
-        <textarea
-          required
-          rows={6}
-          placeholder="Tell us about your project, goals, and timeline..."
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="w-full px-4 py-3 rounded-xl border text-white placeholder-gray-600 outline-none focus:border-[#1DBCD650] transition-colors resize-none"
-          style={{ backgroundColor: '#111827', borderColor: '#1F2937', color: '#F9FAFB' }}
-        />
-      </div>
+      <label>
+        Message *
+        <textarea required rows={6} placeholder="Tell us about your project, goals, and timeline..." value={message} onChange={(e) => setMessage(e.target.value)} />
+      </label>
 
-      {/* reCAPTCHA */}
-      <div>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-          onChange={(token) => setCaptchaToken(token)}
-          onExpired={() => setCaptchaToken(null)}
-          theme="dark"
-        />
-      </div>
+      {showCaptcha && (
+        <ReCAPTCHA ref={recaptchaRef} sitekey={SITE_KEY} onChange={(token) => setCaptchaToken(token)} onExpired={() => setCaptchaToken(null)} />
+      )}
 
-      {/* Error */}
       {errorMsg && (
-        <p className="text-sm" style={{ color: '#F87171' }}>
+        <p className="err" role="alert">
           {errorMsg}
         </p>
       )}
 
-      {/* Success */}
       {status === 'success' && (
-        <p className="text-sm font-medium" style={{ color: '#5CB85C' }}>
+        <p className="ok" role="status">
           Message sent! We&apos;ll get back to you within 1 business day.
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === 'loading'}
-        className="btn-primary w-full sm:w-auto px-10 py-3.5 rounded-xl text-base disabled:opacity-60 disabled:cursor-not-allowed"
-      >
-        {status === 'loading' ? 'Sending…' : 'Send Message'}
+      <button type="submit" disabled={status === 'loading'} className="v-btn dk">
+        {status === 'loading' ? 'Sending…' : 'Send message →'}
       </button>
     </form>
   );

@@ -1,161 +1,94 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import { ShapesBackground } from '@/components/ui/shape-landing-hero';
-import ServiceArt, { SERVICE_PALETTE } from '@/components/visuals/ServiceArt';
+import Effects from '@/components/homepage/Effects';
+import EnquiryCta from '@/components/homepage/EnquiryCta';
+import { serviceImages } from '@/components/services/serviceImages';
 
 export const metadata: Metadata = {
   title: 'Services',
   description: 'IoT solutions, digital transformation consulting, web applications, mobile apps, and cloud solutions from iGreen Systems, Hyderabad. Serving enterprises in Andhra Pradesh, Telangana, and globally since 2008.',
+  alternates: { canonical: '/services' },
 };
 
 const iotServices = [
-  {
-    href: '/services/iot-solutions',
-    title: 'IoT Solutions',
-    desc: 'End-to-end IoT architecture, sensor integration, and real-time data pipelines that connect your physical assets to actionable insights.',
-    color: '#1DBCD6',
-  },
-  {
-    href: '/services/connected-devices',
-    title: 'Connected Devices',
-    desc: 'Intelligent device ecosystems from hardware selection and firmware through cloud connectivity and device management at scale.',
-    color: '#1DBCD6',
-  },
-  {
-    href: '/services/smart-manufacturing',
-    title: 'Smart Manufacturing',
-    desc: 'Industry 4.0 intelligence — real-time production monitoring, predictive maintenance, and OEE optimization for modern factories.',
-    color: '#1DBCD6',
-  },
-  {
-    href: '/services/edge-computing',
-    title: 'Edge Computing',
-    desc: 'Low-latency edge architectures that process data at the source, reduce bandwidth costs, and enable offline capability.',
-    color: '#1DBCD6',
-  },
-  {
-    href: '/services/digital-transformation',
-    title: 'Digital Transformation',
-    desc: 'Technology-aligned business strategy — process digitization, legacy modernization, and change management that sticks.',
-    color: '#1DBCD6',
-  },
+  { href: '/services/iot-solutions', title: 'IoT Solutions', desc: 'End-to-end IoT architecture, sensor integration, and real-time data pipelines that connect your physical assets to actionable insights.' },
+  { href: '/services/connected-devices', title: 'Connected Devices', desc: 'Intelligent device ecosystems from hardware selection and firmware through cloud connectivity and device management at scale.' },
+  { href: '/services/smart-manufacturing', title: 'Smart Manufacturing', desc: 'Industry 4.0 intelligence — real-time production monitoring, predictive maintenance, and OEE optimization for modern factories.' },
+  { href: '/services/edge-computing', title: 'Edge Computing', desc: 'Low-latency edge architectures that process data at the source, reduce bandwidth costs, and enable offline capability.' },
+  { href: '/services/digital-transformation', title: 'Digital Transformation', desc: 'Technology-aligned business strategy — process digitization, legacy modernization, and change management that sticks.' },
 ];
 
 const deliveryServices = [
-  {
-    href: '/services/web-applications',
-    title: 'Web Applications',
-    desc: 'Scalable, high-performance web apps built with React, Next.js, and modern cloud-native architectures.',
-    color: '#5CB85C',
-  },
-  {
-    href: '/services/mobile-apps',
-    title: 'Mobile Apps',
-    desc: 'Cross-platform and native mobile applications for iOS and Android — from concept to App Store.',
-    color: '#5CB85C',
-  },
-  {
-    href: '/services/cloud-solutions',
-    title: 'Cloud Solutions',
-    desc: 'AWS, Azure, and GCP architecture design, cloud migration, infrastructure-as-code, and DevOps automation.',
-    color: '#5CB85C',
-  },
+  { href: '/services/web-applications', title: 'Web Applications', desc: 'Scalable, high-performance web apps built with React, Next.js, and modern cloud-native architectures.' },
+  { href: '/services/mobile-apps', title: 'Mobile Apps', desc: 'Cross-platform and native mobile applications for iOS and Android — from concept to App Store.' },
+  { href: '/services/cloud-solutions', title: 'Cloud Solutions', desc: 'AWS, Azure, and GCP architecture design, cloud migration, infrastructure-as-code, and DevOps automation.' },
 ];
 
-function ServiceRow({ service }: { service: (typeof iotServices)[0] }) {
+function Group({ title, items, kind }: { title: string; items: typeof iotServices; kind: 'iot' | 'del' }) {
   return (
-    <Link
-      href={service.href}
-      className="group flex items-start gap-6 p-7 rounded-2xl border transition-all hover:-translate-y-0.5"
-      style={{ backgroundColor: '#111827', borderColor: '#1F2937' }}
-    >
-      <div
-        className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center mt-0.5"
-        style={{ backgroundColor: `${(SERVICE_PALETTE[service.href.split('/').pop()!] ?? [service.color])[0]}1F` }}
-      >
-        <ServiceArt slug={service.href.split('/').pop()!} className="w-11 h-11" />
+    <section className="v-w v-sec" style={{ paddingTop: 0 }} aria-label={title}>
+      <h2 className="v-grp">{title}</h2>
+      <div className="v-sgrid">
+        {items.map((s) => {
+          const img = serviceImages[s.href.split('/').pop()!];
+          return (
+            <Link className={`v-scard v-brut ${kind} v-rv`} href={s.href} key={s.href}>
+              <div className="pic">
+                <Image src={img.hero} alt={img.alt} width={900} height={506} sizes="(min-width: 1100px) 30vw, (min-width: 640px) 46vw, 100vw" />
+              </div>
+              <div className="body">
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+                <span className="more">Learn more →</span>
+              </div>
+            </Link>
+          );
+        })}
       </div>
-      <div className="flex-1">
-        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-white/90"
-          style={{ fontFamily: 'Poppins, sans-serif' }}>
-          {service.title}
-        </h3>
-        <p className="text-gray-400 leading-relaxed text-sm">{service.desc}</p>
-      </div>
-      <div className="flex-shrink-0 self-center" style={{ color: service.color }}>
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-        </svg>
-      </div>
-    </Link>
+    </section>
   );
 }
 
 export default function ServicesPage() {
   return (
-    <div style={{ backgroundColor: '#0A0F1C', color: '#F9FAFB' }}>
-      {/* Header */}
-      <section className="py-24 text-center relative overflow-hidden" style={{ backgroundColor: '#060A12' }}>
-        <ShapesBackground />
-        <div className="max-w-3xl mx-auto px-4 relative z-10">
-          <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: '#1DBCD6' }}>
+    <div className="vibrant v-page">
+      <noscript>
+        <style>{'.v-rv{opacity:1!important;transform:none!important}'}</style>
+      </noscript>
+      <Effects />
+
+      <section className="v-w v-ihero two" aria-labelledby="svcs-h">
+        <div>
+          <nav className="v-crumbs" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Services</span>
+          </nav>
+          <span className="v-chip" style={{ background: 'var(--v-sky)' }}>
             Services
-          </p>
-          <h1 className="text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Full-Spectrum Technology Solutions
-          </h1>
-          <p className="text-gray-400 text-lg">
-            IoT & Digital Transformation at the core, delivered through world-class web, mobile, and cloud engineering.
-          </p>
+          </span>
+          <h1 id="svcs-h">Full-spectrum technology solutions</h1>
+          <p className="v-lead">IoT &amp; Digital Transformation at the core, delivered through world-class web, mobile, and cloud engineering.</p>
+          <div className="v-cta-row" style={{ marginTop: 22 }}>
+            <Link className="v-btn" href="#enquire">
+              Book a free consultation →
+            </Link>
+            <Link className="v-btn alt" href="/portfolio">
+              See our work
+            </Link>
+          </div>
+        </div>
+        <div className="pic v-rv">
+          <Image src="/images/home/night-building.webp" alt="Connected building at night with live monitoring points" width={1500} height={700} sizes="(min-width: 960px) 48vw, 100vw" priority />
+          <span className="cap">Illustrative image</span>
         </div>
       </section>
 
-      {/* IoT Services */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              IoT & Digital Transformation
-            </h2>
-            <div className="flex-1 h-px" style={{ backgroundColor: '#1F2937' }} />
-          </div>
-          <div className="space-y-4">
-            {iotServices.map((s) => <ServiceRow key={s.href} service={s} />)}
-          </div>
-        </div>
-      </section>
+      <Group title="IoT & Digital Transformation" items={iotServices} kind="iot" />
+      <Group title="Digital Delivery" items={deliveryServices} kind="del" />
 
-      {/* Delivery Services */}
-      <section className="py-16" style={{ backgroundColor: '#060A12' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Digital Delivery
-            </h2>
-            <div className="flex-1 h-px" style={{ backgroundColor: '#1F2937' }} />
-          </div>
-          <div className="space-y-4">
-            {deliveryServices.map((s) => <ServiceRow key={s.href} service={s} />)}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 text-center">
-        <div className="max-w-xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Not sure where to start?
-          </h2>
-          <p className="text-gray-400 mb-8">Book a free consultation and we&apos;ll map the right path for your business.</p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-3.5 rounded-xl text-base font-semibold text-white transition-all hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg, #1DBCD6, #5CB85C)' }}
-          >
-            Book a Free Consultation
-          </Link>
-        </div>
-      </section>
+      <EnquiryCta />
     </div>
   );
 }
