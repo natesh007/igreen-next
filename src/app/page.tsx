@@ -18,8 +18,8 @@ export default function Home() {
       <Hero />
       <Trust />
       <Solutions />
-      <IotDemo />
       <CaseStudies />
+      <IotDemo />
       <Industries />
       <Why />
       <EnquiryCta />

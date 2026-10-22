@@ -161,7 +161,7 @@ body:has(.vibrant)::before { display: none; }
 
 /* demo (game) */
 .v-game { display: grid; gap: clamp(18px, 2.4vw, 40px); grid-template-columns: 1fr; padding: clamp(20px, 3vw, 52px); background: var(--v-ink); color: #fff; border-block: var(--v-bw) solid var(--v-ink); }
-@media (min-width: 900px) { .v-game { grid-template-columns: 1.1fr 0.9fr; align-items: stretch; } }
+@media (min-width: 900px) { .v-game { grid-template-columns: 1.1fr 0.9fr; align-items: start; } }
 .v-game h2 { font-size: clamp(1.8rem, 4vw, 3.8rem); }
 .v-game .v-chip { color: var(--v-ink); }
 .v-scene { background: var(--v-paper); color: var(--v-ink); padding: 10px; border-color: #fff; box-shadow: var(--v-sh) var(--v-sh) 0 var(--v-cyan); }

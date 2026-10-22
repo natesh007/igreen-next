@@ -59,15 +59,12 @@ export default function IotDemo() {
   return (
     <section className="v-game v-w" id="demo" aria-labelledby="demo-h">
       <div>
-        <span className="v-chip" style={{ background: 'var(--v-lime)' }}>
-          Play · 30 seconds
-        </span>
-        <h2 className="v-disp" id="demo-h" style={{ margin: '0.35em 0 0.4em' }}>
-          Build a smart building in 4 taps
+        <h2 className="v-disp" id="demo-h" style={{ margin: '0 0 0.4em' }}>
+          See how it works
         </h2>
         <p className="v-lead" style={{ fontWeight: 700 }}>
-          Tap a spot on the building (or a button) to install a sensor and watch the data come alive — the same idea as our real
-          platform. <small style={{ opacity: 0.85 }}>Demo data.</small>
+          Connect the sensors on this building and watch live readings appear — the same approach our real platform uses.{' '}
+          <small style={{ opacity: 0.85 }}>Demo data.</small>
         </p>
 
         <div className="v-scene v-brut" style={{ marginTop: 18 }}>
