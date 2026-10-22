@@ -7,7 +7,7 @@ export default function Why() {
         <h2 className="v-disp" id="why-h">
           Why iGreen
         </h2>
-        <p>Engineering depth you can verify, and a team that stays after go-live.</p>
+        <p>What we have actually deployed, and where.</p>
       </div>
       <div className="v-why">
         {why.map((w, i) => (
@@ -15,6 +15,10 @@ export default function Why() {
             <span className="n">{String(i + 1).padStart(2, '0')}</span>
             <h3>{w.title}</h3>
             <p>{w.text}</p>
+            <div className="proof">
+              <b>{w.stat}</b>
+              <span>{w.statLabel}</span>
+            </div>
           </div>
         ))}
       </div>

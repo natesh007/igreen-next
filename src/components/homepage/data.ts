@@ -104,11 +104,36 @@ export const industries = [
 ];
 
 export const why = [
-  { title: 'End-to-end capability', text: 'From hardware integration and IoT sensor networks to software platforms and cloud dashboards — we handle the full stack.' },
-  { title: 'Real-world deployment experience', text: 'Proven solutions deployed across smart buildings, cold storage, fire safety, hospitality and visa processing.' },
-  { title: 'Integration-first approach', text: 'We design systems to work alongside your existing infrastructure, not replace it.' },
-  { title: 'Outcome-driven execution', text: 'We measure success by operational impact — not lines of code or feature count.' },
-  { title: 'Ongoing support', text: 'Maintenance, performance optimisation and feature evolution after go-live.' },
+  {
+    title: 'Deployed where downtime has a real cost',
+    text: 'Fire pump rooms, cold rooms monitored down to −120 °C, and fuel tanks across 200+ locations — systems that have to keep reporting.',
+    stat: '200+',
+    statLabel: 'tank locations monitored',
+  },
+  {
+    title: 'Sensor to dashboard, one team',
+    text: 'Hardware, firmware, cloud, and the web and mobile apps your people use — built by the same engineers, so nothing falls between vendors.',
+    stat: '10+',
+    statLabel: 'modules on one platform',
+  },
+  {
+    title: 'Running in India and the US',
+    text: 'Smart buildings and cold storage in India, tank monitoring for Liquidynamics in the USA, restaurant automation for the Americas.',
+    stat: '2',
+    statLabel: 'countries, live today',
+  },
+  {
+    title: 'Results with a number on them',
+    text: 'Up to 40% less cold-storage energy, up to 30% lower hotel utility costs, 80% less visa review effort, 6× matchmaking throughput.',
+    stat: 'Up to 40%',
+    statLabel: 'less energy, cold storage',
+  },
+  {
+    title: 'Eighteen years of shipping',
+    text: 'Founded in Hyderabad in 2008 and still building: 521+ projects for 232+ clients, by a team of 25 engineers and designers.',
+    stat: '521+',
+    statLabel: 'projects delivered',
+  },
 ];
 
 export const tickerWords = ['IoT Solutions', 'Connected Devices', 'Smart Manufacturing', 'Edge Computing', 'Digital Transformation', 'Web Apps', 'Mobile Apps', 'Cloud'];
