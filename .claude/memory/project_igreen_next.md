@@ -4,6 +4,17 @@ description: Full project record for igreen-next — Next.js 16 site for iGreen 
 type: project
 originSessionId: f05839b9-b5a2-4447-9ef4-e1a3d2c468b1
 ---
+## ⚠ STATUS UPDATE 2026-10-22 — supersedes anything below that conflicts
+- **Hosting:** production is now **Hostinger** (Node.js app, auto-deploy from `main`), NOT Vercel. DNS is at Hostinger; email stays on Google Workspace. Build script is `next build --webpack` (Turbopack crashes on Hostinger). Env vars live in hPanel. See the auto-memory file `project_hostinger_deploy.md`.
+- **Redesign in progress** on local branch `redesign-identity` (unpushed): new calm "vibrant" design system (`src/app/vibrant.css`, scoped under `.vibrant`; Unbounded + Manrope; cream/ink + brand cyan/green; soft shadows, 2px borders, 10px radius). Homepage is **no longer frozen** — it was rebuilt in `src/components/homepage/` and replaced `components/home/*` (old files remain, unused). Header/footer are restyled sitewide. New `/industries` and `/industries/[slug]` pages. Project data moved to `src/data/projects.ts`. Inner pages (About, Services, Portfolio, Careers, Contact) still use the old dark style and are next to migrate. Full detail: auto-memory `project_redesign_status.md` and `.claude/memory/redesign_brief.md`.
+- **Careers now lists ONE role:** Technology Solutions Associate (Flutter Developer and Digital Transformation Consultant were removed). JobPosting JSON-LD updated to match.
+- **Certifications:** ISO 9001:2015 and IGBC claims were removed everywhere (iGreen does not hold them). Do not re-add.
+- **Stats / copy** unchanged: 18+ years, 521+ projects, 232+ clients, 25 team members. Homepage hero headline is now "Intelligent IoT. Connected Systems. Real-World Impact."
+- **Helper scripts** for image generation and browser QA are in `tools/` (see `tools/README.md`). `mockups/` is branch-only scratch — delete before merging.
+- Portfolio card order: Smart Building (featured), Restaurant, Hotel, Facility Operations, Fire Pump, Cold Storage, VWI Visa, MubarakRishte, OilCop; titles start with "iGreen —" (not "WIS —").
+
+---
+
 ## What This Is
 igreen-next is a Next.js 16 rebuild of the igreen CodeIgniter 4 PHP project.
 - **PHP source:** `e:/xampp/htdocs/igreen` (CodeIgniter 4, MySQL db: igreen_main)
