@@ -1,16 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { tickerWords } from './data';
 
 export default function Hero() {
   return (
     <>
       <section className="v-hero v-w" aria-labelledby="hero-h">
-        <div className="v-stick" aria-hidden="true">
-          SINCE
-          <br />
-          2008
-        </div>
         <div>
           <span className="v-chip" style={{ background: 'var(--v-sky)' }}>
             IoT &amp; enterprise software
@@ -74,13 +68,6 @@ export default function Hero() {
         </div>
       </section>
 
-      <div className="v-tick" aria-hidden="true">
-        <div>
-          {[...tickerWords, ...tickerWords].map((w, i) => (
-            <span key={i}>{w}</span>
-          ))}
-        </div>
-      </div>
     </>
   );
 }

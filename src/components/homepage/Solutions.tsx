@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import { iotServices, deliveryServices } from './data';
 
-const tilts = ['-0.8deg', '0.6deg', '-0.5deg', '0.8deg', '-0.6deg'];
-
-function Card({ s, n, kind, i }: { s: { href: string; title: string; desc: string }; n: number; kind: 'iot' | 'del'; i: number }) {
+function Card({ s, n, kind }: { s: { href: string; title: string; desc: string }; n: number; kind: 'iot' | 'del' }) {
   return (
-    <Link className={`v-card v-brut ${kind} v-rv`} href={s.href} style={{ ['--r' as string]: tilts[i % tilts.length] }}>
+    <Link className={`v-card v-brut ${kind} v-rv`} href={s.href}>
       <div>
         <span className="n">{String(n).padStart(2, '0')}</span>
         <h3>{s.title}</h3>
@@ -30,13 +28,13 @@ export default function Solutions() {
       <h3 className="v-grp">IoT &amp; digital</h3>
       <div className="v-svc five">
         {iotServices.map((s, i) => (
-          <Card key={s.href} s={s} n={i + 1} kind="iot" i={i} />
+          <Card key={s.href} s={s} n={i + 1} kind="iot" />
         ))}
       </div>
       <h3 className="v-grp">Digital delivery</h3>
       <div className="v-svc">
         {deliveryServices.map((s, i) => (
-          <Card key={s.href} s={s} n={i + 6} kind="del" i={i + 1} />
+          <Card key={s.href} s={s} n={i + 6} kind="del" />
         ))}
       </div>
     </section>
