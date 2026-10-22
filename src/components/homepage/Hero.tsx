@@ -34,18 +34,16 @@ export default function Hero() {
 
         <div className="v-artwrap v-rv">
           <div className="v-art">
-            <i className="blob b1" />
-            <i className="blob b2" />
-            <i className="blob b3" />
             <Image
-              className="ink"
-              src="/images/home/ink-team.webp"
+              className="photo"
+              src="/images/home/office-soft.webp"
               alt=""
-              width={1600}
-              height={640}
+              width={1400}
+              height={560}
               sizes="(min-width: 960px) 45vw, 100vw"
               priority
             />
+            <i className="tint" />
             <div className="v-browser">
               <div className="bar">
                 <i />
@@ -54,7 +52,7 @@ export default function Hero() {
                 <span>Facility dashboard</span>
               </div>
               <Image
-                src="/images/home/wis-energy.webp"
+                src="/images/home/wis-energy-glass.webp"
                 alt="Energy consumption by area, from our facility management platform"
                 width={900}
                 height={631}

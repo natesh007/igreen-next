@@ -42,9 +42,54 @@ export const quotes = [
 export const clientLogos: { src: string; alt: string; width: number; height: number }[] = [];
 
 export const flips = [
-  { key: 'cold', title: 'Cold storage & freezer monitoring', img: '/images/home/ink-cold.webp', big: '-40%', text: 'energy consumption, with rooms monitored down to −120 °C.', chip: 'var(--v-cyan)' },
-  { key: 'pump', title: 'Fire pump safety monitoring', img: '/images/home/ink-pump.webp', big: '6', text: 'sensors with instant alerts for pressure drops and unexpected running hours.', chip: 'var(--v-green)' },
-  { key: 'tank', title: 'OilCop tank monitoring portal', img: '/images/home/ink-tank.webp', big: '200+', text: 'locations monitored remotely through a secure web portal.', chip: 'var(--v-cyan)' },
+  {
+    key: 'cold',
+    title: 'Cold storage & freezer monitoring',
+    photo: '/images/home/photo-cold.webp',
+    ink: '/images/home/ink-cold.webp',
+    pre: 'Up to',
+    big: '40%',
+    label: 'lower energy consumption',
+    chip: 'var(--v-cyan)',
+    points: [
+      'Rooms monitored down to −120 °C (pharma & vaccine grade)',
+      'Door-open count and duration, with buzzer alerts',
+      'Compressors, heat pumps and ODU performance in one place',
+    ],
+    viz: 'bars',
+  },
+  {
+    key: 'pump',
+    title: 'Fire pump safety monitoring',
+    photo: '/images/home/photo-pump.webp',
+    ink: '/images/home/ink-pump.webp',
+    pre: '',
+    big: '6',
+    label: 'sensors watching pressure, pumps and levels',
+    chip: 'var(--v-green)',
+    points: [
+      'Switch status, pressure, motor hours and water level',
+      'Diesel pump fuel level and battery voltage, live',
+      'Instant alerts for pressure drops and unexpected running hours',
+    ],
+    viz: 'dots',
+  },
+  {
+    key: 'tank',
+    title: 'OilCop tank monitoring portal',
+    photo: '/images/home/photo-tank.webp',
+    ink: '/images/home/ink-tank.webp',
+    pre: '',
+    big: '200+',
+    label: 'locations monitored remotely',
+    chip: 'var(--v-cyan)',
+    points: [
+      'Supplier portal: vendors see customer tank inventory directly',
+      'High/low alarms, reorder alerts and automated delivery reports',
+      'Discrepancy tracking for anomaly management',
+    ],
+    viz: 'grid',
+  },
 ];
 
 export const industries = [

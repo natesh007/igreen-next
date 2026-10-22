@@ -10,7 +10,7 @@ import EnquiryCta from '@/components/homepage/EnquiryCta';
 
 export default function Home() {
   return (
-    <div className="vibrant">
+    <div className="vibrant v-page">
       <noscript>
         <style>{'.v-rv{opacity:1!important;transform:none!important}'}</style>
       </noscript>
