@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Poppins, Unbounded, Manrope } from "next/font/google";
 import "./globals.css";
+import "./vibrant.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Analytics } from "@vercel/analytics/react";
@@ -12,6 +13,9 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
+
+const unbounded = Unbounded({ variable: "--font-unbounded", subsets: ["latin"], weight: ["500", "700", "900"], display: "swap" });
+const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], weight: ["400", "500", "700", "800"], display: "swap" });
 
 export const metadata: Metadata = {
   title: {
@@ -172,7 +176,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable} ${unbounded.variable} ${manrope.variable}`}>
       <body className="min-h-screen flex flex-col">
         <script
           type="application/ld+json"

@@ -21,7 +21,7 @@ async function verifyCaptcha(token: string): Promise<boolean> {
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, subject, message, captchaToken } = await request.json();
+    const { name, email, company, subject, message, captchaToken } = await request.json();
 
     if (!name?.trim() || !email?.trim() || !message?.trim() || !captchaToken) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       from: `"iGreen Website" <${process.env.GMAIL_USER}>`,
       to: 'contact@igreensystems.com',
       subject: `Contact Form: ${subject || 'General Inquiry'} — from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject || 'General Inquiry'}\n\n${message}`,
+      text: `Name: ${name}\n${company ? `Company: ${company}\n` : ''}Email: ${email}\nSubject: ${subject || 'General Inquiry'}\n\n${message}`,
     });
 
     return NextResponse.json({ success: true });
