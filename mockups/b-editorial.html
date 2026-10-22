@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction B — Editorial journal (mock-up)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4EFE4;--ink:#13231A;--mute:#5C6A60;--rule:#13231A33;--green:#2F5D3A;--clay:#B4532A}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font:400 18px/1.6 'Source Sans 3',system-ui,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+a{color:inherit;text-decoration:none}
+.caps{font:600 12px 'Source Sans 3';letter-spacing:.16em;text-transform:uppercase}
+.serif{font-family:'Fraunces',Georgia,serif}
+/* masthead */
+.mast{padding:22px 0 0}
+.mast .top{display:flex;justify-content:space-between;color:var(--mute);padding-bottom:14px}
+.mast .name{border-top:3px double var(--ink);border-bottom:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{font:800 38px 'Fraunces';letter-spacing:-.03em}
+.logo i{font-style:italic;font-weight:400;color:var(--clay)}
+nav{display:flex;gap:30px}
+nav a:hover{color:var(--clay)}
+/* hero */
+.hero{display:grid;grid-template-columns:7fr 5fr;gap:64px;padding:64px 0 70px;align-items:start}
+.kicker{color:var(--clay);margin-bottom:22px}
+h1{font:600 clamp(48px,6.3vw,92px)/.98 'Fraunces';letter-spacing:-.035em;font-variation-settings:'opsz' 144}
+h1 em{font-style:italic;font-weight:400;color:var(--green)}
+.lede{font:400 22px/1.5 'Fraunces';margin:30px 0 32px;max-width:600px;color:#2b3a31}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);padding:15px 26px;font:600 15px 'Source Sans 3';letter-spacing:.04em;border-radius:999px}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:10px}
+.hero figure img{width:100%;height:600px;object-fit:cover;display:block;border-radius:240px 240px 0 0}
+.hero figcaption{font:italic 400 15px 'Fraunces';color:var(--mute);padding-top:12px;border-top:1px solid var(--rule);margin-top:14px}
+/* figures strip */
+.figs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.figs div{padding:30px 22px;border-right:1px solid var(--rule);text-align:center}
+.figs div:last-child{border:0}
+.figs b{display:block;font:400 76px/1 'Fraunces';letter-spacing:-.04em;color:var(--green)}
+.figs span{color:var(--mute)}
+/* contents */
+.contents{padding:100px 0 20px;display:grid;grid-template-columns:4fr 8fr;gap:64px}
+.contents h2{font:600 clamp(36px,4.2vw,60px)/1 'Fraunces';letter-spacing:-.03em;position:sticky;top:30px}
+.contents h2 em{font-style:italic;font-weight:400;color:var(--clay)}
+.toc{columns:2;column-gap:56px}
+.toc a{display:flex;align-items:baseline;gap:8px;padding:14px 0;break-inside:avoid;font:600 24px 'Fraunces';letter-spacing:-.01em}
+.toc a:hover{color:var(--clay)}
+.toc a:after{content:"";flex:1;border-bottom:2px dotted var(--rule);order:2;transform:translateY(-4px)}
+.toc a span{order:3;font:400 italic 20px 'Fraunces';color:var(--mute)}
+.toc small{display:block;font:400 15px/1.45 'Source Sans 3';color:var(--mute);font-weight:400}
+.toc .it{display:block;break-inside:avoid;border-bottom:1px solid var(--rule)}
+.toc .it a{border:0;padding-bottom:2px}
+.toc .it p{font-size:15px;color:var(--mute);padding-bottom:14px;max-width:330px}
+.toc .cap{break-inside:avoid;color:var(--green);padding:12px 0 2px}
+/* article */
+.sec{padding:100px 0 0}
+.sec header{display:flex;justify-content:space-between;align-items:baseline;border-top:3px double var(--ink);padding-top:18px;margin-bottom:46px}
+.sec h2{font:600 clamp(36px,4vw,56px)/1 'Fraunces';letter-spacing:-.03em}
+.art{display:grid;grid-template-columns:6fr 6fr;gap:64px;align-items:center}
+.art .sc{border:1px solid var(--ink);background:#fff;height:500px;overflow:hidden;border-radius:6px;box-shadow:0 30px 60px -30px #13231a66}
+.art .sc img{width:100%;display:block}
+.art h3{font:600 42px/1.02 'Fraunces';letter-spacing:-.025em;margin:12px 0 18px}
+.art p.drop:first-letter{float:left;font:600 76px/.8 'Fraunces';padding:8px 12px 0 0;color:var(--clay)}
+.pq{border-left:3px solid var(--clay);padding:4px 0 4px 20px;margin-top:26px;font:italic 400 26px/1.25 'Fraunces'}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:70px}
+.row3 img{width:100%;height:260px;object-fit:cover;display:block;border-radius:4px}
+.row3 h4{font:600 22px 'Fraunces';margin:14px 0 4px}
+.row3 p{font-size:15px;color:var(--mute)}
+/* cta */
+.cta{margin:120px 0 0;background:var(--green);color:var(--paper);padding:100px 0;text-align:left}
+.cta h2{font:600 clamp(44px,6vw,86px)/.98 'Fraunces';letter-spacing:-.035em;max-width:880px}
+.cta h2 em{font-weight:400}
+.cta p{margin:22px 0 32px;max-width:500px;color:#dfe8dc}
+.cta .btn{background:var(--paper);color:var(--ink)}
+footer{padding:26px 0;color:var(--mute);display:flex;justify-content:space-between}
+@media(max-width:900px){.hero,.contents,.art{grid-template-columns:1fr}.toc{columns:1}.figs{grid-template-columns:1fr 1fr}.row3{grid-template-columns:1fr}nav{display:none}.wrap{padding:0 20px}.hero figure img{height:420px}.contents h2{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap mast">
+  <div class="top caps"><span>Est. 2008</span><span>Hyderabad · Kakinada</span><span>IoT &amp; Digital Transformation</span></div>
+  <div class="name"><a class="logo" href="#">iGreen <i>Systems</i></a><nav class="caps"><a href="#">About</a><a href="#">Services</a><a href="#">Portfolio</a><a href="#">Careers</a><a href="#">Contact</a></nav></div>
+</div>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="kicker caps">Engineering the physical world, since 2008</p>
+      <h1>Smart buildings. Connected devices. <em>Real results.</em></h1>
+      <p class="lede">From safeguarding critical infrastructure to powering large-scale digital platforms, we engineer solutions that bridge the physical and digital worlds — solving real business problems with precision and impact.</p>
+      <a class="btn" href="#">View our work</a><a class="btn line" href="#">Our story</a>
+    </div>
+    <figure><img src="img/campus.jpg" alt="Aerial view of a campus with connected buildings (illustrative image)"><figcaption>A connected campus — buildings, water and energy on one platform. <span class="caps" style="font-style:normal">Illustrative</span></figcaption></figure>
+  </section>
+
+  <section class="figs">
+    <div><b>18+</b><span class="caps">Years</span></div>
+    <div><b>521+</b><span class="caps">Projects</span></div>
+    <div><b>232+</b><span class="caps">Clients</span></div>
+    <div><b>25</b><span class="caps">People</span></div>
+  </section>
+
+  <section class="contents">
+    <h2>In this <em>issue</em>: what we build</h2>
+    <div class="toc">
+      <div class="cap caps">IoT &amp; Digital</div>
+      <div class="it"><a href="#">IoT Solutions<span>01</span></a><p>Water, energy, air quality and safety — monitored in real time across smart buildings.</p></div>
+      <div class="it"><a href="#">Connected Devices<span>02</span></a><p>Sensor hardware to firmware to cloud, deployed across India and the US.</p></div>
+      <div class="it"><a href="#">Smart Manufacturing<span>03</span></a><p>Production monitoring and predictive maintenance for the plant floor.</p></div>
+      <div class="it"><a href="#">Edge Computing<span>04</span></a><p>Process data at source, with offline capability.</p></div>
+      <div class="it"><a href="#">Digital Transformation<span>05</span></a><p>From paper workflows to platforms that process thousands of applications.</p></div>
+      <div class="cap caps">Digital delivery</div>
+      <div class="it"><a href="#">Web Applications<span>06</span></a><p>Production-grade platforms built to measurable outcomes.</p></div>
+      <div class="it"><a href="#">Mobile Apps<span>07</span></a><p>Native Android and iOS apps, from IoT dashboards to consumer scale.</p></div>
+      <div class="it"><a href="#">Cloud Solutions<span>08</span></a><p>AWS, Azure and GCP behind live IoT platforms.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <header><h2>Selected work</h2><span class="caps">Case study 03</span></header>
+    <div class="art">
+      <div class="sc"><img src="img/vwi-apply.jpg" alt="VWI visa application form"></div>
+      <div>
+        <span class="caps" style="color:var(--clay)">Digital transformation · VWI Travel</span>
+        <h3>Seamless visa processing, from paper to platform</h3>
+        <p class="drop">For one of India's leading visa agencies, we replaced a manual workflow with a platform that builds a personalised document checklist for every applicant and checks each upload automatically.</p>
+        <div class="pq">“80% faster visa processing — and clients can now track their applications in real time.”</div>
+      </div>
+    </div>
+    <div class="row3">
+      <div><img src="img/pipes.jpg" alt="Water meter and flow sensors on a pipe (illustrative image)"><h4>Smart building management</h4><p>Water, energy, air, light and analytics on one platform.</p></div>
+      <div><img src="img/kitchen.jpg" alt="Restaurant kitchen with monitoring sensors (illustrative image)"><h4>Restaurant automation</h4><p>Utilities, kitchen equipment and HVAC, measured.</p></div>
+      <div><img src="img/cold.jpg" alt="Cold room with monitoring sensor (illustrative image)"><h4>Cold storage monitoring</h4><p>Temperature, door and compressor health, alerted.</p></div>
+    </div>
+  </section>
+</main>
+
+<section class="cta"><div class="wrap"><p class="caps" style="margin:0 0 16px">Ready to transform?</p><h2>Your next project <em>belongs on this page.</em></h2><p>If you need an IoT platform, web application, mobile app or cloud solution that actually ships — let's talk.</p><a class="btn" href="#">Start a conversation</a></div></section>
+<footer class="wrap caps"><span>© 2026 iGreen Systems</span><span>contact@igreensystems.com</span></footer>
+</body>
+</html>
