@@ -3,7 +3,7 @@ import { industries } from './data';
 
 export default function Industries() {
   return (
-    <section className="v-w v-sec" id="industries" style={{ paddingTop: 0 }} aria-labelledby="ind-h">
+    <section className="v-w v-sec" id="industries" aria-labelledby="ind-h">
       <div className="v-sh">
         <h2 className="v-disp" id="ind-h">
           Solutions by industry

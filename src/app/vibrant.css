@@ -331,3 +331,25 @@ body:has(.vibrant)::before { display: none; }
 
 .vibrant.v-page { padding-bottom: clamp(40px, 6vw, 90px); }
 @media (max-width: 440px) { .v-hero h1 { font-size: 1.6rem; } }
+
+/* night-building demo scene */
+.v-scene.v-brut { padding: 0; background: #050816; overflow: visible; }
+.v-night { position: relative; line-height: 0; overflow: hidden; }
+.v-night img { width: 100%; height: auto; display: block; }
+.v-hot { position: absolute; transform: translate(-50%, -50%); width: 44px; height: 44px; border-radius: 50%; padding: 0; cursor: pointer; border: 3px solid #fff; background: rgba(20, 17, 28, 0.55); box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.18); transition: background 0.2s, box-shadow 0.2s; }
+.v-hot::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 3px solid var(--v-lime); opacity: 0; }
+.v-hot:not(.on) { animation: v-hint 2.4s ease-in-out infinite; }
+.v-hot.on { background: var(--v-lime); box-shadow: 0 0 20px 8px rgba(200, 255, 46, 0.65); animation: none; }
+.v-hot.on::after { animation: v-ping2 1.6s ease-out infinite; }
+@keyframes v-hint { 0%, 100% { box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.18); } 50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.05); } }
+@keyframes v-ping2 { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(2.2); opacity: 0; } }
+.v-hot .tip { position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); white-space: nowrap; background: var(--v-ink); color: #fff; font-family: var(--font-manrope); font-weight: 800; font-size: 0.8rem; line-height: 1; padding: 0.45em 0.7em; border: 2px solid #fff; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+.v-hot:hover .tip, .v-hot:focus-visible .tip { opacity: 1; }
+
+.v-night .in { position: relative; }
+@media (max-width: 640px) {
+  .v-night { aspect-ratio: 10 / 7; }
+  .v-night .in { width: 150%; margin-left: -28%; }
+  .v-hot { width: 32px; height: 32px; border-width: 2px; }
+  .v-hot::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; }
+}

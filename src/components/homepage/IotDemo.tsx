@@ -1,12 +1,14 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
+// x / y are % positions of each device on the night-building image.
 const DEVICES = [
-  { label: 'Water meter', reading: 'Water flow', base: 42, unit: ' L/min', digits: 0, x: 150, y: 292 },
-  { label: 'Energy meter', reading: 'Energy load', base: 318, unit: ' kW', digits: 0, x: 395, y: 250 },
-  { label: 'Cold room', reading: 'Cold room', base: -18.2, unit: ' °C', digits: 1, x: 395, y: 128 },
-  { label: 'Fire pump', reading: 'Fire pump pressure', base: 7.1, unit: ' bar', digits: 1, x: 275, y: 285 },
+  { label: 'Water meter', reading: 'Water flow', base: 42, unit: ' L/min', digits: 0, x: 24.6, y: 48.3 },
+  { label: 'Energy meter', reading: 'Energy load', base: 318, unit: ' kW', digits: 0, x: 53.9, y: 55.6 },
+  { label: 'Tank level', reading: 'Rooftop tank level', base: 72, unit: ' %', digits: 0, x: 71, y: 8.7 },
+  { label: 'Pump', reading: 'Pump pressure', base: 7.1, unit: ' bar', digits: 1, x: 59, y: 74.3 },
 ];
 
 function confetti() {
@@ -68,42 +70,30 @@ export default function IotDemo() {
         </p>
 
         <div className="v-scene v-brut" style={{ marginTop: 18 }}>
-          <svg viewBox="0 0 520 340" role="img" aria-label="Line drawing of a building with four sensor spots">
-            <defs>
-              <filter id="v-wob">
-                <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="4" result="n" />
-                <feDisplacementMap in="SourceGraphic" in2="n" scale="4" />
-              </filter>
-            </defs>
-            <g fill="none" stroke="#14111C" strokeWidth="4" strokeLinejoin="round" strokeLinecap="round" filter="url(#v-wob)">
-              <path d="M40 310 H480" />
-              <path d="M110 310 V70 H330 V310" />
-              <path d="M330 150 H450 V310" />
-              <path d="M110 70 L220 24 L330 70" />
-              <path d="M140 110h50v34h-50zM210 110h50v34h-50zM280 110h30v34h-30zM140 170h50v34h-50zM210 170h50v34h-50zM280 170h30v34h-30zM360 180h70v34h-70z" />
-              <path d="M200 310 v-60 h50 v60" />
-              <path d="M30 310 q10-40 40-30 q10-30 40-10" strokeWidth="3" />
-            </g>
+          <div className="v-night">
+            <div className="in">
+            <Image
+              src="/images/home/night-building.webp"
+              alt="A smart building at night with a rooftop water tank, electrical panels, pipes and pumps"
+              width={1500}
+              height={700}
+              sizes="(min-width: 900px) 52vw, 100vw"
+            />
             {DEVICES.map((d, i) => (
-              <g
+              <button
                 key={d.label}
-                className={`v-spot${on[i] ? ' on' : ''}`}
-                tabIndex={0}
-                role="button"
-                aria-label={`${d.label}: ${on[i] ? 'installed' : 'tap to install'}`}
+                type="button"
+                className={`v-hot${on[i] ? ' on' : ''}`}
+                style={{ left: d.x + '%', top: d.y + '%' }}
+                aria-pressed={on[i]}
+                aria-label={`${d.label}: ${on[i] ? 'connected' : 'tap to connect'}`}
                 onClick={() => toggle(i)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggle(i);
-                  }
-                }}
               >
-                <circle className="ring" cx={d.x} cy={d.y} r="14" />
-                <circle className="dot" cx={d.x} cy={d.y} r="13" />
-              </g>
+                <span className="tip">{d.label}</span>
+              </button>
             ))}
-          </svg>
+            </div>
+          </div>
         </div>
 
         <div className="v-picks">
