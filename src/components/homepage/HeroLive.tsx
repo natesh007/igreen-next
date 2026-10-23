@@ -14,9 +14,9 @@ import VisaSlide from './live/VisaSlide';
  * or a swipe. Slides are decorative and described by their own text alternative.
  */
 const SLIDES = [
-  { key: 'building', label: 'Smart buildings' },
-  { key: 'visa', label: 'Visa processing' },
-  { key: 'match', label: 'Matchmaking' },
+  { key: 'building', label: 'Smart buildings', secs: 11 },
+  { key: 'visa', label: 'Visa processing', secs: 13 },
+  { key: 'match', label: 'Matchmaking', secs: 11 },
 ] as const;
 
 export default function HeroLive() {
@@ -69,7 +69,7 @@ export default function HeroLive() {
             onClick={() => go(i)}
           >
             <span>{s.label}</span>
-            {active === i && <i className="prog" aria-hidden="true" onAnimationEnd={() => go(i + 1)} />}
+            {active === i && <i className="prog" aria-hidden="true" style={{ animationDuration: `${s.secs}s` }} onAnimationEnd={() => go(i + 1)} />}
           </button>
         ))}
       </div>
