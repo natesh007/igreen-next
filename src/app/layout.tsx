@@ -183,9 +183,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        {/* Google tag (gtag.js) — one tag for the whole site, loaded from the root layout */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-JBSWRHXTX4" strategy="afterInteractive" />
-        <Script id="google-tag" strategy="afterInteractive">
+        {/* Google tag (gtag.js) — one tag for the whole site, loaded from the root layout after the page has finished loading (keeps it off the critical path) */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-JBSWRHXTX4" strategy="lazyOnload" />
+        <Script id="google-tag" strategy="lazyOnload">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
