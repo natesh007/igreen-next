@@ -23,6 +23,9 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   await send('Runtime.enable'); await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride', { width: W, height: 900, deviceScaleFactor: 1, mobile: W < 600 });
   await send('Page.navigate', { url: 'http://localhost:' + port + '/' });
+  await sleep(1500);
+  await ev("localStorage.clear()"); // a leftover choice from an earlier run would hide the first checks
+  await send('Page.navigate', { url: 'http://localhost:' + port + '/' });
   await sleep(6500);
 
   const snap = `(()=>{const c=document.querySelector('canvas.v-netbg');if(!c)return null;const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let s=0;for(let i=3;i<d.length;i+=97)s+=d[i]*(i%251);return s})()`;
@@ -33,6 +36,8 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   await sleep(2200);
   console.log('hero values later (ticking):', JSON.stringify(await ev(live)));
 
+  // the slider may have moved on by now; go back to the building slide for the pause checks
+  await ev("document.getElementById('live-tab-1').click()"); await sleep(150); await ev("document.getElementById('live-tab-0').click()"); await sleep(500); // restarts the slide timer
   // pause
   await ev(`[...document.querySelectorAll('button')].find(b=>/Pause animation/.test(b.textContent)).click()`);
   await sleep(600);

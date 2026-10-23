@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Unbounded, Manrope } from "next/font/google";
 import "./globals.css";
 import "./vibrant.css";
+import "./hero-live.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BackgroundFx from "@/components/fx/BackgroundFx";
