@@ -3,6 +3,7 @@
 // remembered after a reload, and that the page has no JavaScript errors.
 const { spawn } = require('child_process');
 const port = process.argv[2] || '3010';
+const base = /^https?:/.test(port) ? port.replace(/\/$/, '') : 'http://localhost:' + port; // a port number or a full URL
 const W = Number(process.argv[3] || 1440);
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--remote-debugging-port=9372', '--window-size=' + W + ',900', '--user-data-dir=' + process.env.TEMP + '/cdp-prof15', 'about:blank'], { stdio: 'ignore' });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -22,10 +23,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const ev = async (e) => (await send('Runtime.evaluate', { expression: e, returnByValue: true })).result.value;
   await send('Runtime.enable'); await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride', { width: W, height: 900, deviceScaleFactor: 1, mobile: W < 600 });
-  await send('Page.navigate', { url: 'http://localhost:' + port + '/' });
+  await send('Page.navigate', { url: base + '/' });
   await sleep(1500);
   await ev("localStorage.clear()"); // a leftover choice from an earlier run would hide the first checks
-  await send('Page.navigate', { url: 'http://localhost:' + port + '/' });
+  await send('Page.navigate', { url: base + '/' });
   await sleep(6500);
 
   const snap = `(()=>{const c=document.querySelector('canvas.v-netbg');if(!c)return null;const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let s=0;for(let i=3;i<d.length;i+=97)s+=d[i]*(i%251);return s})()`;
@@ -46,7 +47,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   console.log('after pause -> attr:', await ev('document.documentElement.dataset.motion'), '| canvas still:', p1 === p2, '| values frozen:', tv1.t === tv2.t, '| scene paused:', await ev(`getComputedStyle(document.querySelector('.v-live .scene')).animationPlayState`), '| button:', await ev(`[...document.querySelectorAll('.v-live-wrap button')].map(b=>b.textContent).join()`));
 
   // remembered after reload
-  await send('Page.navigate', { url: 'http://localhost:' + port + '/about' });
+  await send('Page.navigate', { url: base + '/about' });
   await sleep(5000);
   console.log('/about after reload -> attr:', await ev('document.documentElement.dataset.motion'), '| stored:', await ev(`localStorage.getItem('igreen-motion')`), '| footer button:', await ev(`[...document.querySelectorAll('footer button')].map(b=>b.textContent+' pressed='+b.getAttribute('aria-pressed')).join()`));
   await ev(`[...document.querySelectorAll('footer button')][0].click()`);

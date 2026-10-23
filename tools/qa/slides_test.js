@@ -2,6 +2,7 @@
 // Hero slider behaviour: auto-advance, tabs, arrow keys, swipe, pause switch, and JS errors.
 const { spawn } = require('child_process');
 const port = process.argv[2] || '3010';
+const base = /^https?:/.test(port) ? port.replace(/\/$/, '') : 'http://localhost:' + port; // a port number or a full URL
 const W = Number(process.argv[3] || 1440);
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--remote-debugging-port=9402', '--window-size=' + W + ',900', '--user-data-dir=' + process.env.TEMP + '/cdp-prof19', 'about:blank'], { stdio: 'ignore' });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -21,7 +22,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const ev = async (e) => (await send('Runtime.evaluate', { expression: e, returnByValue: true })).result.value;
   await send('Runtime.enable'); await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride', { width: W, height: 900, deviceScaleFactor: 1, mobile: W < 600 });
-  await send('Page.navigate', { url: 'http://localhost:' + port + '/' });
+  await send('Page.navigate', { url: base + '/' });
   await sleep(5500);
   const cur = () => ev(`(()=>{const o=document.querySelector('.v-live-tabs .tab.on');return o?o.textContent.trim():'none'})()`);
   const slideCls = () => ev(`(document.querySelector('.v-live .slide')||{}).className`);

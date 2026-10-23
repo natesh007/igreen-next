@@ -5,6 +5,7 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const sharp = require('sharp');
 const [port = '3010', W = '1440', out = '.'] = process.argv.slice(2);
+const base = /^https?:/.test(port) ? port.replace(/\/$/, '') : 'http://localhost:' + port; // a port number or a full URL
 const w = Number(W);
 const TIMES = (process.env.TIMES || '0.6,2.0,3.4,4.8,6.2,7.4,8.4,9.8').split(',').map(Number);
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--remote-debugging-port=9382', '--window-size=' + w + ',900', '--user-data-dir=' + process.env.TEMP + '/cdp-prof16', 'about:blank'], { stdio: 'ignore' });
@@ -19,7 +20,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const send = (method, params = {}) => new Promise((r) => { const i = ++id; pend[i] = r; ws.send(JSON.stringify({ id: i, method, params })); });
   const ev = async (e) => (await send('Runtime.evaluate', { expression: e, returnByValue: true })).result.value;
   await send('Emulation.setDeviceMetricsOverride', { width: w, height: 900, deviceScaleFactor: 1, mobile: w < 600 });
-  await send('Page.navigate', { url: 'http://localhost:' + port + '/' });
+  await send('Page.navigate', { url: base + '/' });
   await sleep(5500);
   await ev("window.scrollTo(0,0)");
   for (let slide = 0; slide < 3; slide++) {
