@@ -26,7 +26,7 @@ export default function HeroMosaic() {
             Live monitoring
           </span>
           <div className="glass" aria-hidden="true">
-            <Image src="/images/home/wis-energy-glass.webp" alt="" width={900} height={631} sizes="(min-width: 960px) 20vw, 60vw" />
+            <Image src="/images/home/wis-energy-glass.webp" alt="" width={480} height={337} sizes="(min-width: 960px) 20vw, 44vw" />
           </div>
           <figcaption className="cap">
             <strong>Smart buildings</strong>
