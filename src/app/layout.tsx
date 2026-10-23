@@ -11,12 +11,18 @@ const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], weight
 
 export const metadata: Metadata = {
   title: {
-    default: 'iGreen Systems | IoT Solutions & Digital Transformation',
+    default: 'iGreen Systems | Software & IoT Company, Kakinada & Hyderabad',
     template: '%s | iGreen Systems',
   },
   description:
-    'iGreen Systems — IoT solutions and digital transformation company in Hyderabad & Kakinada, India. Smart building management, connected devices, industrial IoT, web & mobile app development since 2008.',
+    'iGreen Systems — software company in Kakinada and Hyderabad, India. IoT solutions, smart building management, web development and mobile application development since 2008.',
   keywords: [
+    'software company Kakinada',
+    'software company in Kakinada',
+    'web development company Kakinada',
+    'mobile application development Kakinada',
+    'mobile app development company Kakinada',
+    'software development company Hyderabad',
     'IoT solutions Hyderabad',
     'IoT solutions Kakinada',
     'IoT solutions Andhra Pradesh',
@@ -41,16 +47,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     siteName: 'iGreen Systems',
-    title: 'iGreen Systems | IoT Solutions & Digital Transformation',
+    title: 'iGreen Systems | Software & IoT Company, Kakinada & Hyderabad',
     description:
-      'IoT solutions and digital transformation company in Hyderabad & Kakinada, India. Smart building management, connected devices, industrial IoT, and web & mobile app development since 2008.',
+      'Software company in Kakinada and Hyderabad, India. IoT solutions, smart building management, web development and mobile application development since 2008.',
     url: 'https://igreensystems.com',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'iGreen Systems | IoT Solutions & Digital Transformation',
+    title: 'iGreen Systems | Software & IoT Company, Kakinada & Hyderabad',
     description:
-      'IoT solutions and digital transformation company in Hyderabad & Kakinada, India. Smart building management, connected devices, and web & mobile apps since 2008.',
+      'Software company in Kakinada and Hyderabad, India. IoT solutions, web development and mobile app development since 2008.',
   },
   robots: {
     index: true,

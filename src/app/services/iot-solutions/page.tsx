@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'IoT Solutions',
-  description: 'End-to-end IoT solutions in Hyderabad, Andhra Pradesh & India — architecture design, sensor integration, real-time data pipelines, and cloud connectivity for smart buildings, factories, and enterprises.',
+  title: 'IoT Solutions in Kakinada & Hyderabad',
+  description: 'End-to-end IoT solutions in Kakinada, Hyderabad and across India — architecture design, sensor integration, real-time data pipelines and cloud connectivity for smart buildings, factories and enterprises.',
   alternates: { canonical: '/services/iot-solutions' },
 };
 

@@ -85,6 +85,31 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section className="v-w v-sec" style={{ paddingTop: 0 }} aria-labelledby="local-h">
+        <div className="v-brut v-rv v-brief">
+          <div>
+            <h2 className="v-disp" id="local-h">
+              Software company in Kakinada and Hyderabad
+            </h2>
+            <p>
+              From our offices in Kakinada, Andhra Pradesh and Hyderabad, Telangana, we build{' '}
+              <Link href="/services/iot-solutions" style={{ textDecoration: 'underline', fontWeight: 800 }}>
+                IoT solutions
+              </Link>
+              ,{' '}
+              <Link href="/services/web-applications" style={{ textDecoration: 'underline', fontWeight: 800 }}>
+                web applications
+              </Link>{' '}
+              and{' '}
+              <Link href="/services/mobile-apps" style={{ textDecoration: 'underline', fontWeight: 800 }}>
+                mobile apps
+              </Link>{' '}
+              for businesses across India and abroad. Web development, mobile application development and IoT under one team, since 2008.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <Group title="IoT & Digital Transformation" items={iotServices} kind="iot" />
       <Group title="Digital Delivery" items={deliveryServices} kind="del" />
 

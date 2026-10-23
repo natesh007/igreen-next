@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Mobile Apps',
-  description: 'Mobile app development in Hyderabad, India — cross-platform iOS & Android apps using Flutter and React Native for enterprises, IoT companion apps, and consumer products. Serving clients across India and globally.',
+  title: 'Mobile Application Development in Kakinada & Hyderabad',
+  description: 'Mobile application development in Kakinada and Hyderabad — cross-platform iOS and Android apps with Flutter and React Native for enterprises, IoT companion apps and consumer products. Serving clients across India and globally.',
   alternates: { canonical: '/services/mobile-apps' },
 };
 

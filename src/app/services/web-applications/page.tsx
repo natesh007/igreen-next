@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata: Metadata = {
-  title: 'Web Applications',
-  description: 'Web application development in Hyderabad, India — scalable React and Next.js web apps, IoT dashboards, enterprise portals, and cloud-native platforms for businesses across Andhra Pradesh and beyond.',
+  title: 'Web Development Company in Kakinada & Hyderabad',
+  description: 'Web development company in Kakinada and Hyderabad — scalable React and Next.js web applications, IoT dashboards, enterprise portals and cloud-native platforms for businesses across Andhra Pradesh, Telangana and beyond.',
   alternates: { canonical: '/services/web-applications' },
 };
 
