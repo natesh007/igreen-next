@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Logo from '../ui/Logo';
+import MotionToggle from '../fx/MotionToggle';
 
 const iotServices = [
   { href: '/services/iot-solutions', label: 'IoT Solutions' },
@@ -105,6 +106,7 @@ export default function Footer() {
         <div>
           <Link href="/useful-links/privacy-policy">Privacy Policy</Link>
           <Link href="/useful-links/terms-of-service">Terms of Service</Link>
+          <MotionToggle />
         </div>
       </div>
     </footer>

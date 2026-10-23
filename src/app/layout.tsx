@@ -4,6 +4,7 @@ import "./globals.css";
 import "./vibrant.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import BackgroundFx from "@/components/fx/BackgroundFx";
 import Script from "next/script";
 
 const unbounded = Unbounded({ variable: "--font-unbounded", subsets: ["latin"], weight: ["500", "700", "900"], display: "swap" });
@@ -180,6 +181,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <BackgroundFx />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

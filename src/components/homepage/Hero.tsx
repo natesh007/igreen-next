@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import HeroMosaic from './HeroMosaic';
+import HeroLive from './HeroLive';
 
 export default function Hero() {
   return (
@@ -26,7 +26,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <HeroMosaic />
+        <HeroLive />
       </section>
 
     </>
